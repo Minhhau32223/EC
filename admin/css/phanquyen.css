@@ -1,0 +1,58 @@
+.permission-group {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .permission-group__input input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .permission-group__table {
+    margin-top: 20px;
+  }
+  
+  .table-header {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .table-row {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .table-cell {
+    flex: 1;
+    padding: 8px;
+  }
+  
+  .permission-group__actions {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+  
+  .btn--primary {
+    background-color:purple;
+    color: #fff;
+  }
+  
+  .btn--danger {
+    background-color: #dc3545;
+    color: #fff;
+  }

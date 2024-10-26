@@ -1,0 +1,7 @@
+#middleContent{
+    margin: 5%;
+}
+#addThongKe, #addPhieuXuat, #addPhieuNhap, #addNCC, #addNguoiDung, #addSanPham{
+    display: none;
+    padding: 10px;
+}

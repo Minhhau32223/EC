@@ -1,0 +1,66 @@
+.btn-ThemNV {
+    float: right;
+    width: 15%;
+    padding: 5px;
+    background-color: #D61EAD;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+.search{
+    width: 92%;
+    margin: 15px 50px;
+    height: 30px;
+}
+.staff{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+button{
+    padding: 5px;
+    background-color: #D61EAD;
+    color: white;
+    border: none;
+    align-items: center;
+}
+.button{
+    border-radius: 20px;
+    background-color: #D61EAD;
+    color: white;
+    border: none;
+    /* align-items: center; */
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+}
+.avt{
+    width: 70px;
+    height: 70px;
+    background-color: #CCCCCC;
+    border-radius: 50%;
+  
+}
+/* Áp dụng cho màn hình từ 768px trở xuống */
+@media screen and (max-width: 768px) {
+    /* Quy tắc CSS cho màn hình nhỏ */
+    .btn-ThemNV {
+        float: right;
+        width: 25%;
+        padding: 5px;
+        background-color: #D61EAD;
+        color: white;
+        border-radius: 20px;
+        text-align: center;
+    }
+    .avt{
+        width: 40px;
+        height: 40px;
+        background-color: #CCCCCC;
+        border-radius: 50%;
+      
+}
+  }
