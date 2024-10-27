@@ -11,8 +11,9 @@ if(isset($_SESSION['user_id'])){
 
 <head>
   <meta charset="utf-8" />
-  <title>Trang chủ</title>
+  <title>Điện máy chợ nhỏ</title>
   <link href="../css/home.css?v=<?php echo time(); ?>" rel="stylesheet" />
+  <link rel="stylesheet" href="../../themify-icons/themify-icons.css">
   <script src="../js/home.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
