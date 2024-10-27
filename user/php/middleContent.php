@@ -9,7 +9,25 @@ $sqll = "SELECT Gioitinh FROM sanpham GROUP BY Gioitinh";
 $rs_gt = mysqli_query($con,$sqll);
 mysqli_close($con);
 ?>
-<div class="banner" id="banner">   
+<div class="background_transfer_container" id="banner">   
+<div class="background_transfer">
+              <div class="background_transfer_img"><img src="../../img/bg2.jpg" alt=""></div>
+              <div class="background_transfer_img"><img src="../../img/bg1.jpg" alt=""></div>
+              <div class="background_transfer_img"><img src="BackgroundTransfer/pexels-cottonbro-studio-5740812.jpg" alt=""></div>
+              <div class="background_transfer_img"><img src="BackgroundTransfer/wallpaperflare.com_wallpaper (2).jpg" alt=""></div>
+              <div class="background_transfer_img"><img src="BackgroundTransfer/wallpaperflare.com_wallpaper.jpg" alt=""></div>
+            </div>
+            <div class="background_transfer_button">
+              <button id="slide_prev"><</button>
+              <button id="slide_next">></button>
+            </div>
+            <ul class="dots">
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
 </div>
 <div class="content-title">
     <div class="page-noti">
@@ -53,6 +71,46 @@ mysqli_close($con);
     </div>
 
     <script type="text/javascript">
+        let slide_list = document.querySelector(
+  ".background_transfer_container .background_transfer"
+);
+let slide_list_img = document.querySelectorAll(
+  ".background_transfer_container .background_transfer .background_transfer_img"
+);
+let slide_prev = document.getElementById("slide_prev");
+let slide_next = document.getElementById("slide_next");
+let dots = document.querySelectorAll(".background_transfer_container .dots li");
+let isactive = 0;
+slide_next.onclick = function () {
+  isactive++;
+  if (isactive > slide_list_img.length - 1) {
+    isactive = 0;
+  }
+  transfer();
+};
+slide_prev.onclick = function () {
+  isactive--;
+  if (isactive < 0) {
+    isactive = slide_list_img.length - 1;
+  }
+  transfer();
+};
+function transfer() {
+  let checkindex = slide_list_img[isactive].offsetLeft;
+  slide_list.style.left = -checkindex + "px";
+  let isactivedots = document.querySelector(
+    ".background_transfer_container .dots li.active"
+  );
+  isactivedots.classList.remove("active");
+  dots[isactive].classList.add("active");
+}
+dots.forEach((li, key) => {
+  li.addEventListener("click", function () {
+    isactive = key;
+    transfer();
+  });
+});
+let refresh = setInterval(() => slide_next.click(), 5000);
 $(document).ready(function() {
     $('.btn-timkiem-nangcao').on('click', function() {
         var textsearch = $('.search-bar').val();
