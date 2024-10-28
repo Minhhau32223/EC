@@ -89,15 +89,15 @@ mysqli_close($con);
         <label for="<?php echo $value["Mathuonghieu"]; ?>"><?php echo $value["tenThuonghieu"]; ?></label>
         <br />
         <?php } ?>
-        <h4>Giới tính</h4>
+        <h4>Danh mục</h4>
         <?php foreach($rs_gt as $key => $value) { ?>
         <input type="checkbox"  class="gender-checkbox"id="gender" name="gender[]" value="<?php echo $value["Gioitinh"]; ?>" />
         <label for="<?php echo $value["Gioitinh"]; ?>"><?php echo $value["Gioitinh"]; ?></label><br />
         <?php } ?>
-        <label for="">Mức giá Từ</label>
+        <label class="mucgia" for="">Mức giá Từ</label>
         <input type="number" class="min-price" name="txtTu" />
         <br>
-        <label for="">Đến</label>
+        <label class="mucgia" for="">Đến </label>
         <input type="number" class="max-price" name="txtDen" />
         
             <button class="btn-timkiem-nangcao" type="button">Tìm kiếm</button>

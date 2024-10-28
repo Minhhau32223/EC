@@ -185,14 +185,48 @@ require_once('../../db_connect.php');
    
 document.getElementById("filter-btn").onclick = function() {
     const filterTool = document.querySelector(".filter-tool");
+    const contentContainer = document.querySelector(".content-container");
+
     if (filterTool.style.display === "none" || filterTool.style.display === "") {
         filterTool.style.display = "block";
-        document.querySelector(".container").scrollIntoView({ behavior: 'smooth' });
-    } else {
+        
+        setTimeout(() => filterTool.classList.add("show"), 10);
+        
+        contentContainer.style.transform = "translateX(20px)";
 
-        filterTool.style.display = "none";
+        document.querySelector(".container").scrollIntoView({ behavior: 'smooth' });
+
+    } else {
+        filterTool.classList.remove("show");
+        
+        contentContainer.style.transform = "translateX(0)";
+        
+        setTimeout(() => filterTool.style.display = "none", 500);
     }
 };
+
+
+
+    $('.search-bar-header').on('input',function(){
+        var text_search=$('.search-bar-header').val();
+
+        $.ajax({
+            url:'xulytimkiemheader.php',
+            type:'POST',
+            data:{data:text_search
+
+        },
+        dataType:'html',
+        success:function(data)
+        {
+            $('.content-container').html(data);
+            document.querySelector(".container").scrollIntoView({ behavior: 'smooth' })
+        },
+        error:  function(xhr,status,error){
+            console.log(xhr.responseText);
+        }
+    });
+    });
 
 
 </script>
