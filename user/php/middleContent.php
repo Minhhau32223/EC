@@ -29,6 +29,49 @@ mysqli_close($con);
               <li></li>
             </ul>
 </div>
+<div class="anhhai">
+            <div class="baophuallcai">
+                <div class="home-item">
+                    <div class="home-item-icon">
+                        <i class="ti-truck"></i>
+                    </div>
+                    <div class="home-item-content">
+                        <h4>GIAO HÀNG SIÊU NHANH</h4>
+                        <p>Uy tín và đảm bảo</p>
+                    </div>
+                </div>
+    
+                <div class="home-item">
+                    <div class="home-item-icon">
+                        <i class="ti-heart"></i>
+                    </div>
+                    <div class="home-item-content">
+                        <h4>SẢN PHẨM CHẤT LƯỢNG</h4>
+                        <p>Cam kết siêu bền</p>
+                    </div>
+                </div>
+    
+                <div class="home-item">
+                    <div class="home-item-icon">
+                        <i class="ti-headphone"></i>
+                    </div>
+                    <div class="home-item-content">
+                        <h4>HỖ TRỢ 24/24</h4>
+                        <p>Tất cả các ngày trong tuần</p>
+                    </div>
+                </div>
+    
+                <div class="home-item">
+                    <div class="home-item-icon">
+                        <i class="ti-money"></i>        
+                    </div>
+                    <div class="home-item-content">
+                        <h4>CAM KẾT HOÀN LẠI TIỀN</h4>
+                        <p>Nếu có gì sai sót</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 <div class="content-title">
     <div class="page-noti">
         <h1>Trang chủ</h1>

@@ -14,16 +14,19 @@ require_once('../../db_connect.php');
 <script src="../js/home.js"></script>
 <div class="logo-bola">
     <b><a href="home.php"> <img src="../..///img//logo.png" alt="">   Điện Máy CHỢ NHỎ </a></b>
+    <b><input type="text" class="search-bar-header" placeholder="Search..." name="txtSearch" /> </i></b>
+    <b><button id="filter-btn" class="filter-button">Lọc</button></b>
 </div>
 
 <div class="menu-toggle">
+
     <button onclick="toggleMenu()">Menu</button>
 </div>
 
 <div class="menu">
 
     <div class="option" id="product" onclick="bannerHide()" >
-            <li><a href='#' class='category-link' data-idtl=""></a></a>Sản phẩm <i class="ti-angle-down"></i>
+            <li><a href='#' class='category-link' data-idtl="" ></a></a>Sản phẩm <i class="ti-angle-down"></i>
             <div class="submenu">
                 <ul>
                 <?php
@@ -51,7 +54,7 @@ require_once('../../db_connect.php');
         </div>
    
 
-    <li class="option" id="cart"><a href="home.php?chon=giohang" style="text-decoration: none; font-size: 16px; color: rgba(0, 0, 0,0.7);">Giỏ hàng <i class="ti-shopping-cart"></i></a></li>
+    <li class="option" id="cart"><a href="home.php?chon=giohang" style="text-decoration: none; font-size: 16px; color: #FFF1DB;">Giỏ hàng <i class="ti-shopping-cart"></i></a></li>
     <?php if (isset($_SESSION['user_id'])) {
         $maND = $_SESSION['user_id'];
 
@@ -144,8 +147,14 @@ require_once('../../db_connect.php');
                 $('.content-container').html(productsHtml);
                 let sotrang=parseInt(data.totalPages);
                 let paginationHtml = '';
-                for (let i = 1; i <= sotrang ; i++) {
-                    paginationHtml += `<li><a href='#' class='page-link' data-trang='${i}' data-idtl='${danhmuc}'>${i}</a></li>`;
+                if (sotrang ==1)
+                {
+                    paginationHtml += `<li><a href='#' class='page-link hide' data-trang='${i}' data-idtl='${danhmuc}'>${i}</a></li>`;
+                }else {
+
+                    for (let i = 1; i <= sotrang ; i++) {
+                        paginationHtml += `<li><a href='#' class='page-link' data-trang='${i}' data-idtl='${danhmuc}'>${i}</a></li>`;
+                    }
                 }
                 $('.page-segment').html(paginationHtml);
             }
@@ -165,6 +174,7 @@ require_once('../../db_connect.php');
         const danhmuc = $(this).data('idtl');
       
         loadProducts(1, danhmuc); // Load first page of the selected category
+        document.querySelector(".container").scrollIntoView({ behavior: 'smooth' });
     });
 
     // Initial load
@@ -173,7 +183,16 @@ require_once('../../db_connect.php');
 
 
    
-   
+document.getElementById("filter-btn").onclick = function() {
+    const filterTool = document.querySelector(".filter-tool");
+    if (filterTool.style.display === "none" || filterTool.style.display === "") {
+        filterTool.style.display = "block";
+        document.querySelector(".container").scrollIntoView({ behavior: 'smooth' });
+    } else {
+
+        filterTool.style.display = "none";
+    }
+};
 
 
 </script>

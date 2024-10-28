@@ -23,6 +23,7 @@ function bannerHide() {
     banner.style.display = "none"; 
     h1Element.textContent = "Tất cả sản phẩm";
   } 
+  document.querySelector(".container").scrollIntoView({ behavior: 'smooth' });
 }
 
 function toggleMenu() {

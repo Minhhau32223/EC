@@ -31,16 +31,18 @@
 #topmenu .logo-bola{
     
     font-size: 30px;
-    color: rgb(144, 2, 144);
+    color: #FFF1DB;
    
-    width: 400px;
+    width: 600px;
     height: 50px;
     margin: 12px 14px;
     margin-top: 6px;
     display: flex;
     text-align: center;
     justify-content: center;
-    
+    float: left;
+    left: 35%;    
+    position: relative;
     
 }
 #topmenu .logo-bola a{
@@ -68,6 +70,10 @@
     z-index: 10;
     justify-content: center;
     color: #FFF1DB;
+    width: 700px;
+    margin-left: 200px;
+    /* position: relative; */
+    right: -25%;
 }
 #topmenu .menu .submenu {
 display: none;
@@ -93,6 +99,7 @@ display: none;
   border-radius: 0;
   padding: 5px;
   margin: 0px;
+  
 
 }
 #topmenu .option a{
@@ -104,7 +111,7 @@ display: none;
     list-style: none;
     width: 100px;
     height: 30px;
-    color: gray;
+    color: #FFF1DB;
     margin-left: 20px;
     margin: 12px 14px;
     text-align: center;
@@ -113,6 +120,9 @@ display: none;
 #topmenu .option li{
   width: 100%;
   height: 100%;
+  color: #FFF1DB;
+}#topmenu .option li a{
+  color: #FFF1DB;
 }
 #topmenu .option:hover{
   color: purple;
@@ -153,7 +163,9 @@ display: none;
   height: fit-content;
   margin-top: 30px;
 }
-
+.hide {
+  display: none;
+}
 .menu .option#cart:hover .sub-menu {
   display: block;
 }
@@ -228,7 +240,7 @@ display: none;
     display: grid;
     grid-template-rows: auto 1fr auto;
     font-size: 14px;
-    background-color: #f4f4f4;
+    background-color: #D4BDAC;
     align-items: start;
     min-height: 100vh;
   }
@@ -239,11 +251,16 @@ display: none;
     width: 100%;
     flex-flow: row wrap;
     padding: 30px 30px 20px 30px;
-    color: #2f2f2f;
-    background-color: #fff;
+    color: #FFF1DB;
+    background-color: #88C273;
     border-top: 1px solid #e5e5e5;
   }
-  
+  .footer li a {
+    color:  #FFF1DB;
+  }
+  .footer__addr address{
+       color:  #FFF1DB;
+  }
   .footer > * {
     flex:  1 100%;
   }
@@ -251,6 +268,7 @@ display: none;
   .footer__addr {
     margin-right: 1.25em;
     margin-bottom: 2em;
+     color: #FFF1DB;
   }
   
   .footer__logo {
@@ -273,7 +291,7 @@ display: none;
   
   .footer address {
     font-style: normal;
-    color: #999;
+    color: #FFF1DB;
   }
   
   .footer__btn {
@@ -569,7 +587,7 @@ display: none;
   margin-top: 20px;
   font-size: 25px;
 }
-#search-bar{
+.search-bar{
   width: 200px;
   height: 20px;
   position: relative;
@@ -577,6 +595,30 @@ display: none;
   border-radius: 10px;
   margin-left: 15px;
 
+}
+.search-bar-header {
+  width: 200px;
+  height: 30px;
+  margin-top: 25px;
+  border-radius: 10px;
+  margin-left: 15px;
+  font-size: 24px;
+  margin-right: 10px;
+}
+.ti-search{
+  top:10px;
+  float:right;
+}
+.filter-button {
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 25px;
+  height: 30px;
 }
 input[type="search"]{
   width: 100%;
@@ -643,7 +685,7 @@ li:hover {
   border-radius: 20px;
   justify-content: center;
   float: left;
-  display: block; 
+  display: none; 
 }
 @media only screen and (max-width: 768px) {
   .filter-tool {
@@ -681,4 +723,35 @@ input[type="button"]:hover{
   background-color: purple;
   color: #fff;
 }
-
+.anhhai{
+  opacity: 1;
+  transition: all 0.25s ease-in-out;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.baophuallcai {
+  display: flex;
+}
+.baophuallcai .home-item{
+  margin-right: 20px;
+}
+.home-item{
+  display: flex;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  padding: 20px;
+  border-radius: 5px;
+  background-image:linear-gradient(#88C273,#bcc1cf);
+  color: #FFF1DB;
+  border: white solid 3px;
+}
+.home-item i{
+  color: rgb(241, 241, 241);
+  font-size: 45px;
+  margin-right: 20px;
+  line-height: 90px;
+}
+.home-item p{
+  font-size: 15px;
+  margin-top: -7px;
+}
