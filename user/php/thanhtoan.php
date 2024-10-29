@@ -121,6 +121,7 @@ function connect()
                                     dataType: 'html',
                                     success: function(data) {
                                         $('#phiVC').html(data);
+                                        updateThanhTien();
                                     },
                                     error: function(xhr, status, error) {
                                         console.log(xhr.responseText);
@@ -164,6 +165,7 @@ function connect()
                                     dataType: 'html',
                                     success: function(data) {
                                         $('#giamgia').html(data);
+                                        updateThanhTien();
                                     },
                                     error: function(xhr, status, error) {
                                         console.log(xhr.responseText);

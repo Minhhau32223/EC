@@ -21,10 +21,15 @@
             margin: auto;
             justify-content: space-between;
             align-items: center;
+            /* border: 1px solid #000000; */
+            box-sizing: border-box;
         }
 
         .photo-sp {
-            width: 50%;
+            width: 40%;
+            border: #000000 0.5px solid;
+            padding: 10px;
+            margin: 10px;
         }
 
         .thongtinsanpham {
@@ -233,7 +238,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mua"])) {
                 <?php
                 if (isset($_GET['id'])) {
                     $maSP = $_GET['id'];
-                    $sql = "SELECT * FROM sanpham WHERE Masp=$maSP";
+                    $sql = "SELECT * FROM sanpham WHERE Masp=$maSP " ;
                     $rs = mysqli_query($conn, $sql);
                     if ($row = mysqli_fetch_array($rs)) {
                         echo '<div class="photo-sp">
@@ -258,6 +263,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mua"])) {
                                 </div>
                             </div>
                             <hr class="line_sp">
+                            '.' <div class="infor_product">
+                    <p>Thông số kỹ thuật</p>
+                    <div class="detail_infor">
+                    ' .nl2br($row["Mota"]).'</div>
+                            </div>      
                             <div class="button_muahang">
                                 <div class="themGioHang">
                                     <input type="submit" class="button_muahang_them" name="them" value="Thêm vào giỏ hàng"> 
@@ -270,6 +280,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mua"])) {
                     }
                 }
                 ?>
+               
             </div>
         </div>
     </form>

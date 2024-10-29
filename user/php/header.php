@@ -136,7 +136,7 @@ require_once('../../db_connect.php');
                 data.products.forEach(product => {
                     productsHtml += `<div class='content-item' ><a href='home.php?chon=ctsp&id=${product.Masp}'>`;
                     productsHtml += `<div class='product-image'><img src='../../img/${product.Img}' alt=''></div>`;
-                    productsHtml += `<h3>${product.Tensp}</h3>`;
+                    productsHtml += `<h3 class="name_product">${product.Tensp}</h3>`;
                     productsHtml += `<p>Giá: ${product.Giaban} VND</p>`;
                     productsHtml += `</a></div>`;
                 });

@@ -19,8 +19,15 @@ function executeSearchQuery($con, $text_search, $min_price, $max_price, $categor
     }
   // Xây dựng điều kiện cho nhiều giới tính
     if (!empty($gender)) {
-        $gender_string = "'" . implode("', '", $gender) . "'";
-        $sql .= " AND Gioitinh IN ($gender_string)";
+        $lenghtcate=count($gender);
+        $sql.="AND (";
+        for ($i=0; $i<$lenghtcate; $i++) {
+            $sql.= " Madanhmuc='".$gender[$i]."' OR";
+            if($i==$lenghtcate-1){
+                $sql=substr($sql,0,-2);
+            }
+        }
+        $sql.=")";
     }
 
     return mysqli_query($con, $sql);

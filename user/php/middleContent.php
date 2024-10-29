@@ -5,8 +5,8 @@ mysqli_query($con, "set names 'utf8'");
 $sql= "SELECT thuonghieu.* FROM sanpham, thuonghieu WHERE sanpham.Mathuonghieu = thuonghieu.Mathuonghieu GROUP BY thuonghieu.Mathuonghieu";
 $result_query = mysqli_query($con, $sql);
 
-$sqll = "SELECT Gioitinh FROM sanpham GROUP BY Gioitinh";
-$rs_gt = mysqli_query($con,$sqll);
+$sqll = "SELECT danhmuc.* FROM sanpham,danhmuc WHERE sanpham.Madanhmuc=danhmuc.Madanhmuc GROUP BY danhmuc.Madanhmuc";
+$rs_dm = mysqli_query($con,$sqll);
 mysqli_close($con);
 ?>
 <div class="background_transfer_container" id="banner">   
@@ -90,9 +90,9 @@ mysqli_close($con);
         <br />
         <?php } ?>
         <h4>Danh mục</h4>
-        <?php foreach($rs_gt as $key => $value) { ?>
-        <input type="checkbox"  class="gender-checkbox"id="gender" name="gender[]" value="<?php echo $value["Gioitinh"]; ?>" />
-        <label for="<?php echo $value["Gioitinh"]; ?>"><?php echo $value["Gioitinh"]; ?></label><br />
+        <?php foreach($rs_dm as $key => $value) { ?>
+        <input type="checkbox"  class="gender-checkbox"id="gender" name="gender[]" value="<?php echo $value["Madanhmuc"]; ?>" />
+        <label for="<?php echo $value["Madanhmuc"]; ?>"><?php echo $value["Tendanhmuc"]; ?></label><br />
         <?php } ?>
         <label class="mucgia" for="">Mức giá Từ</label>
         <input type="number" class="min-price" name="txtTu" />

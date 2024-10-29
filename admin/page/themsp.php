@@ -2,21 +2,24 @@
 ?>
 <?php
 if (isset($_POST["txtThemsanpham"])) {
-    if (!empty($_POST["txtTensp"]) && !empty($_POST["txtMotasp"]) && !empty($_FILES["txtHinhanh"]["name"]) && !empty($_POST["txtGioitinh"]) && !empty($_POST["txtThuonghieu"])
-        && !empty($_POST["txtDanhmuc"]) && !empty($_POST["txtSoluongnhap"]) && !empty($_POST["txtGianhap"]) && !empty($_POST["txtGiaban"])
+    if (!empty($_POST["txtTensp"]) && !empty($_POST["txtMotasp"]) && !empty($_FILES["txtHinhanh"]["name"])  && !empty($_POST["txtThuonghieu"])
+        && !empty($_POST["txtDanhmuc"])  && !empty($_POST["txtGianhap"]) && !empty($_POST["txtGiaban"])
     ) {
         $tensp = $_POST["txtTensp"];
         $motasp = $_POST["txtMotasp"];
         $hinhanh = $_FILES["txtHinhanh"]["name"];
         $hinhanh_temp = $_FILES["txtHinhanh"]["tmp_name"];
-        $gioitinhsp = $_POST["txtGioitinh"];
+   
         $thuonghieu = $_POST["txtThuonghieu"];
         $danhmuc = $_POST["txtDanhmuc"];
-        $soluong = $_POST["txtSoluongnhap"];
+        $soluong = 0;
         $gianhap = $_POST["txtGianhap"];
         $giaban = $_POST["txtGiaban"];
         $path = "../../img/";
-
+        do {
+            $masp = "SP" . rand(1000, 9999); // Tạo mã ngẫu nhiên với tiền tố "SP" và 4 chữ số
+            $sql_check_masp = mysqli_query($conn, "SELECT * FROM sanpham WHERE Masp = '$masp'");
+        } while (mysqli_num_rows($sql_check_masp) > 0); // Lặp lại nếu mã đã tồn tại
         // Kiểm tra xem sản phẩm đã tồn tại trong cơ sở dữ liệu chưa
         $sql_check_product = mysqli_query($conn, "SELECT * FROM sanpham WHERE Tensp = '$tensp'");
         $num_rows = mysqli_num_rows($sql_check_product);
@@ -24,14 +27,14 @@ if (isset($_POST["txtThemsanpham"])) {
         if ($num_rows > 0) {
             // Sản phẩm đã tồn tại, tăng số lượng sản phẩm
             $row = mysqli_fetch_assoc($sql_check_product);
-            $soluongconlai = $row['Soluongconlai'] + $soluong;
+      
 
-            $sql_update_product = mysqli_query($conn, "UPDATE sanpham SET Soluongconlai = '$soluongconlai' WHERE Tensp = '$tensp'");
+            $sql_update_product = mysqli_query($conn, "UPDATE sanpham SET Soluongconlai = '$soluong' WHERE Tensp = '$tensp'");
             echo '<script>window.location.href = "AHome.php?chon=t&id=sanpham"</script>';
         } else {
             // Sản phẩm chưa tồn tại, thêm sản phẩm mới
-            $sqp_insert_product = mysqli_query($conn, "INSERT INTO sanpham(Tensp, Giaban, Soluongconlai, Mota, Madanhmuc, Mathuonghieu, Img, Gianhap, Gioitinh) 
-                VALUES('$tensp', '$giaban', '$soluong', '$motasp', '$danhmuc', '$thuonghieu', '$hinhanh', '$gianhap', '$gioitinhsp')");
+            $sqp_insert_product = mysqli_query($conn, "INSERT INTO sanpham(Masp,Tensp, Giaban, Soluongconlai, Mota, Madanhmuc, Mathuonghieu, Img, Gianhap) 
+                VALUES('$masp','$tensp', '$giaban', '$soluong', '$motasp', '$danhmuc', '$thuonghieu', '$hinhanh', '$gianhap')");
 
             move_uploaded_file($hinhanh_temp, $path . $hinhanh);
             echo '<script>window.location.href = "AHome.php?chon=t&id=sanpham"</script>';
@@ -68,14 +71,7 @@ if (isset($_POST["txtThemsanpham"])) {
                  </div>
         </div>
         <div class="addright1">
-            <label for="">Giới tính</label><br>
-            <input type="radio" value="nu" class="form-addsp ip_gioitinh" name="txtGioitinh">
-            <label for="nu" class="lbnu">Nữ</label>
-            <input type="radio" value="nam" class="form-addsp ip_gioitinh" name="txtGioitinh">
-            <label for="nam" class="lbnam">Nam</label>
-            <input type="radio" value="unisex" class="form-addsp ip_gioitinh" name="txtGioitinh">
-            <label for="unisex" class="lbunisex">Unisex</label>
-            <br>
+            
             <label for="">Thương hiệu</label><br>
             <?php
             $sql_thuonghieu=mysqli_query($conn,"SELECT * FROM thuonghieu ORDER BY Mathuonghieu DESC");
@@ -109,8 +105,7 @@ if (isset($_POST["txtThemsanpham"])) {
                 }
             ?>
             </select><br>
-            <label for="">Số lượng nhập </label><br>
-            <input type="text" name="txtSoluongnhap" class="form-addsp" placeholder="Nhập số lượng.">
+      
 
         </div>
         <div class="addright2">

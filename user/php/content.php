@@ -11,17 +11,17 @@ $trangHienTai = isset($_GET['trang']) ? $_GET['trang'] : 1;
 $batDau = ($trangHienTai - 1) * $soSanPhamTrenTrang;
 $danhMuc = isset($_GET['idtl']) ? $_GET['idtl'] : '';
 
-$sql = "SELECT * FROM sanpham";
+$sql = "SELECT * FROM sanpham WHERE Soluongconlai>0";
 if (!empty($danhMuc)) {
-    $sql .= " WHERE Madanhmuc = '$danhMuc'";
+    $sql .= " AND Madanhmuc = '$danhMuc'";
 }
 $sql .= " LIMIT $batDau, $soSanPhamTrenTrang";
 $result = mysqli_query($conn, $sql);
 
 // Truy vấn để đếm tổng số sản phẩm
-$sqlCount = "SELECT COUNT(*) AS total FROM sanpham";
+$sqlCount = "SELECT COUNT(*) AS total FROM sanpham WHERE Soluongconlai>0";
 if (!empty($danhMuc)) {
-    $sqlCount .= " WHERE Madanhmuc = '$danhMuc'";
+    $sqlCount .= " AND Madanhmuc = '$danhMuc'";
 }
 $resultCount = mysqli_query($conn, $sqlCount);
 $rowCount = mysqli_fetch_assoc($resultCount);
