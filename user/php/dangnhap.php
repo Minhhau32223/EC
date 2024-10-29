@@ -83,21 +83,22 @@
             text-decoration: none;
         }
         body {
-    background-image: url("../../img/vintage_y2k_hdbg.jpg");
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-position: 0 0; 
-    animation: moveBackground 15s linear infinite; 
-}
+        background-image: url("../../img/vintage_y2k_hdbg.jpg");
+        background-size: cover; 
+        background-repeat: no-repeat;
+        background-position: 0 0; 
+        animation: moveBackground 15s linear infinite; 
+        }
 
-@keyframes moveBackground {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 100% 0;
-    }
-}
+        @keyframes moveBackground {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 100% 0;
+            }
+        }
+    
     </style>
 </head>
 

@@ -54,7 +54,7 @@ require_once('../../db_connect.php');
         </div>
    
 
-    <li class="option" id="cart"><a href="home.php?chon=giohang" style="text-decoration: none; font-size: 16px; color: #FFF1DB;">Giỏ hàng <i class="ti-shopping-cart"></i></a></li>
+    <li class="option" id="cart"><a href="home.php?chon=giohang" style="text-decoration: none; font-size: 16px; color: #FFF1DB;">Giỏ hàng <i class="ti-shopping-cart"></i> <span class="cart-count">0</span></a></li>
     <?php if (isset($_SESSION['user_id'])) {
         $maND = $_SESSION['user_id'];
 
@@ -187,15 +187,24 @@ document.getElementById("filter-btn").onclick = function() {
     const filterTool = document.querySelector(".filter-tool");
     const contentContainer = document.querySelector(".content-container");
 
+    // Kiểm tra nếu URL có phần truy vấn thì điều hướng về `home.php`
+    if (window.location.href.includes('home.php') && window.location.search) {
+        // Lấy URL cơ bản không có phần query string
+        const baseURL = window.location.origin + window.location.pathname;
+        window.location.href = baseURL;
+        return; // Dừng thực thi tiếp để chờ điều hướng
+    }
+
+    // Hiện/ẩn form lọc và cuộn đến phần .container
     if (filterTool.style.display === "none" || filterTool.style.display === "") {
         filterTool.style.display = "block";
         
         setTimeout(() => filterTool.classList.add("show"), 10);
         
+        contentContainer.style.transition = "transform 0.5s ease";
         contentContainer.style.transform = "translateX(20px)";
-
+        
         document.querySelector(".container").scrollIntoView({ behavior: 'smooth' });
-
     } else {
         filterTool.classList.remove("show");
         
@@ -204,6 +213,8 @@ document.getElementById("filter-btn").onclick = function() {
         setTimeout(() => filterTool.style.display = "none", 500);
     }
 };
+
+
 
 
 
@@ -227,6 +238,19 @@ document.getElementById("filter-btn").onclick = function() {
         }
     });
     });
+    $(document).ready(function () {
+    $.ajax({
+        url: 'cartCount.php',
+        type: 'GET',
+        success: function (data) {
+            const cartCount = data > 0 ? data : '0';
+            $('.cart-count').text(cartCount);
+        },
+        error: function (xhr, status, error) {
+            console.log("Error loading cart count:", error);
+        }
+    });
+});
 
 
 </script>

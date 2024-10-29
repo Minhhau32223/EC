@@ -107,9 +107,18 @@ display: none;
   font-size: 16px;
   color: rgba(0, 0, 0,0.7);
 }
+.cart-count{
+  background-color: #FFF1DB;
+  border-radius: 50%;
+  color: red;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  
+}
 #topmenu .option{
     list-style: none;
-    width: 100px;
+    width: 120px;
     height: 30px;
     color: #FFF1DB;
     margin-left: 20px;
@@ -589,12 +598,13 @@ display: none;
   font-size: 25px;
 }
 .search-bar{
-  width: 200px;
+  width: 150px;
   height: 20px;
   position: relative;
   margin-top: 14px;
   border-radius: 10px;
   margin-left: 15px;
+  display: block;
 
 }
 .search-bar-header {
