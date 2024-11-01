@@ -7,6 +7,9 @@
     <title>Đăng nhập</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        #DN{
+          
+        }
         .login-container {
             width: 500px;
             /* Chiều rộng */
@@ -16,22 +19,25 @@
             padding: 20px;
             /* background-color: #f4f4f4; */
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+           margin-top: 20px;
         }
 
         .login-container form {
             width: 80%;
             display: flex;
             flex-direction: column;
+            /* border: 0.5px solid #000000; */
+            padding: 40px;
         }
 
         .login-container h1 {
             text-align: center;
-            color: #D61EAD;
+            color: #88C273;
         }
 
         .login-container form p {
@@ -55,7 +61,7 @@
         }
 
         .login-container form .login-button {
-            background-color: #D61EAD;
+            background-color: #88C273;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -69,7 +75,7 @@
 
         /* CSS khi nút được hover */
         .login-container form .login-button:hover {
-            background-color: #A70087;
+            background-color:  #88DF73;
         }
 
         .login-container form .register {
@@ -79,11 +85,11 @@
         }
 
         .login-container form .register-link {
-            color: #D61EAD;
+            color: #88C273;
             text-decoration: none;
         }
         body {
-        background-image: url("../../img/vintage_y2k_hdbg.jpg");
+        /* background-image: url("../../img/vintage_y2k_hdbg.jpg"); */
         background-size: cover; 
         background-repeat: no-repeat;
         background-position: 0 0; 

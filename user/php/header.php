@@ -108,9 +108,11 @@ require_once('../../db_connect.php');
                     echo '<li><a href="./dangnhap.php">Đăng nhập</a></li>';
                     echo '<li><a href="./dangky.php">Đăng ký</a></li>';
                 }
+                
                 ?>
             </ul>
         </div>
+        
     </div>
 </div>
 </div>
@@ -120,7 +122,9 @@ require_once('../../db_connect.php');
         window.location.reload(true); // Tải lại trang một cách đầy đủ
     }
 
-          $(document).ready(function() {
+    $(document).ready(function() {
+    let currentPage = 1; // Biến lưu trữ trang hiện tại
+
     function loadProducts(trang, danhmuc) {
         $.ajax({
             url: 'content.php',
@@ -134,31 +138,38 @@ require_once('../../db_connect.php');
                 const data = JSON.parse(response);
                 let productsHtml = '';
                 data.products.forEach(product => {
-                    productsHtml += `<div class='content-item' ><a href='home.php?chon=ctsp&id=${product.Masp}'>`;
+                    productsHtml += `<div class='content-item'><a href='home.php?chon=ctsp&id=${product.Masp}'>`;
                     productsHtml += `<div class='product-image'><img src='../../img/${product.Img}' alt=''></div>`;
                     productsHtml += `<h3 class="name_product">${product.Tensp}</h3>`;
                     productsHtml += `<p>Giá: ${product.Giaban} VND</p>`;
                     productsHtml += `</a></div>`;
                 });
-                productsHtml +=` <div class='page-segment'>
-                
-                </div>`;
-
+                productsHtml += `<div class='page-segment'></div>`;
                 $('.content-container').html(productsHtml);
-                let sotrang=parseInt(data.totalPages);
-                let paginationHtml = '';
-                if (sotrang ==1)
-                {
-                    paginationHtml += `<li><a href='#' class='page-link hide' data-trang='${i}' data-idtl='${danhmuc}'>${i}</a></li>`;
-                }else {
 
-                    for (let i = 1; i <= sotrang ; i++) {
-                        paginationHtml += `<li><a href='#' class='page-link' data-trang='${i}' data-idtl='${danhmuc}'>${i}</a></li>`;
-                    }
+                // Cập nhật phân trang với nút Previous và Next
+                let totalPages = parseInt(data.totalPages);
+                let paginationHtml = '';
+
+                if (trang > 1) {
+                    paginationHtml += `<li><a href='#' class='page-link prev' data-trang='${trang - 1}' data-idtl='${danhmuc}'><i class="ti-angle-left"></i></a></li>`;
                 }
+                else{
+                }
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHtml += `<li><a href='#' class='page-link ${i === trang ? 'active' : ''}' data-trang='${i}' data-idtl='${danhmuc}'>${i}</a></li>`;
+                }
+                if (trang < totalPages) {
+                    paginationHtml += `<li><a href='#' class='page-link next' data-trang='${trang + 1}' data-idtl='${danhmuc}'><i class="ti-angle-right"></i></a></li>`;
+                }
+                
                 $('.page-segment').html(paginationHtml);
+
+                // Lưu trang hiện tại
+                currentPage = trang;
             }
         });
+        
     }
 
     $(document).on('click', '.page-link', function(e) {
@@ -169,17 +180,16 @@ require_once('../../db_connect.php');
     });
 
     $(document).on('click', '.category-link', function(e) {
-   
         e.preventDefault();
         const danhmuc = $(this).data('idtl');
-      
-        loadProducts(1, danhmuc); // Load first page of the selected category
+        loadProducts(1, danhmuc); // Load trang đầu tiên của danh mục được chọn
         document.querySelector(".container").scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Initial load
+    // Load ban đầu
     loadProducts(1, '');
 });
+
 
 
    

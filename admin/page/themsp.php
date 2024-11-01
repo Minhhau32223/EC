@@ -63,7 +63,7 @@ if (isset($_POST["txtThemsanpham"])) {
             <label for="">Tên sản phẩm</label><br>
             <input type="text" class="form-addsp ip_nameSp" name="txtTensp" placeholder="Vui lòng nhập tên sản phẩm."> <br>
             <label for="">Mô tả</label><br>
-            <input type="text" class="form-addsp ip_mota" name="txtMotasp" placeholder="Vui lòng mô tả cho sản phẩm."> <br>
+            <textarea  type="text" class="form-addsp ip_mota" name="txtMotasp" placeholder="Vui lòng mô tả cho sản phẩm."> </textarea><br>
             <label for="">Hình ảnh</label><br>
             <input type="file" class="form-addsp ip_hinhanh" id="ip_hinhanh" name="txtHinhanh" value="Thêm hình ảnh" placeholder="Chọn sản phẩm"> <br>
             <div id="image_sp">

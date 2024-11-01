@@ -26,10 +26,14 @@
         }
 
         .photo-sp {
-            width: 40%;
-            border: #000000 0.5px solid;
+            width: 100%;
+            /* border: #000000 0.5px solid; */
             padding: 10px;
             margin: 10px;
+        }
+        .photo-sp img {
+            background-size:cover ;
+          
         }
 
         .thongtinsanpham {
@@ -264,10 +268,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mua"])) {
                             </div>
                             <hr class="line_sp">
                             '.' <div class="infor_product">
-                    <p>Thông số kỹ thuật</p>
+                    <strong>Thông số kỹ thuật:</strong>
                     <div class="detail_infor">
                     ' .nl2br($row["Mota"]).'</div>
                             </div>      
+                            <hr class="line_sp">
                             <div class="button_muahang">
                                 <div class="themGioHang">
                                     <input type="submit" class="button_muahang_them" name="them" value="Thêm vào giỏ hàng"> 

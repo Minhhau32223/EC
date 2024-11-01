@@ -8,12 +8,12 @@ $user ='root';
 $pass = '';
 $database = 'bolashop';
 
-$db = new mysqli($server, $user, $pass,$database);
+$db = new mysqli($server, $user, $pass, $database);
 
 if($db) {
-    mysqli_query($db,"SET NAMES 'utf8' ");
+    mysqli_query($db, "SET NAMES 'utf8'");
 } else {
-    echo 'ket noi that bai';
+    echo 'Kết nối thất bại';
 }
 
 // Xử lý yêu cầu AJAX
@@ -21,16 +21,27 @@ if(isset($_POST['masp']) && isset($_POST['action'])) {
     $masp = $_POST['masp'];
     $action = $_POST['action'];
 
-    // Lấy số lượng sản phẩm hiện tại
-    $sql_select = "SELECT soluong FROM giohang WHERE Manguoidung = '$maKH' AND Masp = '$masp'";
-    $result = mysqli_query($db, $sql_select);
-    $row = mysqli_fetch_assoc($result);
-    $soluong = $row['soluong'];
+    // Lấy số lượng sản phẩm hiện tại trong giỏ hàng
+    $sql_select_cart = "SELECT soluong FROM giohang WHERE Manguoidung = '$maKH' AND Masp = '$masp'";
+    $result_cart = mysqli_query($db, $sql_select_cart);
+    $row_cart = mysqli_fetch_assoc($result_cart);
+    $soluong = $row_cart['soluong'];
 
-    // Cập nhật số lượng sản phẩm dựa trên hành động
+    // Lấy số lượng sản phẩm còn lại trong kho
+    $sql_select_stock = "SELECT Soluongconlai FROM sanpham WHERE Masp = '$masp'";
+    $result_stock = mysqli_query($db, $sql_select_stock);
+    $row_stock = mysqli_fetch_assoc($result_stock);
+    $Soluongconlai = $row_stock['Soluongconlai'];
+
+    // Kiểm tra và cập nhật số lượng sản phẩm dựa trên hành động
     if($action === 'decrease' && $soluong > 1) {
         $soluong--;
     } elseif($action === 'increase') {
+        if($soluong + 1 > $Soluongconlai) {
+            $message = -1;
+            echo $message;
+            exit;
+        }
         $soluong++;
     }
 

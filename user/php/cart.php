@@ -198,6 +198,11 @@ $conn->close();
                             },
                             success: function(response) {
                                 // Cập nhật số lượng sản phẩm trên giao diện
+                                if(response==-1)
+                                {
+                                    alert("Vượt quá số lượng sản phẩm còn lại!!");
+                                    return
+                             }      
                                 soluongElement.text(response);
                                 location.reload();
                             },

@@ -11,11 +11,11 @@ mysqli_close($con);
 ?>
 <div class="background_transfer_container" id="banner">   
 <div class="background_transfer">
-              <div class="background_transfer_img"><img src="../../img/bg2.jpg" alt=""></div>
-              <div class="background_transfer_img"><img src="../../img/bg1.jpg" alt=""></div>
-              <div class="background_transfer_img"><img src="BackgroundTransfer/pexels-cottonbro-studio-5740812.jpg" alt=""></div>
-              <div class="background_transfer_img"><img src="BackgroundTransfer/wallpaperflare.com_wallpaper (2).jpg" alt=""></div>
-              <div class="background_transfer_img"><img src="BackgroundTransfer/wallpaperflare.com_wallpaper.jpg" alt=""></div>
+              <div class="background_transfer_img"><img src="../../img/banner/tuyet-chieu-tiet-kiem-dien-cho-thiet-bi-gia-dung-1.jpg" alt=""></div>
+              <div class="background_transfer_img"><img src="../../img/banner/do-gia-dung-2.png" alt=""></div>
+              <div class="background_transfer_img"><img src="../../img/banner/pngtree-assortment-of-home-appliances-on-a-white-background-rendered-in-3d-picture-image_5826208.jpg" alt=""></div>
+              <div class="background_transfer_img"><img src="../../img/banner/bìa.jpg" alt=""></div>
+              <div class="background_transfer_img"><img src="../../img/banner/31.jpg" alt=""></div>
             </div>
             <div class="background_transfer_button">
               <button id="slide_prev"><</button>

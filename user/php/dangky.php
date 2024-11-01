@@ -16,7 +16,7 @@
             padding: 20px;
             /* background-color: #f4f4f4; */
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -31,7 +31,7 @@
 
         .register-container h1 {
             text-align: center;
-            color: #D61EAD;
+            color: #88C273;
         }
 
         .register-container form p {
@@ -55,7 +55,7 @@
         }
 
         .register-container form .register-button {
-            background-color: #D61EAD;
+            background-color: #88C273;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -69,7 +69,7 @@
 
         /* CSS khi nút được hover */
         .register-container form .register-button:hover {
-            background-color: #A70087;
+            background-color: #88DF73;
         }
 
         .register-container form .login {
@@ -79,7 +79,7 @@
         }
 
         .register-container form .login-link {
-            color: #D61EAD;
+            color: #88C273;
             text-decoration: none;
         }
 
