@@ -13,8 +13,8 @@ require_once('../../db_connect.php');
 
 <script src="../js/home.js"></script>
 <div class="logo-bola">
-    <b><a href="home.php"> <img src="../..///img//logo.png" alt="">   Điện Máy CHỢ NHỎ </a></b>
-    <b><input type="text" class="search-bar-header" placeholder="Search..." name="txtSearch" /> </i></b>
+    <b><a href="home.php"> <img src="../..///img//logo.png" alt="">   Điện Máy Chợ Nhỏ </a></b>
+    <b><input type="text" class="search-bar-header" placeholder="Tìm kiếm " name="txtSearch" /> </i></b>
     <b><button id="filter-btn" class="filter-button">Lọc</button></b>
 </div>
 
@@ -141,7 +141,7 @@ require_once('../../db_connect.php');
                     productsHtml += `<div class='content-item'><a href='home.php?chon=ctsp&id=${product.Masp}'>`;
                     productsHtml += `<div class='product-image'><img src='../../img/${product.Img}' alt=''></div>`;
                     productsHtml += `<h3 class="name_product">${product.Tensp}</h3>`;
-                    productsHtml += `<p>Giá: ${product.Giaban} VND</p>`;
+                    productsHtml += `<p>Giá: ${product.Giaban.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} VND</p>`;
                     productsHtml += `</a></div>`;
                 });
                 productsHtml += `<div class='page-segment'></div>`;

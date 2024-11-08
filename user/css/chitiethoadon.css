@@ -92,7 +92,7 @@
     text-align: center;
     flex-direction: row;
     border-radius: 8px 8px 0 0;
-    background-color: #FFE3F0;
+    background-color: hwb(104 45% 10%);
 }
 
 .table-items {

@@ -113,7 +113,7 @@
         }
 
         .button_muahang .button_muahang_muangay {
-            background-color: #D61EAD;
+            background-color: #88C273;
             color: #fff;
             /* border: none; */
             cursor: pointer;

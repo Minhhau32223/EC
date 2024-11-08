@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     width: 75rem;
-    margin: auto;
+    margin: 30px;
     padding: 1.5rem;
     justify-content: center;
     
@@ -236,7 +236,7 @@ table {
     color: #FFFFFF;
     border-radius: 10px;
     transition: background-color 0.3s ease;
-    background: #D61EAD;
+    background: #88C273;
     float: right;
     border: none;
 }

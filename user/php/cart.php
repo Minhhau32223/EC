@@ -96,7 +96,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/cssdoan.css">
+    <link rel="stylesheet" href="../css/cssdoan.css"?v=<?php echo time(); ?>>
     <title>Document</title>
     <style>
         a{
@@ -120,7 +120,7 @@ $conn->close();
         .edit-btn,
         .delete-btn {
             padding: 5px;
-            background-color: #D61EAD;
+            background-color: #88C273;
             color: white;
             border: none;
             align-items: center;
@@ -133,6 +133,15 @@ $conn->close();
             width: 20%;
             display: flex;
 
+        }
+        .section__container{
+            margin-top: 30px;
+        }
+        .custom-button{
+            background-color: #88C273;
+        }
+        .table-title {
+            background-color: hwb(104 35% 10%);
         }
     </style>
 </head>

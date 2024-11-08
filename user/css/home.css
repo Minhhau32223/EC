@@ -38,7 +38,7 @@
     font-size: 30px;
     color: #FFF1DB;
    
-    width: 600px;
+    width: 620px;
     height: 50px;
     margin: 12px 14px;
     margin-top: 6px;
@@ -51,14 +51,14 @@
     
 }
 #topmenu .logo-bola a{
-    
+    width: 380px;
     font-size: 30px;
     color: #FFF1DB;
     display: flex;
     text-decoration:none;
     text-align:center;
     align-items: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     justify-content: center;
     gap: 10px; 
     
@@ -177,7 +177,7 @@ display: none;
   display: none;
   position: absolute;
   z-index: 1;
-  background-color: #fff;
+  background-color: #88C273;
   height: fit-content;
   margin-top: 30px;
 }
@@ -572,11 +572,12 @@ display: none;
   height: 100%;
 }
 .content-item p{
- 
+  font-size: 15px;
   padding: 10px;
   margin-bottom: 14px;
 }
 .page-segment{
+  display: flex;
   bottom: 0px;
   float: right;
   width: 100px;
@@ -596,8 +597,9 @@ display: none;
   justify-items: center;
   justify-self: center;
   border: 1px solid rgba(0, 0, 0,0.4);
-  background-color: rgba(255, 143, 197,0.25);
+  background-color: #88C273;
   margin: 4px;
+  padding: 4px;
 }
 .page-segment li a{
   text-decoration: none;
@@ -608,10 +610,12 @@ display: none;
   font-size: 15px;
 }
 .page-segment li a.active {
-  background-color: #007bff;
+  
   color: white;
-  border-radius: 5px;
-  padding: 5px 10px;
+  text-decoration: none;
+  box-sizing: border-box;
+  
+
 }
 .page-segment li a:hover {
   background-color: #e0e0e0;

@@ -22,7 +22,7 @@ function connect()
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/csscheckout.css?version=1.0">
-    <link rel="stylesheet" href="../css/cssdoan.css?version=1.0">
+    <link rel="stylesheet" href="../css/cssdoan.css?version=2.0">
     <!-- <link rel="stylesheet" href="./csscheckout.css?version=1.0 " > -->
     <title>Thanh toán</title>
 </head>
@@ -143,7 +143,7 @@ function connect()
                         <option selected>Chọn mã giảm giá</option>
 
                         <?php
-                        $sqlGiamGia = "SELECT * FROM giamgia WHERE NOW() BETWEEN Ngaybatdau AND Ngayketthuc AND Magiamgia!='MG000';";
+                        $sqlGiamGia = "SELECT * FROM giamgia WHERE NOW() BETWEEN Ngaybatdau AND Ngayketthuc AND Magiamgia!='MG000'";
                         $rsGiamGia = mysqli_query($conn, $sqlGiamGia);
                         if (mysqli_num_rows($rsGiamGia) > 0) {
                             while ($row = mysqli_fetch_array($rsGiamGia)) {

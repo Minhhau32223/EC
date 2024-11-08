@@ -19,23 +19,7 @@
     justify-content: space-evenly;
     align-items: center;
 }
-button{
-    padding: 5px;
-    background-color: #D61EAD;
-    color: white;
-    border: none;
-    align-items: center;
-}
-.button{
-    border-radius: 20px;
-    background-color: #D61EAD;
-    color: white;
-    border: none;
-    /* align-items: center; */
-    display: inline-block;
-    text-align: center;
-    width: 50%;
-}
+
 .avt{
     width: 70px;
     height: 70px;

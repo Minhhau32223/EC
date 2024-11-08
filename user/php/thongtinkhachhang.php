@@ -18,6 +18,7 @@
         .form_TTKhachHang {
             border: 2px solid black;
             padding: 20px;
+            margin-top:50px;
         }
 
         .chuXam {
@@ -25,7 +26,7 @@
         }
 
         .ThongTinKhachHang {
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: space-between;
         }
@@ -58,7 +59,7 @@
         }
 
         .check-ThongTin {
-            color: #D61EAD;
+            color: #88C273;
             text-decoration: none;
             color: white;
         }
