@@ -1,5 +1,5 @@
 <?php
-echo '<div class="logo-bola">
+echo '<div>
 <h1> BOLA</h1>
 </div>
 
@@ -12,11 +12,9 @@ echo '<div class="logo-bola">
 </address>
 </div>
 
-<ul class="footer__nav">
 <li class="nav__item">
 <h2 class="nav__title">Media</h2>
 
-<ul class="nav__ul">
 <li>
 <a href="#">Online</a>
 </li>
@@ -28,7 +26,6 @@ echo '<div class="logo-bola">
 <li>
 <a href="#">Alternative Ads</a>
 </li>
-</ul>
 </li>
 
 
@@ -36,7 +33,6 @@ echo '<div class="logo-bola">
 <li class="nav__item">
 <h2 class="nav__title"></h2>
 
-<ul class="nav__ul">
 <li>
 <a href="#">Privacy Policy</a>
 </li>
@@ -48,7 +44,5 @@ echo '<div class="logo-bola">
 <li>
 <a href="#">Sitemap</a>
 </li>
-</ul>
-</li>
-</ul>';
+</li>';
 ?>

@@ -29,15 +29,17 @@ mysqli_close($con);
               <li></li>
             </ul>
 </div>
-<div class="anhhai">
+<div class="anhhai" style="margin-top: 50px;">
             <div class="baophuallcai">
                 <div class="home-item">
                     <div class="home-item-icon">
                         <i class="ti-truck"></i>
                     </div>
                     <div class="home-item-content">
-                        <h4>GIAO HÀNG SIÊU NHANH</h4>
-                        <p>Uy tín và đảm bảo</p>
+                        <h4>UY TÍN, ĐẢM BẢO</h4>
+                        <p>- Nhập hàng chính hãng</p>
+                        <p>- Giao hàng nhanh chóng</p>
+                        <!-- <p>Uy tín và đảm bảo</p> -->
                     </div>
                 </div>
     
@@ -79,10 +81,10 @@ mysqli_close($con);
 </div>
 <div class="container">
     <form class="filter-tool" id="filter-tool" name="formFilter" method="POST">
-        <h1>Bộ lọc</h1>
+        <h1>Tìm kiếm theo</h1>
         <hr />
         
-        <input type="text" class="search-bar" placeholder="Search..." name="txtSearch" />
+        <!-- <input type="text" class="search-bar" placeholder="Search..." name="txtSearch" /> -->
         <h4>Thương hiệu</h4>
         <?php foreach($result_query as $key => $value) { ?>
         <input type="checkbox" class="category-checkbox"  id="brand" name="brand[]"  value="<?php echo $value["Mathuonghieu"]; ?>" />
@@ -94,12 +96,11 @@ mysqli_close($con);
         <input type="checkbox"  class="gender-checkbox"id="gender" name="gender[]" value="<?php echo $value["Madanhmuc"]; ?>" />
         <label for="<?php echo $value["Madanhmuc"]; ?>"><?php echo $value["Tendanhmuc"]; ?></label><br />
         <?php } ?>
-        <label class="mucgia" for="">Mức giá Từ</label>
+        <label class="mucgia" for="">Mức giá từ</label>
         <input type="number" class="min-price" name="txtTu" />
         <br>
         <label class="mucgia" for="">Đến </label>
         <input type="number" class="max-price" name="txtDen" />
-        
             <button class="btn-timkiem-nangcao" type="button">Tìm kiếm</button>
         <br />
         <br />
