@@ -1,5 +1,4 @@
 <?php
-
 $server = "localhost";
 $username = "root";
 $pass = "";
@@ -63,18 +62,22 @@ function showgiohang()
     // Hiển thị thông tin sản phẩm trong giao diện
     while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="table-items-Q">';
-        echo '<div style="width: 40%; display: flex; justify-content: space-evenly; align-items: center;">';
-        echo '<img src="../../img/' . $row['Img'] . '" alt="' . $row['Tensp'] . '" style="width: 50px;"> 
-        <div>' . $row['Tensp'] . '</div>
+        echo '<div style=" width: 40%; display: flex; justify-content: space-evenly; align-items: center;">';
+        echo '<label class="container" style="width: 1%;">
+                <input type="checkbox" style="width: 200%;">
+                <span class="checkmark"></span>
+                </label>';
+        echo '<img src="../../img/' . $row['Img'] . '" alt="' . $row['Tensp'] . '" style="width: 10%; float: left;display-inline: block;"> 
+        <div style="width: 60%; font-size: 20px;">' . $row['Tensp'] . '</div>
         </div>';
-        echo '<div style="width: 15%;">' . $row['Giaban'] . ' VND</div>';
-        echo '<div class="btn_tang_giam_soluong">';
-        echo '<button class="quantity-btn decrease" data-masp="' . $row['Masp'] . '" data-action="decrease">-</button>';
-        echo '<div class="soluongsp" data-masp="' . $row['Masp'] . '" contenteditable="true">' . $row['Soluong'] . '</div>';
-        echo '<button class="quantity-btn increase" data-masp="' . $row['Masp'] . '" data-action="increase">+</button>';
+        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;">' . $row['Giaban'] . ' VND</div>';
+        echo '<div class="btn_tang_giam_soluong" style="width: 20%; font-size: 25px;">';
+        echo '<button class="quantity-btn decrease" style="width: 5%; margin-left:2px;" data-masp="' . $row['Masp'] . '" data-action="decrease">-</button>';
+        echo '<div class="soluongsp" style="width: 10%; margin-left:2px;" data-masp="' . $row['Masp'] . '" contenteditable="true">' . $row['Soluong'] . '</div>';
+        echo '<button class="quantity-btn increase" style="width: 5%; margin-left:2px;" data-masp="' . $row['Masp'] . '" data-action="increase">+</button>';
         echo '</div>';
         $tongtiensanpham = $row['Giaban'] * $row['Soluong'];
-        echo '<div style="width: 15%;">' . $tongtiensanpham . ' VND</div>';
+        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;">' . $tongtiensanpham . ' VND</div>';
         echo '<form method="post" action="xulyxoaspgiohang.php">';
         echo '<input type="hidden" name="masp" value="' . $row['Masp'] . '">';
         echo '<button type="submit" name="delete_btn" class="delete-btn" data-id="' . $row['Masp'] . '">X</button>';
@@ -97,34 +100,36 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/cssdoan.css"?v=<?php echo time(); ?>>
-    <title>Document</title>
+    <title>Giỏ hàng</title>
     <style>
         a{
-            color: black;
+            color: white;
             text-decoration: none;
+            font-size: 20px;
         }
         .table-items-Q {
-            margin: 10px 0 10px 0;
             width: 100%;
             height: 100px;
             border: rgb(162, 161, 161) solid 0.5px;
-            align-items: center;
+            align-items: left;
             display: flex;
             flex-direction: row;
             /* justify-content: center; */
             text-align: center;
             word-break: break-all;
-            border-radius: 10px;
+            border-radius: 15px;
         }
 
         .edit-btn,
         .delete-btn {
-            padding: 5px;
-            background-color: #88C273;
-            color: white;
+            padding: 10px;
+            background-color: #7de3ff ;
+            color: black;
             border: none;
             align-items: center;
             margin-left: 70px;
+            margin-top: 30%;
+            border-radius: 4px 4px;
         }
 
         .btn_tang_giam_soluong {
@@ -132,16 +137,73 @@ $conn->close();
             justify-content: center;
             width: 20%;
             display: flex;
-
         }
         .section__container{
-            margin-top: 30px;
+            margin-top: 80px;
         }
-        .custom-button{
-            background-color: #88C273;
+        .section__container_2{
+            /* margin-top: 60px; */
+            width: 80%;
+            height: 500px;
+            margin-left: 10%;
+            /* height: fit-content; */
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
         }
         .table-title {
-            background-color: hwb(104 35% 10%);
+            background-color: whitesmoke;
+            border-radius: 5px;
+        }
+        .table-title div{
+            font-size: 30px;
+            border-radius: 3px;
+            border-width: 5px black;
+        }
+        .row{
+            padding-top: 15px;
+        }
+        .custom-button{
+            background-color: navy;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 5px;
+        }
+        .cart-table__cont{
+            margin-left: 0px;
+            height: 450px;
+        }
+        .scoll{
+            float: right;
+            margin-right: 0px;
+        }
+        /* width */
+        .scroll::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        .scroll::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 3px grey; 
+        border-radius: 2px;
+        }
+        
+        /* Handle */
+        .scroll::-webkit-scrollbar-thumb {
+        background: #778899; 
+        border-radius: 3px;
+        }
+
+        /* Handle on hover */
+        .scroll::-webkit-scrollbar-thumb:hover {
+        background: #696969; 
+        }
+        #ThanhTien{
+            background-color: red;
+            height: 60px;
+            font-size: 25px;    
+            margin-right: 0%;
+            display: flex;
+            /* margin-bottom: 0px; */
         }
     </style>
 </head>
@@ -152,7 +214,7 @@ $conn->close();
             <div class="section__container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>Giỏ hàng</h4>
+                        <h4 style="font-size: 40px;">Giỏ hàng</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -165,7 +227,7 @@ $conn->close();
                 </div>
             </div>
         </div>
-        <div class="section__container">
+        <div class="section__container_2">
             <div class="cart-table col-8">
                 <div class="cart-table__cont">
                     <div class="table-title">
@@ -178,10 +240,12 @@ $conn->close();
                     <div><br></div>
                     <div><br></div>
                     <!--DATA-->
-                    <div style="overflow-y: scroll;">
+                    <div class="scroll" style="overflow-y: scroll;"> 
                         <?php showgiohang(); ?>
                     </div>
+                    
                 </div>
+                <div class="ThanhTien"><div>Thành tiền</div><div function="TinhTongTien">123456789</div></div>
                 <div>
                     <button id="backButton" class="type-back">&lt; <a href="home.php">Trở lại mua sắm</a></button>
                     <button id="cart-checkout-btn" class="custom-button" ><a href="home.php?chon=thanhtoan&loai=thanhtoan">Thanh toán</a></button>
@@ -249,9 +313,5 @@ $conn->close();
                     });
                 });
             </script>
-
-
 </body>
-
-
 </html>

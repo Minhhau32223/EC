@@ -16,10 +16,6 @@ require_once('../../db_connect.php');
     <b><button type="submit" id="search_btn" class="search-btn">Tìm</button></b>
 </div>
 
-<!-- <div class="menu-toggle">
-    <button onclick="toggleMenu()">Menu</button>
-</div> -->
-
 <div class="menu">
     <div class="option" id="product" onclick="bannerHide()">
         <li><a href='#' class='category-link' data-idtl="" ></a></a>Sản phẩm <i class="ti-angle-down"></i>
@@ -40,31 +36,35 @@ require_once('../../db_connect.php');
             </ul>
         </div> 
         </li>
-
         
     </div>
 
-    <li class="option" id="cart"><a href="home.php?chon=giohang"> <i class="ti-shopping-cart">Giỏ hàng</i> <span class="cart-count">0</span></a></li>
+    <div class="option" id="cart"><a href="home.php?chon=giohang" style="text-decoration: none;
+  color: #05386B;
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 0px 1px #959595;">Giỏ hàng<i class="ti-shopping-cart"></i><span class="cart-count" style="font-size: 20px; text-align:center;;">0</span></a></div>
+    
     <?php if (isset($_SESSION['user_id'])) {
-        $maND = $_SESSION['user_id'];
+    $maND = $_SESSION['user_id'];
 
-        $conn = mysqli_connect("localhost", "root", "", "bolashop");
+    $conn = mysqli_connect("localhost", "root", "", "bolashop");
 
-        if (!$conn) {
-            die("Kết nối thất bại: " . mysqli_connect_error());
-        }
+    if (!$conn) {
+        die("Kết nối thất bại: " . mysqli_connect_error());
+    }
 
-        $sql = "SELECT img FROM nguoidung WHERE Manguoidung='$maND'";
+    $sql = "SELECT img FROM nguoidung WHERE Manguoidung='$maND'";
 
-        $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $imgSrc = $row["img"];
-        } else {
-            // Nếu không có dữ liệu ảnh, bạn có thể sử dụng ảnh mặc định hoặc hiển thị một tin nhắn cho người dùng
-            $imgSrc = "path_to_default_image.jpg";
-        }
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $imgSrc = $row["img"];
+    } else {
+        // Nếu không có dữ liệu ảnh, bạn có thể sử dụng ảnh mặc định hoặc hiển thị một tin nhắn cho người dùng
+        $imgSrc = "path_to_default_image.jpg";
+    }
 
         // Đóng kết nối CSDL
         mysqli_close($conn);
@@ -178,8 +178,7 @@ require_once('../../db_connect.php');
 
     // Load ban đầu
     loadProducts(1, '');
-});
-   
+});  
     document.getElementById("filter-btn").onclick = function() {
     const filterTool = document.querySelector(".filter-tool");
     const contentContainer = document.querySelector(".content-container");
@@ -210,7 +209,6 @@ require_once('../../db_connect.php');
         setTimeout(() => filterTool.style.display = "none", 500);
     }
 };
-
     $('.search-bar-header').on('input',function(){
         var text_search=$('.search-bar-header').val();
 
