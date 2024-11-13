@@ -6,75 +6,65 @@ require_once('../../db_connect.php');
 
 ?>
 
-
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script src="../js/home.js"></script>
+
 <div class="logo-bola">
-    <b><a href="home.php"> <img src="../..///img//logo.png" alt="">   Điện Máy Chợ Nhỏ </a></b>
-    <b><input type="text" class="search-bar-header" placeholder="Tìm kiếm " name="txtSearch" /> </i></b>
-    <b><button id="filter-btn" class="filter-button">Lọc</button></b>
-</div>
-
-<div class="menu-toggle">
-
-    <button onclick="toggleMenu()">Menu</button>
+    <b><a href="home.php"> <img src="../..///img//logo.png" alt="">Điện Máy Chợ Nhỏ </a></b>
+    <b><button id="filter-btn" class="filter-button"><i class="fa fa-filter"></i></button></b>
+    <b><input type="text" size="50" class="search-bar-header" placeholder="Tìm kiếm..." name="txtSearch" /></i></b>
+    <b><button type="submit" id="search_btn" class="search-btn">Tìm</button></b>
 </div>
 
 <div class="menu">
-
-    <div class="option" id="product" onclick="bannerHide()" >
-            <li><a href='#' class='category-link' data-idtl="" ></a></a>Sản phẩm <i class="ti-angle-down"></i>
-            <div class="submenu">
-                <ul>
+    <div class="option" id="product" onclick="bannerHide()">
+        <li><a href='#' class='category-link' data-idtl="" ></a></a>Sản phẩm <i class="ti-angle-down"></i>
+        <div class="submenu">
+            <ul>
                 <?php
-    $con = mysqli_connect("localhost", "root", "", "bolashop");
-    mysqli_query($con, "set names 'utf8'");
+                $con = mysqli_connect("localhost", "root", "", "bolashop");
+                mysqli_query($con, "set names 'utf8'");
+                $result = mysqli_query($con, "SELECT * FROM danhmuc");
+                while ($row = mysqli_fetch_array($result)) {
+                    $id = $row['Madanhmuc'];
+                    $name = $row['Tendanhmuc'];
+                    echo "<li class='option' id='$id' onclick='bannerHide()'><a data-idtl='$id' class='category-link' href='home.php?idtl=$id'>$name</a></li>";
+                }
+                mysqli_close($con)
+                //  
+                ?>
+            </ul>
+        </div> 
+        </li>
+        
+    </div>
 
+    <div class="option" id="cart"><a href="home.php?chon=giohang" style="text-decoration: none;
+  color: #05386B;
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 0px 1px #959595;">Giỏ hàng<i class="ti-shopping-cart"></i><span class="cart-count" style="font-size: 20px; text-align:center;;">0</span></a></div>
+    
+    <?php if (isset($_SESSION['user_id'])) {
+    $maND = $_SESSION['user_id'];
 
-    $result = mysqli_query($con, "SELECT * FROM danhmuc");
-    while ($row = mysqli_fetch_array($result)) {
-        $id = $row['Madanhmuc'];
-        $name = $row['Tendanhmuc'];
-        echo "<li class='option' id='$id' onclick='bannerHide()'><a data-idtl='$id' class='category-link' href='home.php?idtl=$id'>$name</a></li>";
+    $conn = mysqli_connect("localhost", "root", "", "bolashop");
+
+    if (!$conn) {
+        die("Kết nối thất bại: " . mysqli_connect_error());
     }
 
+    $sql = "SELECT img FROM nguoidung WHERE Manguoidung='$maND'";
 
+    $result = mysqli_query($conn, $sql);
 
-    mysqli_close($con)
-    //  
-    ?>
-                </ul>
-            </div>
-        
-        
-        </li>
-        </div>
-   
-
-    <li class="option" id="cart"><a href="home.php?chon=giohang" style="text-decoration: none; font-size: 16px; color: #FFF1DB;">Giỏ hàng <i class="ti-shopping-cart"></i> <span class="cart-count">0</span></a></li>
-    <?php if (isset($_SESSION['user_id'])) {
-        $maND = $_SESSION['user_id'];
-
-        $conn = mysqli_connect("localhost", "root", "", "bolashop");
-
-        if (!$conn) {
-            die("Kết nối thất bại: " . mysqli_connect_error());
-        }
-
-        $sql = "SELECT img FROM nguoidung WHERE Manguoidung='$maND'";
-
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $imgSrc = $row["img"];
-        } else {
-            // Nếu không có dữ liệu ảnh, bạn có thể sử dụng ảnh mặc định hoặc hiển thị một tin nhắn cho người dùng
-            $imgSrc = "path_to_default_image.jpg";
-        }
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $imgSrc = $row["img"];
+    } else {
+        // Nếu không có dữ liệu ảnh, bạn có thể sử dụng ảnh mặc định hoặc hiển thị một tin nhắn cho người dùng
+        $imgSrc = "path_to_default_image.jpg";
+    }
 
         // Đóng kết nối CSDL
         mysqli_close($conn);
@@ -82,9 +72,9 @@ require_once('../../db_connect.php');
     ?>
 
     <!-- Hiển thị hình ảnh trong thẻ <img> -->
-    <div class="user-icon">
+    <!-- User_icon -->
+    <div class="user-icon" style="margin-left: 20px;">
         <img src="../../img/<?php echo $imgSrc; ?>" alt="Avatar" class="avt">
-
         <div class="sub-menu">
             <ul>
                 <?php
@@ -111,10 +101,10 @@ require_once('../../db_connect.php');
                 
                 ?>
             </ul>
-        </div>
-        
+        </div>     
     </div>
-</div>
+    <!-- User_icon -->
+
 </div>
 <script type="text/javascript">
     // Kiểm tra trạng thái của session và tải lại trang nếu session không tồn tại
@@ -188,12 +178,8 @@ require_once('../../db_connect.php');
 
     // Load ban đầu
     loadProducts(1, '');
-});
-
-
-
-   
-document.getElementById("filter-btn").onclick = function() {
+});  
+    document.getElementById("filter-btn").onclick = function() {
     const filterTool = document.querySelector(".filter-tool");
     const contentContainer = document.querySelector(".content-container");
 
@@ -223,11 +209,6 @@ document.getElementById("filter-btn").onclick = function() {
         setTimeout(() => filterTool.style.display = "none", 500);
     }
 };
-
-
-
-
-
     $('.search-bar-header').on('input',function(){
         var text_search=$('.search-bar-header').val();
 
@@ -261,8 +242,6 @@ document.getElementById("filter-btn").onclick = function() {
         }
     });
 });
-
-
 </script>
 
 

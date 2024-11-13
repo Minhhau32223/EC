@@ -10,8 +10,8 @@
             margin: 10%;
             /* border: 0.5 solid black; border-radius: 8%; */
         }
-
         .ten-san-pham {
+            font-size: 30px;
             color: #1f010193;
         }
 
