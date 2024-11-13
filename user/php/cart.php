@@ -60,13 +60,15 @@ function showgiohang()
     $result = mysqli_query($conn, $sql);
 
     // Hiển thị thông tin sản phẩm trong giao diện
+    $i = 0;
     while ($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="table-items-Q">';
+        $i += 1;
+        echo '<label for="tongGia"><li class="table-items-Q">';
         echo '<div style=" width: 40%; display: flex; justify-content: space-evenly; align-items: center;">';
-        echo '<label class="container" style="width: 1%;">
-                <input type="checkbox" style="width: 200%;">
+        echo '
+                <input id="tongGia" type="checkbox" style="width: 5%;" value="20">
                 <span class="checkmark"></span>
-                </label>';
+                ';
         echo '<img src="../../img/' . $row['Img'] . '" alt="' . $row['Tensp'] . '" style="width: 10%; float: left;display-inline: block;"> 
         <div style="width: 60%; font-size: 20px;">' . $row['Tensp'] . '</div>
         </div>';
@@ -77,12 +79,12 @@ function showgiohang()
         echo '<button class="quantity-btn increase" style="width: 5%; margin-left:2px;" data-masp="' . $row['Masp'] . '" data-action="increase">+</button>';
         echo '</div>';
         $tongtiensanpham = $row['Giaban'] * $row['Soluong'];
-        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;">' . $tongtiensanpham . ' VND</div>';
+        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;" value="' . $tongtiensanpham . '>' . $tongtiensanpham . ' VND</div>';
         echo '<form method="post" action="xulyxoaspgiohang.php">';
         echo '<input type="hidden" name="masp" value="' . $row['Masp'] . '">';
         echo '<button type="submit" name="delete_btn" class="delete-btn" data-id="' . $row['Masp'] . '">X</button>';
         echo '</form>';
-        echo '</div>';
+        echo '</div></li></label>';
     }
 
     mysqli_close($conn);
@@ -106,6 +108,9 @@ $conn->close();
             color: white;
             text-decoration: none;
             font-size: 20px;
+        }
+        .table-items-Q:hover{
+            background-color: #778899;
         }
         .table-items-Q {
             width: 100%;
@@ -144,7 +149,7 @@ $conn->close();
         .section__container_2{
             /* margin-top: 60px; */
             width: 80%;
-            height: 500px;
+            height: 530px;
             margin-left: 10%;
             /* height: fit-content; */
             background-color: white;
@@ -163,14 +168,9 @@ $conn->close();
         .row{
             padding-top: 15px;
         }
-        .custom-button{
-            background-color: navy;
-            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-            margin-bottom: 5px;
-        }
         .cart-table__cont{
             margin-left: 0px;
-            height: 450px;
+            height: 460px;
         }
         .scoll{
             float: right;
@@ -197,13 +197,47 @@ $conn->close();
         .scroll::-webkit-scrollbar-thumb:hover {
         background: #696969; 
         }
-        #ThanhTien{
-            background-color: red;
+        /* Nút thanh toán */
+        .custom-button{
+            background-color: navy;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            margin-top: 50px;
+            margin-left: 1000px;
+        }
+        /* Nút thanh toán */
+        .ThanhTien{
+            /* background-color: red; */
             height: 60px;
-            font-size: 25px;    
-            margin-right: 0%;
+            width: 20%;
+            font-size: 25px;   
             display: flex;
+            float: right; 
             /* margin-bottom: 0px; */
+        }
+        .ThanhTien div{
+            width: 45%;
+            height: 80%;
+            /* background-color: yellow; */
+            /* border-radius: 10px;
+            box-shadow: inset; */
+            margin-left: 2px;
+            padding: 15px 5px;
+        }
+
+        #backButton{
+            margin-top: 100px;
+            border-radius: 10px;
+        }
+        #backButton a{
+            color: #696969;
+            font-weight: bold;
+        }
+        #backButton:hover {
+            margin-top: 100px;
+            background-color: #696969;
+        }
+        #backButton:hover a{
+            color: white;
         }
     </style>
 </head>
@@ -245,15 +279,15 @@ $conn->close();
                     </div>
                     
                 </div>
-                <div class="ThanhTien"><div>Thành tiền</div><div function="TinhTongTien">123456789</div></div>
+                <div class="ThanhTien"><div>Thành tiền:</div><div id="tongTien" style="font-weight: bold; color: red;"></div></div>
                 <div>
-                    <button id="backButton" class="type-back">&lt; <a href="home.php">Trở lại mua sắm</a></button>
-                    <button id="cart-checkout-btn" class="custom-button" ><a href="home.php?chon=thanhtoan&loai=thanhtoan">Thanh toán</a></button>
+                    <button id="backButton" class="type-back">&lt;<a href="home.php">Trở lại mua sắm</a></button>
+                    <button id="cart-checkout-btn" class="custom-button" ><a href="home.php?chon=thanhtoan&loai=thanhtoan">Thanh toán</a></button>                  
                 </div>
             </div>
+            <button onclick="TinhTongTien()">Bấm đi</button>
 
-
-            <script src="javascript.js"></script>
+            <!-- <script src="javascript.js"></script> -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script>
                 $(document).ready(function() {
@@ -312,6 +346,32 @@ $conn->close();
 
                     });
                 });
+            </script>
+            <script>
+                function TinhTongTien(){
+                    // var tongthanhtien = 0;    
+                    // var check_price = []               
+                    
+                    // for(var i=0; i<4; i++){
+                    //     var tong = ("tongGia" + i).toString();
+                    //     check_price[i] = document.getElementById(tong);  
+                    //     console.log("okok");
+                    //     if(check_price[i].checked == true){
+                    //         console.log("i= " + i);
+                    //         tongthanhtien += parseInt(check_price[i].value);
+                    //         console.log("Thành tiền: " + tongthanhtien);                      
+                    //     }
+                    // }
+                    // alert("length= " + check_price.length);
+                    
+                    // document.getElementById("tongTien").innerHTML = tongthanhtien;
+
+                    if(document.getElementById('tongGia').checked == true){
+                        alert("checked");
+                    }else{
+                        alert("no check");
+                    }
+                }
             </script>
 </body>
 </html>

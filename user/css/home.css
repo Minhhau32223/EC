@@ -367,21 +367,27 @@ display: none;
 
   /* Footer */
   .footer {
-    z-index: 100000000;
+    margin-top: 200px;
+    margin-bottom: 0px;
+    height: 200px;
+    /* z-index: 100000000; */
     display: flex;
     width: 100%;
-    flex-flow: row wrap;
-    padding: 30px 30px 20px 30px;
+    /* flex-flow: row wrap; */
+    /* padding: 30px 30px 20px 30px; */
     background: #43AC78;
     background: -webkit-linear-gradient(to right, #66FCF1, #45A29E); 
     background: linear-gradient(to right, #66FCF1, #45A29E); 
     border-top: 1px solid #e5e5e5;
   }
+
   .footer li a {
     color:  #FFF1DB;
   }
   .footer__addr address{
     color:  #FFF1DB;
+    height: 1px;
+    margin-bottom: 0px;
   }
   
   .footer__addr {
