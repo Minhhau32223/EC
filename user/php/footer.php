@@ -14,15 +14,15 @@ echo '<div class="logo-bola">
 
 <ul class="footer__nav">
 <li class="nav__item">
-<h2 class="nav__title">Media</h2>
+<h2 class="nav__title">Liên hệ</h2>
 
 <ul class="nav__ul">
 <li>
-<a href="#">Online</a>
+<a href="facebook.com"><i class="ti-facebook"></i></a>
 </li>
 
 <li>
-<a href="#">Print</a>
+<a href="#"><i class="ti-facebook"></i></a>
 </li>
 
 <li>

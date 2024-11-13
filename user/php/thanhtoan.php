@@ -90,8 +90,10 @@ function connect()
             <div class="payment-method">
                 <h2>Phương thức thanh toán</h2>
                 <div class="radio-cod">
-                    <input checked type="radio" id="payment-cod" name="payment-method" value="cod">
+                    <input type="radio" id="payment-cod" name="payment-method" value="cod">
                     <label for="payment-cod">Thanh toán khi nhận hàng</label>
+                    <input checked type="radio" id="payment-cod" name="payment-method" value="vnpay">
+                    <label for="payment-cod">Thanh toán VNPay</label>
                 </div>
             </div>
             <div class="payment-method">
@@ -401,7 +403,32 @@ function connect()
                             success: function(data) {
                                 // console.log(data);
                                 // $('#compltete-button').html(data);
-                                $('#form_complete_payment').show();
+                                var payment = document.querySelector('input[name="payment-method"]:checked').value;
+                                console.log(payment)
+                    if (payment === "vnpay") {
+                        $.ajax({
+                            url: 'vnpay_create_payment.php', // file PHP cần thực hiện
+                            type: 'POST',
+                            data: { amount: tonggiatri[0] },
+                            success: function(response) {
+                                var data = JSON.parse(response);
+                                    if (data.message === 'success' && data.data) {
+                                        // Mở URL trong tab mới
+                                        window.open(data.data, '_blank');
+                                    } else {
+                                        console.log("Không có URL để chuyển hướng.");
+                                    }
+                                console.log("VNPay payment processed:", response);
+                                // Xử lý kết quả sau khi thanh toán qua VNPay
+                            },
+                            error: function(xhr, status, error) {v  
+                                console.log("VNPay payment error:", xhr.responseText);
+                            }
+                        });
+                    }else
+                           {
+                            $('#form_complete_payment').show();
+                           }   
                             },
                             error: function(xhr, status, error) {
                                 console.log(xhr.responseText);
@@ -433,9 +460,32 @@ function connect()
                             },
                             // dataType: 'html',
                             success: function(data) {
-                                // console.log(data);
-                                // $('#compltete-button').html(data);
-                                $('#form_complete_payment').show();
+                                var payment = document.querySelector('input[name="payment-method"]:checked').value;
+                                console.log(payment)
+                    if (payment === "vnpay") {
+                        $.ajax({
+                            url: 'vnpay_create_payment.php', // file PHP cần thực hiện
+                            type: 'POST',
+                            data: { amount: tonggiatri[0] },
+                            success: function(response) {
+                                var data = JSON.parse(response);
+                                    if (data.message === 'success' && data.data) {
+                                        // Mở URL trong tab mới
+                                        window.open(data.data, '_blank');
+                                    } else {
+                                        console.log("Không có URL để chuyển hướng.");
+                                    }
+                                console.log("VNPay payment processed:", response);
+                                // Xử lý kết quả sau khi thanh toán qua VNPay
+                            },
+                            error: function(xhr, status, error) {v  
+                                console.log("VNPay payment error:", xhr.responseText);
+                            }
+                        });
+                    }else
+                           {
+                            $('#form_complete_payment').show();
+                           } 
                             },
                             error: function(xhr, status, error) {
                                 console.log(xhr.responseText);

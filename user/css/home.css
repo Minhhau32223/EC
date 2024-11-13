@@ -697,7 +697,7 @@ li a:hover{
   color: purple;
 }
 .arrange-btn:hover > ul,
-ul:hover {
+/* ul:hover {
   visibility: visible;
   opacity: 1;
   display: block;
@@ -705,7 +705,7 @@ ul:hover {
   text-align: left;
   padding-top: 20px;
   box-shadow: 0px 3px 5px -1px #ccc;
-}
+} */
 ul li {
   clear: both;
   width: 100%;

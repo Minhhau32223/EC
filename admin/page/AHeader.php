@@ -14,7 +14,7 @@ function checkReadPermission($view_permission_list, $feature_id)
   if (in_array($feature_id, $view_permission_list)) {
     return ' ';
   } else {
-    return 'hidden';
+    return 'hidden'; 
   }
 }
 
