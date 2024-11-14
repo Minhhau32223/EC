@@ -31,10 +31,10 @@
 
 
   </div>
-  <footer class="footer">
+  <!-- <footer class="footer">
     <div class="footer__addr">
       <?php require('footer.php'); ?>
 
-  </footer>
+  </footer> -->
   </div>
 </body>
