@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="../css/thongke.css">
-    <link rel="stylesheet" href="../css/chitiethoadon.css">
-    <link rel="stylesheet" href="../css/phieuxuat.css">
-    <link rel="stylesheet" href="../css/dsnv.css">
+    <link rel="stylesheet" href="user/css/thongke.css">
+    <link rel="stylesheet" href="user/css/chitiethoadon.css">
+    <link rel="stylesheet" href="user/css/phieuxuat.css">
+    <link rel="stylesheet" href="user/css/dsnv.css">
     <style>
         #bodi {
             margin: 10%;
@@ -13,7 +13,7 @@
 
         #khung {
             /* margin: 10%; */
-            border: 1px solid black;
+            border: 1px;
 
         }
 
@@ -145,7 +145,7 @@
             <div class="khung">
                 <div class="progress-wrapper" id="progress-wrapper">
                     <!-- <img src="https://example.com/image.jpg"> -->
-                    <div class="progress-bar" id="progress-bar" style="width: 0;"></div>
+                    <div class="progress-bar" id="progress-bar"></div>
                     <div class="progress-markers">
                         <div class="marker" style="left: 25%;"></div>
                         <div class="marker" style="left: 50%;"></div>

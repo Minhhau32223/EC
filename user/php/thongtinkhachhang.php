@@ -10,43 +10,98 @@
     <link rel="stylesheet" href="../css/phieuxuat.css">
     <link rel="stylesheet" href="../css/dsnv.css">
     <style>
-        a {
+        /* header_TTKH */
+        a{
+            color: white;
             text-decoration: none;
-            color: black;
+            font-size: 20px;
         }
-
+        .section__container{
+            margin-top: 80px;
+        }
+        .row{
+            padding-top: 15px;
+            display: flex;
+        }
+        
+        .breadcrumb__links {
+            margin-top: -5px;
+            display: flex;
+            /* padding: 10px; */
+        }
+        .breadcrumb__links #ttkh{
+            margin-left: 2px;
+            color: gray;
+        } 
+        .breadcrumb .title{
+            margin-bottom: 0.5rem;
+        }
+        .breadcrumb .breadcrumb__link{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .breadcrumb .breadcrumb__links > :last-child{
+            color: var(--color-text-disabled);
+        }
+        .breadcrumb .breadcrumb__link::after{
+            content: '';    
+            width: 4px;
+            height: 4px;
+            margin: 0 1rem;
+            background-color: var(--color-text-disabled);
+            border-radius: 75%;
+        }
+        .breadcrumb .breadcrumb__links > :last-child::after{
+            content: none;    
+        }
+        .breadcrumb .breadcrumb__link:hover{
+            text-decoration: underline;
+            color: var(--color-pri-main);
+        }
+        .breadcrumb .breadcrumb__links > :last-child:hover{
+            text-decoration: none;
+            color: var(--color-text-disabled);
+        }
         .form_TTKhachHang {
-            border: 2px solid black;
-            padding: 20px;
-            margin-top:50px;
+            margin-top: 100px;
+            margin-left: 55px;
         }
+        /* header_TTKH */
 
-        .chuXam {
-            color: #1f010193;
-        }
-
+        /* TTKhachHang */
         .ThongTinKhachHang {
+            margin-top: 20px;
+            margin-left: 5%;
+            width: 90%;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between;  
+        }
+        .ThongTinKhachHang div{
+            padding: 5px;
+            /* background-color: blue; */
+        }
+        .ThongTinKhachHang div input[type="file"]{
+            margin-left: 15px;
+            margin-right: 15px;
+            /* height: 2.5%; */
+            background-color: red;
         }
 
         .ThongTinKhachHang-data1,
         .ThongTinKhachHang-data2 {
             width: 30%;
         }
-
         .photo {
-            width: 250px;
-            height: 250px;
+            width: 150px;
+            height: 150px;
             background-color: #ddd;
             border-radius: 50%;
             overflow: hidden;
             position: relative;
             margin: auto;
-
         }
-
         .ThongTinKhachHang input[type="text"],
         .ThongTinKhachHang input[type="password"] {
             width: 80%;
@@ -59,45 +114,11 @@
         }
 
         .check-ThongTin {
-            color: #88C273;
+            color: blue;
             text-decoration: none;
-            color: white;
         }
 
-        /* table {
-            width: 100%;
-            /* border-collapse: collapse; 
-            border-collapse: separate;
-            border-spacing: 0 40px;
-        }
-
-        tbody td {
-            width: 50%;
-            padding: 10px;
-            border: 1px solid black;
-        }
-
-        tbody tr {
-            /* border: 1px solid black; */
-        /* margin-bottom: 20px; 
-        }
-
-        .LichSuMuaHang {
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-        }
-
-        .LichSuMuaHang .left-align {
-            text-align: left;
-            border-right: none;
-        }
-
-        .LichSuMuaHang .right-align {
-            text-align: right;
-            border-left: none;
-        } */
+        
     </style>
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -105,8 +126,21 @@
 <body>
     <div class="form_TTKhachHang">
         <form action="" method="post" enctype="multipart/form-data">
-            <h1>Thông tin của tôi</h1>
-            <p><a href="./home.php">Trang chủ >> </a><span class="chuXam">Thông tin của tôi</span></p>
+        <div class="section__container">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 style="font-size: 40px;">Thông tin khách hàng</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="breadcrumb col-12">
+                        <div class="breadcrumb__links horizontal">
+                            <div class="breadcrumb__link body2"><a href="home.php">Trang chủ</a></div>
+                            <div id="ttkh" class="breadcrumb__link body2">Thông tin khách hàng</div>
+                        </div>
+                    </div>
+                </div>
+        </div>
             <div class="ThongTinKhachHang">
                 <?php
                 function loadData()
@@ -166,14 +200,10 @@
                     }
                 }
                 loadData();
-
                 ?>
 
                 <script>
                     // Regex pattern
-
-
-
                     function validateForm(event) {
                         var pattern_ten = /^[a-zA-ZàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆđĐìÌỉỈĩĨíÍịỊòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢùÙủỦũŨúÚụỤưỪừỬữỮứỨựỰỳỲỷỶỹỸýÝỵỴ\s]+$/;
                         var pattern_mk_rmk = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,}$/;

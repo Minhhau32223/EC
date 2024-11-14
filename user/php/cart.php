@@ -60,14 +60,13 @@ function showgiohang()
     $result = mysqli_query($conn, $sql);
 
     // Hiển thị thông tin sản phẩm trong giao diện
-    $i = 0;
     while ($row = mysqli_fetch_assoc($result)) {
-        $i += 1;
-        echo '<label for="tongGia"><li class="table-items-Q">';
+        echo '<div class="table-items-Q">';
         echo '<div style=" width: 40%; display: flex; justify-content: space-evenly; align-items: center;">';
-        echo '
-                <input id="tongGia" type="checkbox" style="width: 5%;" value="20">
-                <span class="checkmark"></span>
+        echo '<label for="" class="container">
+             <input type="checkbox" >
+             <span class="checkmark"></span>
+            </label>
                 ';
         echo '<img src="../../img/' . $row['Img'] . '" alt="' . $row['Tensp'] . '" style="width: 10%; float: left;display-inline: block;"> 
         <div style="width: 60%; font-size: 20px;">' . $row['Tensp'] . '</div>
@@ -79,12 +78,12 @@ function showgiohang()
         echo '<button class="quantity-btn increase" style="width: 5%; margin-left:2px;" data-masp="' . $row['Masp'] . '" data-action="increase">+</button>';
         echo '</div>';
         $tongtiensanpham = $row['Giaban'] * $row['Soluong'];
-        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;" value="' . $tongtiensanpham . '>' . $tongtiensanpham . ' VND</div>';
+        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;">' . $tongtiensanpham . ' VND</div>';
         echo '<form method="post" action="xulyxoaspgiohang.php">';
         echo '<input type="hidden" name="masp" value="' . $row['Masp'] . '">';
         echo '<button type="submit" name="delete_btn" class="delete-btn" data-id="' . $row['Masp'] . '">X</button>';
         echo '</form>';
-        echo '</div></li></label>';
+        echo '</div></li>';
     }
 
     mysqli_close($conn);
@@ -108,6 +107,12 @@ $conn->close();
             color: white;
             text-decoration: none;
             font-size: 20px;
+        }
+        .section__container{
+            margin-top: 80px;
+        }
+        .row{
+            padding-top: 15px;
         }
         .table-items-Q:hover{
             background-color: #778899;
@@ -143,9 +148,7 @@ $conn->close();
             width: 20%;
             display: flex;
         }
-        .section__container{
-            margin-top: 80px;
-        }
+        
         .section__container_2{
             /* margin-top: 60px; */
             width: 80%;
@@ -165,9 +168,7 @@ $conn->close();
             border-radius: 3px;
             border-width: 5px black;
         }
-        .row{
-            padding-top: 15px;
-        }
+        
         .cart-table__cont{
             margin-left: 0px;
             height: 460px;
@@ -223,7 +224,7 @@ $conn->close();
             margin-left: 2px;
             padding: 15px 5px;
         }
-
+        /* buttons */
         #backButton{
             margin-top: 100px;
             border-radius: 10px;
@@ -239,6 +240,7 @@ $conn->close();
         #backButton:hover a{
             color: white;
         }
+        /* buttons */
     </style>
 </head>
 
@@ -285,7 +287,7 @@ $conn->close();
                     <button id="cart-checkout-btn" class="custom-button" ><a href="home.php?chon=thanhtoan&loai=thanhtoan">Thanh toán</a></button>                  
                 </div>
             </div>
-            <button onclick="TinhTongTien()">Bấm đi</button>
+            <!-- <button onclick="TinhTongTien()">Bấm đi</button> -->
 
             <!-- <script src="javascript.js"></script> -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
