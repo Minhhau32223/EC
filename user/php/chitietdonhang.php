@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <link rel="stylesheet" href="user/css/thongke.css">
     <link rel="stylesheet" href="user/css/chitiethoadon.css">
@@ -10,19 +9,15 @@
         #bodi {
             margin: 10%;
         }
-
         #khung {
             /* margin: 10%; */
             border: 1px;
-
         }
-
         .khung {
             margin-top: 5%;
             margin-left: 5%;
             margin-right: 5%;
         }
-
         .progress-container {
             top: 10px;
             display: flex;
@@ -31,7 +26,8 @@
             justify-content: center;
         }
 
-        .progress-bar {
+    /* Thanh ở trên */
+     .progress-bar {
             height: 10px;
             background-color: green;
             border: darkgreen solid 1px;
@@ -41,67 +37,152 @@
         .step-container {
             display: flex;
             justify-content: space-between;
-            width: 80%;
+            width: 100%;
             margin-bottom: 10px;
             margin-top: 10px;
-            margin-left: 10%;
+            /* margin-left: 10%; */
             /* margin-right: 5%; */
         }
 
         .step {
+            /* background-color: #0052cd; */
             width: 25%;
-            text-align: left;
+            text-align: center;
             /* font-weight: bold; */
         }
 
         .step-text {
-            font-size: 14px;
+            font-size: 20px;
             color: black;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .progress-wrapper {
+            height: 50px;
+            width: 100%;
             position: relative;
-            border: darkgreen solid 1px;
+            border: cyan solid 2px;
         }
 
         .progress-markers {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 10px;
+            height: 100%;
             /* Cùng chiều cao với progress-bar */
             display: flex;
             justify-content: space-between;
-
+            /* background-color: #0080ff; */
         }
-
-
         .marker {
             position: absolute;
             top: 0;
             height: 100%;
             width: 2px;
             /* Độ rộng của điểm đánh dấu */
-            background-color: white;
+            background-color: cyan;
             /* Màu sắc của điểm đánh dấu */
         }
+    /* Thanh ở trên */
+    /* Bảng sản phẩm */ 
+        /* header */
+            .section__container_2{
+                margin-top: 60px;
+                width: 95%;
+                height: 250px;
+                margin-left: 2.5%;
+                /* height: fit-content; */
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            }
+            .table-title {
+                padding: 5px;
+                background-color: aqua;
+                border-radius: 5px;
+                display: flex;
+                text-align: center;
+            }
+            .table-title div{
+                font-size: 30px;
+                border-radius: 3px;
+                border-width: 5px black;
+            }
+            
+            .cart-table__cont{
+                margin-left: 0px;
+                height: 460px;
+            }
+            .scoll{
+                float: right;
+                margin-right: 0px;
+                display: flex;
+            }
+            /* width */
+            .scroll::-webkit-scrollbar {
+                width: 10px;
+            }
 
+            /* Track */
+            .scroll::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 3px grey; 
+            border-radius: 2px;
+            }
+            
+            /* Handle */
+            .scroll::-webkit-scrollbar-thumb {
+            background: #778899; 
+            border-radius: 3px;
+            }
+
+            /* Handle on hover */
+            .scroll::-webkit-scrollbar-thumb:hover {
+            background: #696969; 
+            }
+        /* header */
+        .sp {
+            /* background-color: red; */
+            display: flex;
+            text-align: left;
+            margin-left: 10px;
+        }
+        .sp div{
+            padding-top: 25px;
+            text-align: left;
+            font-size: 20px;
+        }
+        .sp img{
+            padding: 10px ;
+        }
+        .table-items .tien{
+            /* background-color: teal; */
+            margin-left: 10px;
+            text-align: center;
+            font-size: 20px;
+            padding-top: 25px;
+        }
+        .table-items{
+            display: flex;
+            text-align: center;
+            border-radius: 3px;
+            border-width: 5px;
+            border-color: grey;
+        }
+       
+    /* Bảng sản phẩm */
+    /* FORM thông tin */
         .order-info-complete {
+            width: 95%;
             display: block;
             /* background-color: black; */
             border: solid 2px #ccc;
             border-radius: 20px;
-            padding: 20px;
-            margin: 2%;
+            padding: 25px;
+            margin-left: 2.5%;
             /* margin-top: 20px; */
         }
-
-        .order-details p {
+        .order-details h2 {
             margin: 5px 0;
+            font-weight: bold;
+            font-size: 30px;
         }
-
         .order-details {
             position: relative;
         }
@@ -119,22 +200,54 @@
             background-color: #ccc;
         }
 
-        .total-price {
-            padding-top: 15px;
-            font-size: larger;
-        }
-
         .line-info-checkout {
             padding: 5px;
+            margin: 15px 25px;
+            font-size: 20px;
+            /* background-color: aqua; */
         }
-
-        .sp {
-            width: 30%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-items: center
+        .line-info-checkout span {
+            padding: 5px;
+            font-weight: bold;
+            /* float: inline-end; */
         }
+        .total-price{
+            padding-top: 20px;
+            font-size: 30px;
+            margin-left: 70%;
+        }
+        .total-price span{
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+    /* FORM thông tin */
+    /* Button Hủy    */
+        #cancel-form{
+            margin-top: 30px;
+            /* background-color: red; */
+            padding: 10px;
+        }
+        #cancel-form button{
+            background-color: #0080ff;
+            width: 10%;
+            height: 60px;
+            margin-left: 87.5%;
+            border-radius: 3px;
+            border-width: 0px;
+            font-size: 20px;
+            color: whitesmoke;
+            font-weight: bold;
+            box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.25);
+        }
+        #cancel-form button:hover{
+            background-color: #0052cd;
+            color: gold;
+            -ms-transform: scale(1.05); /* IE 9 */
+            -webkit-transform: scale(1.05); /* Safari 3-8 */
+            transform: scale(1.05); 
+        }
+    /* Button Hủy    */
     </style>
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -142,10 +255,7 @@
 <body style="background-color: white;">
     <div id="bodi">
         <div id="khung">
-            <div class="khung">
                 <div class="progress-wrapper" id="progress-wrapper">
-                    <!-- <img src="https://example.com/image.jpg"> -->
-                    <div class="progress-bar" id="progress-bar"></div>
                     <div class="progress-markers">
                         <div class="marker" style="left: 25%;"></div>
                         <div class="marker" style="left: 50%;"></div>
@@ -153,8 +263,6 @@
                         <div class="marker" style="left: 100%;"></div>
                     </div>
                 </div>
-
-            </div>
             <?php
 
             if (isset($_GET['maDH'])) {
@@ -191,10 +299,8 @@
                     echo "Lỗi ";
                 }
                 mysqli_close($conn);
-            }
+            }?>
 
-
-            ?>
             <div class="progress-container" id="progress-container">
                 <div class="step-container">
                     <div class="step">
@@ -209,24 +315,24 @@
                     <div class="step">
                         <div class="step-text">Đã giao hàng</div>
                     </div>
-
-
                 </div>
             </div>
 
             <!-- <div id="huy"></div> -->
 
-            <div id="wrapper">
-                <div class="table">
+            <div class="section__container_2">
+            <div class="cart-table col-8">
+                <div class="cart-table__cont">
                     <div class="table-title">
-                        <div style="width: 30%; font-weight: bold;">Sản phẩm</div>
+                        <div style="width: 40%; font-weight: bold;">Sản phẩm</div>
                         <div style="width: 20%; font-weight: bold;">Đơn giá</div>
-                        <div style="width: 20%; font-weight: bold;">Số lượng</div>
-                        <div style="width: 30%; font-weight: bold;">Thành tiền</div>
+                        <div style="width: 15%; font-weight: bold;">Số lượng</div>
+                        <div style="width: 25%; font-weight: bold;">Tổng tiền</div>
                     </div>
                     <div><br></div>
                     <div><br></div>
-                    <div style="overflow-y: scroll;">
+                    <!--DATA-->
+                    <div class="scroll" style="overflow-y: scroll;"> 
                         <?php
                         if (isset($_GET['maDH'])) {
                             $maDH = $_GET['maDH'];
@@ -235,31 +341,21 @@
                             $sql = mysqli_query($conn, "SELECT * FROM chitietdonhang ctdh, sanpham sp WHERE Madonhang = $maDH AND ctdh.Masp = sp.Masp");
                             while ($row = mysqli_fetch_array($sql)) {
                                 echo '<div class="table-items">
-                                <div class="sp">
-                                    <img src="../../img/' . $row["Img"] . '" style="width: 60px; height: 60px">
+                                <div class="sp" style="width: 40%">
+                                    <img src="../../img/' . $row["Img"] . '" style="width: 15%">
                                     <div>' . $row["Tensp"] . '</div>
                                 </div>
-                                <div style="width: 20%;">' . $row["Giaban"] . ' VNĐ</div>
-                                <div style="width: 20%;">' . $row["Soluong"] . '</div>
-                                <div style="width: 30%;">' . $row["Giaban"] * $row["Soluong"] . ' VNĐ</div>
-                            </div>';
+                                <div class="tien" style="width: 20%;">' . $row["Giaban"] . ' VND</div>
+                                <div class="tien"style="width: 15%;">' . $row["Soluong"] . '</div>
+                                <div class="tien"style="width: 25%;">' . $row["Giaban"] * $row["Soluong"] . ' VNĐ</div>
+                                </div>';
                             }
                         }
-
-
                         mysqli_close($conn);
-
-
                         ?>
-
-
-
-
-
                     </div>
-
                 </div>
-
+            </div>
             </div>
             <div><br></div>
             <?php
@@ -281,11 +377,10 @@
                         <p class="line-info-checkout">Phương thức thanh toán: <span id="subtotal" class="right-aligned">Thanh toán khi nhận hàng</span>
                         </p>
                         <p class="total-row"></p>
-                        <p class="total-price">Tổng cộng: <span id="total" class="right-aligned"></span>' . $row["Tonggiatri"] . '</p>
+                        <p class="total-price">Tổng cộng: <span id="total" class="right-aligned">' . $row["Tonggiatri"] . ' VND</span></p>
                     </div>';
                 }
-            }
-            ?>
+            }?>
 
         </div>
         <script>
@@ -296,7 +391,6 @@
                 }
             }
         </script>
-
         <?php
         // Kiểm tra xem đã nhấn vào nút hủy đơn chưa
         if (isset($_POST['cancel_order'])) {
@@ -342,15 +436,16 @@
                 echo "Lỗi: " . mysqli_error($conn);
             }
             mysqli_close($conn);
-        }
-        ?>
+        }?>
 
+    <!-- Form Cancel -->
         <form id="cancel-form" name="cancel-form" method="post" action="">
             <input type="hidden" name="maDonHang" value="<?php echo $maDH; ?>">
             <!-- <button type="button" name="cancel_order">Hủy đơn hàng</button> -->
             <button type="submit" name="cancel_order" onclick="confirmCancel()">Hủy đơn hàng</button>
-
         </form>
+    <!-- Form Cancel -->
+
         <script>
             // Giả sử bạn có một biến PHP là $progress (đại diện cho phần trăm tiến trình)
             var progress = <?php echo $tt ?>; //mở thẻ php echo trạng thái ra
@@ -378,7 +473,6 @@
 
             }
         </script>
-
     </div>
     </div>
 </body>

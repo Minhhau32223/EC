@@ -182,7 +182,7 @@
             width: 100%;
         }
         #LS-list .table-items:hover{
-            background-color: #E0FFFF;
+            border-color: black;
         }
         #LS-list .table-items div{
             margin-left: 15px;

@@ -31,7 +31,6 @@
         .line_sp {
             width: 80%;
             margin: 10px;
-            /* float: right; */
         }
     /* Hình hiển thị */
         .photo-sp {
@@ -169,7 +168,6 @@
     /* Button mua hàng */
         .button_muahang {
             width: 100%;
-            /* background-color: #A70087; */
             margin-left: 0px;
             margin-top: 30px;
             display: flex;
@@ -180,8 +178,6 @@
             border-width: 3px;
             border-color: #1598cc;
             color: #1598cc;
-            /* border: none; */
-            /* cursor: pointer; */
             border-radius: 10px;
             width: 195px;
             padding: 10px 0;
@@ -200,8 +196,6 @@
         .button_muahang .button_muahang_muangay {
             background-color: #1598cc;
             color: gold;
-            /* font-weight: bold; */
-            /* border: none; */
             cursor: pointer;
             border-radius: 10px;
             width: 200px;
@@ -218,7 +212,6 @@
         }
     /* Button mua hàng */
 
-        
     </style>
 </head>
 <!-- Đẩy dữ liệu vào bảng khi bấm thêm vào giỏ hàng -->
