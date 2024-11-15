@@ -639,7 +639,6 @@ function connect()
                             }
                         });
                     } 
-<<<<<<< HEAD
 
                    
                 }
@@ -649,13 +648,6 @@ function connect()
 
 
 
-=======
-                    // document.getElementById("form_complete_payment").style.display = "block";
-                }
-            </script>
-            <button id="complete-order" class="complete-button" onclick="redirectToComplete()">Hoàn tất đơn hàng</button>
-            <!-- <button id="complete-order" class="complete-button">Hoàn tất đơn hàng</button> -->
->>>>>>> 487b7ad8cca016551434c04310a56e2c03c4919f
         </div>
     </div>
 

@@ -1,6 +1,5 @@
 #middleContent{
-    margin: 5%;
-    margin-top: 20%;
+    margin: 5px
 }
 #addThongKe, #addPhieuXuat, #addPhieuNhap, #addNCC, #addNguoiDung, #addSanPham{
     display: none;

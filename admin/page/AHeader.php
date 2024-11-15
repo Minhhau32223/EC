@@ -25,22 +25,20 @@ function checkReadPermission($view_permission_list, $feature_id)
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../css/home.css?version=1.0" />
+    <!-- <link rel="stylesheet" href="../css/home.css?version=1.0" /> -->
     <link rel="stylesheet" href="../css/menuadmin.css?version=1.0" />
 
 </head>
 
 <body>
-    <div id="body-home">
+  
         <div class="topmenu-wrap">
             <div id="topmenu-admin">
                 <div class="logo-bola">
-                    <b><a href="AHome.php"> BOLA</a></b>
+                    <b><a href="AHome.php"> Điện máy chọ nhở</a></b>
                 </div>
 
-                <div class="menu-toggle">
-                    <button onclick="toggleMenu()">Menu</button>
-                </div>
+             
 
                 <div class="menu">
                     <div class="option <?=checkReadPermission($view_permission_list, "CN009")?>" id="thongke"><a href="AHome.php?chon=t&id=thongke" onclick="selectOption(this)">Thống kê</a></div>
@@ -115,7 +113,7 @@ function checkReadPermission($view_permission_list, $feature_id)
                 </div>
             </div>
         </div>
-    </div>
+    
     <script>
 
 

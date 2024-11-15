@@ -23,6 +23,9 @@
     
     
 }
+#thongke{
+    margin-top:5px;
+}
 
 table {
     width: 100%;

@@ -292,12 +292,7 @@ $conn->close();
                     <button id="backButton" class="type-back">&lt;<a href="home.php">Trở lại mua sắm</a></button>
                     <button id="cart-checkout-btn" class="custom-button" ><a >Thanh toán</a></button>                  
                 </div>
-<<<<<<< HEAD
          
-=======
-            </div>
-            <!-- <button onclick="TinhTongTien()">Bấm đi</button> -->
->>>>>>> 487b7ad8cca016551434c04310a56e2c03c4919f
 
             <!-- <script src="javascript.js"></script> -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

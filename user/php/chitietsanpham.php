@@ -298,10 +298,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mua"])) {
                             <img src="../../img/' . $row["Img"] . '" style="width: 80%; height: fit-content;">
                         </div>
                         <div class="thongtinsanpham">
-<<<<<<< HEAD
-                            <h1>' . $row["Tensp"] . '</h1>
-                            <p> Giá bán: ' .  number_format($row["Giaban"],0,"",",") .' VND</p>
-=======
                             <h1 id="tenSanPham">' . $row["Tensp"] . '</h1>
                             <div class="Gia"><p id="giaban">' . $row["Giaban"] . ' VND</p></div>
                             <hr class="line_sp">   
@@ -310,7 +306,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mua"])) {
                     <div class="detail_infor">
                     ' .nl2br($row["Mota"]).'</div>
                             </div>   
->>>>>>> 487b7ad8cca016551434c04310a56e2c03c4919f
                             <div class="soLuong">
                                 <P>Số lượng:</P>
                                 <input type="hidden" name="masp" value="' . $maSP . '"> <!-- Trường ẩn chứa mã sản phẩm -->
