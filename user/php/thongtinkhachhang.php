@@ -72,32 +72,37 @@
         /* TTKhachHang */
         .ThongTinKhachHang {
             margin-top: 20px;
-            margin-left: 5%;
+            margin-left: 4%;
             width: 90%;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
             display: flex;
-            justify-content: space-between;  
+            background-color: #FFFAFA;
+            /* justify-content: space-between;   */
         }
         .ThongTinKhachHang div{
             padding: 5px;
+            margin-left: 40px;
             /* background-color: blue; */
         }
         .ThongTinKhachHang div input[type="file"]{
-            margin-left: 15px;
+            margin-left: 25px;
             margin-right: 15px;
-            /* height: 2.5%; */
-            background-color: red;
         }
 
         .ThongTinKhachHang-data1,
         .ThongTinKhachHang-data2 {
             width: 30%;
         }
+        .ThongTinKhachHang-data1,
+        .ThongTinKhachHang-data2 p{
+           font-size: 23px;
+        }
         .photo {
             width: 150px;
             height: 150px;
             background-color: #ddd;
-            border-radius: 50%;
+            border-radius: 80%;
             overflow: hidden;
             position: relative;
             margin: auto;
@@ -109,16 +114,120 @@
             margin-bottom: 10px;
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 7px;
             font-size: 16px;
+            background-color: #C0C0C0;
+            font-size: 18px;
+            color: white;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
         }
-
+        /* button đổi */
+        .ThongTinKhachHang-data3{
+            margin-top: 5%;
+            margin-right: 2%;
+            width: 15%;
+            height: 50%;
+            font-size: 30px;
+            text-align: center;
+            /* background-color: blue; */
+        }
         .check-ThongTin {
-            color: blue;
-            text-decoration: none;
+            background-color: #027f79;
+            width: 50%;
+            height: 35px;
+            border-radius: 8px;
+            color: gold;
+            padding: 5px 10px 5px 5px;
+            font-weight: bold;
+            font-size: 15px;
+            box-shadow: 1px 3px black;
+            /* transition: transform .2s; */
+        }
+        .check-ThongTin:hover{
+            -ms-transform: scale(1.05); /* IE 9 */
+            -webkit-transform: scale(1.05); /* Safari 3-8 */
+            transform: scale(1.05); 
+        }
+        .check-ThongTin:active{
+            -ms-transform: scale(1.05); /* IE 9 */
+            -webkit-transform: scale(1.05); /* Safari 3-8 */
+            transform: scale(1.05); 
+        }
+        /* TTKhachHang */
+        
+        /* Lịch sử mua hàng */
+        #LichSu-Text{
+            margin-left: 50px;
+            margin-top: 50px;
+            font-size: 35px;
+        }
+        #wrapper{
+            margin-top: 20px;
+            margin-left: 2.5%;
+            margin-right: 5%;
+        }
+        .table{
+            background-color: #FFFAFA;
+            border-radius: 10px;
+        }
+        .table-title{
+            background-color: aqua;
+            font-size: 25px;
+            text-align: center;
+            box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.3);
         }
 
-        
+        #LS-list .table-items{
+            background-color: aliceblue;
+            width: 100%;
+        }
+        #LS-list .table-items:hover{
+            background-color: #E0FFFF;
+        }
+        #LS-list .table-items div{
+            margin-left: 15px;
+            padding: auto;
+            font-size: 25px;
+            border-radius: 10px;
+            border-width: 2px;
+            border-color: black;
+            /* background-color: #027f79; */
+            text-align: center;
+            display: block;
+        }
+        #LS-list .table-items .trangThai{
+            /* background-color: blue; */
+            text-align: right;
+            padding-right: 10%;
+        }
+        #LS-list .table-items .trangThai .status-orders{
+            background-color: red;
+            width: 50%;
+            /* margin-left: 6%; */
+        }
+        .order-detail {
+            background-color: #027f79;
+            /* font-weight: bold; */
+            border-radius: 5px;
+            box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.3);
+            width: 50px;
+            margin-left: -50px;
+            margin-right: 20px;
+            font-size: 20px;
+            padding: 1.5px;
+        }
+        .order-detail a{
+            color: whitesmoke;
+        }
+        .order-detail:hover a{
+            color: gold;
+            background-color: #027f79;
+        }
+        .order-detail:active{
+            color: gold;
+            background-color: #027f79;
+        }
+        /* Lịch sử mua hàng */
     </style>
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -156,7 +265,7 @@
                                 <div class="photo">
                                     <img id="hinhAnh" src="../../img/' . $row["img"] . '" alt="ảnh" style="width: 100%; height:100%;">
                                 </div>
-                                <input type="file" id="uploadInput" name="txtHinhAnh" onchange="hienThiAnh(event)">
+                                <input type="file" value="img/defaultAVT.jpg" accept="image/png, image/jpeg" id="uploadInput" name="txtHinhAnh" onchange="hienThiAnh(event)" >
                                 </div>
                         <script>
                         function hienThiAnh(event) {
@@ -165,7 +274,7 @@
                             reader.onload = function(){
                                 var dataURL = reader.result;
                                 var img = document.getElementById("hinhAnh");
-                                img.src = dataURL;
+                                img.src = dataURL;  
                             };
                             reader.readAsDataURL(input.files[0]);
                         }
@@ -191,9 +300,9 @@
                             <p>Xác nhận mật khẩu:</p>
                             <input type="password" id="check-password" name="check-password" value="' . $row['Matkhau'] . '">
                             <div id="tbLaiMatKhau"></div>
-                            <p class="">Bạn muốn thay đổi thông tin, <button class="check-ThongTin" id="check-ThongTin" name="thaydoi" onclick="validateForm(event)">Thay đổi</button></p>
-                        </div>';
-                        }
+                        </div>
+                        <div class="ThongTinKhachHang-data3">Bạn muốn thay đổi thông tin?<button class="check-ThongTin" id="check-ThongTin" name="thaydoi" onclick="validateForm(event)">Thay đổi</button></div>
+                        ';}
                         mysqli_close($conn);
                     } else {
                         echo "<script>alert('Lỗi');</script>";
@@ -343,7 +452,7 @@
                                 $stmt = mysqli_prepare($conn, $sql);
                                 mysqli_stmt_bind_param($stmt, "ssssss", $ten, $diaChi, $mk, $sdt, $email,  $maKH);
                                 mysqli_stmt_execute($stmt);
-                                echo "bbbb";
+                                // echo "bbbb";
                                 // Kiểm tra kết quả
                                 if (mysqli_stmt_affected_rows($stmt) > 0) {
                                     echo "<script>alert('Cập nhật thông tin thành công');</script>";
@@ -364,22 +473,21 @@
                 mysqli_close($conn);
                 ?>
             </div>
-            <h1>Lịch sử mua hàng</h1>
+            <h1 id="LichSu-Text">Lịch sử mua hàng</h1>
             <script>
-
             </script>
             <div id="wrapper">
                 <div class="table">
                     <div class="table-title">
                         <!-- <div style="width: 20%; font-weight: bold;">Khách hàng</div> -->
-                        <div style="width: 25%; font-weight: bold;">Số hóa đơn</div>
-                        <div style="width: 25%; font-weight: bold;">Ngày mua</div>
-                        <div style="width: 25%; font-weight: bold;">Tổng tiền</div>
-                        <div style="width: 25%; font-weight: bold;">Trạng thái</div>
+                        <div style="width: 15%; font-weight: bold;">Số hóa đơn</div>
+                        <div style="width: 15%; font-weight: bold;">Ngày mua</div>
+                        <div style="width: 30%; font-weight: bold;">Tổng tiền</div>
+                        <div style="width: 40%; font-weight: bold;">Trạng thái</div>
                     </div>
                     <div><br></div>
                     <div><br></div>
-                    <div style="overflow-y: scroll;">
+                    <div id="LS-list" style="overflow-y: scroll;">
                         <?php
                         $conn = connectDB();
                         if (isset($_SESSION['user_id'])) {
@@ -387,11 +495,10 @@
                             $sql = mysqli_query($conn, "SELECT * FROM donhang WHERE maKhachhang = '$maKH' ORDER BY Ngay DESC");
                             while ($row = mysqli_fetch_array($sql)) {
                                 echo '<div class="table-items">';
-
-                                echo '<div style="width: 25%;">' . $row["Madonhang"] . '</div>';
-                                echo '<div style="width: 25%;">' . $row["Ngay"] . '</div>';
-                                echo '<div style="width: 25%;">' . $row["Tonggiatri"] . '</div>';
-                                echo '<div class="btn">';
+                                echo '<div style="width: 12.5%;">' . $row["Madonhang"] . '</div>';
+                                echo '<div style="width: 20%;">' . $row["Ngay"] . '</div>';
+                                echo '<div style="width: 27.5%;">' . $row["Tonggiatri"] . ' VND</div>';
+                                echo '<div class="trangThai" style="width: 40%;>';
                                 if ($row["Trangthai"] == 0) {
                                     echo '<div class="status-orders">Chưa xác nhận</div>';
                                 }
@@ -407,95 +514,17 @@
                                 if ($row["Trangthai"] == 4) {
                                     echo '<div class="status-orders">Đã hủy hàng</div>';
                                 }
-
+                                
+                                echo '<button style="width: 5%" type="button" class="order-detail"><a href="home.php?chon=ctdh&maDH=' . $row['Madonhang'] . '">Chi tiết</a></button>';
                                 echo '</div>';
-                                echo '<button type="button" class="order-detail"><a href="home.php?chon=ctdh&maDH=' . $row['Madonhang'] . '">Chi tiết</a></button>';
-                                echo '</div>';
+                                // echo '</div>';
                             }
                         }
-
-
                         mysqli_close($conn);
-
-
                         ?>
-                        <!-- <div class="table-items">
-                        <div class="customer">
-                            <div class="avt"></div>
-                            <div>KH001</div>
-                        </div>
-                        <div style="width: 20%;">29/03/2004</div>
-                        <div style="width: 20%;">12011252_donhang</div>
-                        <div style="width: 20%;">120210</div>
-                        <div class="btn">
-                            <select>
-                                <option id="status" value="1">Hoàn thành</option>
-                                <option id="status" value="1">Đang giao hàng</option>
-                                <option id="status" value="1">Đã chuyển hàng</option>
-                            </select>
-                            <button type="button">Sửa</button>
-                        </div>
                     </div>
-                    <div class="table-items">
-                        <div class="customer">
-                            <div class="avt"></div>
-                            <div>KH001</div>
-                        </div>
-                        <div style="width: 20%;">29/03/2004</div>
-                        <div style="width: 20%;">12011252_donhang</div>
-                        <div style="width: 20%;">120210</div>
-                        <div class="btn">
-                            <select>
-                                <option id="status" value="1">Hoàn thành</option>
-                                <option id="status" value="1">Đang giao hàng</option>
-                                <option id="status" value="1">Đã chuyển hàng</option>
-                            </select>
-                            <button type="button">Sửa</button>
-                        </div>
-                    </div>
-                    <div class="table-items">
-                        <div class="customer">
-                            <div class="avt"></div>
-                            <div>KH001</div>
-                        </div>
-                        <div style="width: 20%;">29/03/2004</div>
-                        <div style="width: 20%;">12011252_donhang</div>
-                        <div style="width: 20%;">120210</div>
-                        <div class="btn">
-                            <select>
-                                <option id="status" value="1">Hoàn thành</option>
-                                <option id="status" value="1">Đang giao hàng</option>
-                                <option id="status" value="1">Đã chuyển hàng</option>
-                            </select>
-                            <button type="button">Sửa</button>
-                        </div>
-                    </div>
-                    <div class="table-items">
-                        <div class="customer">
-                            <div class="avt"></div>
-                            <div>KH001</div>
-                        </div>
-                        <div style="width: 20%;">29/03/2004</div>
-                        <div style="width: 20%;">12011252_donhang</div>
-                        <div style="width: 20%;">120210</div>
-                        <div class="btn">
-                            <select>
-                                <option id="status" value="1">Hoàn thành</option>
-                                <option id="status" value="1">Đang giao hàng</option>
-                                <option id="status" value="1">Đã chuyển hàng</option>
-                            </select>
-                            <button type="button">Sửa</button>
-                        </div>
-                    </div> -->
-
-                    </div>
-
                 </div>
             </div>
-
-            <!-- <div class="return"><a href="#">
-                << Quay lại</a>
-        </div> -->
     </div>
 
     </form>

@@ -125,8 +125,8 @@
   background: linear-gradient(to right, #1b3bc9, #1598cc);
   box-shadow: 0 1px #666;
   transform: translateY(1px);
+  /* background-color: #1aade7; */
 }
-
 /* Search bar and search-btn */
 
 
@@ -183,8 +183,6 @@
   display: block;
   position: absolute;
   background: #027f79;
-  /* background: -webkit-linear-gradient(to right, #6f96c9, #a7c7c5); 
-  background: linear-gradient(to right, #6f96c9, #a7c7c5); */
   margin-left: 35px;
   margin-top: -3px;
   border-radius: 5px 5px;
@@ -201,6 +199,7 @@
 
 #topmenu .menu .submenu {
 display: none;
+/* background-color: #afc5d4; */
 }
 
 #topmenu .menu .submenu a{

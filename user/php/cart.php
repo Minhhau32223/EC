@@ -63,7 +63,7 @@ function showgiohang()
     while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="table-items-Q">';
         echo '<div style=" width: 40%; display: flex; justify-content: space-evenly; align-items: center;">';
-        echo '<label for="" class="container">
+        echo '<label for="" class="container" style="width: 10%">
              <input type="checkbox" >
              <span class="checkmark"></span>
             </label>
