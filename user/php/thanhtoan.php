@@ -212,31 +212,44 @@ function connect()
                                 while ($row = mysqli_fetch_array($rs)) {
                                     echo '<br>
                                 <div class="list-title">
-                                        <div style="width: 50%;" id="' . $maSP . '">' . $row["Tensp"] . ' </div>
+                                        <div  class="product-item" style="width: 50%;" id="' . $maSP . '" >' . $row["Tensp"] . ' </div>
                                         <div style="width: 25%; text-align: center">' . $soLuong . '</div>
                                         <div style="width: 25%; text-align: center">' . $row["Giaban"] . ' VNĐ</div>
                                 </div>';
                                 }
                             }
                         } else {
-                            // $_SESSION['Masp'] = "";
-                            // $_SESSION['Soluong'] = '';
-                            $maNguoiDung = $_SESSION["user_id"];
-
-                            $sql = "SELECT * FROM sanpham sp, giohang gh WHERE sp.Masp=gh.Masp AND Manguoidung='$maNguoiDung'";
-                            $rs = mysqli_query($conn, $sql);
-                            if (!$rs) {
-                                die("Lỗi truy vấn: " . mysqli_error($conn));
-                            }
-                            if (mysqli_num_rows($rs) > 0) {
-                                while ($row = mysqli_fetch_array($rs)) {
-                                    echo '<br>
-                                    <div class="list-title">
-                                            <div style="width: 50%;" id="' . $row["Masp"] . '">' . $row["Tensp"] . ' </div>
+                            if (isset($_GET['masp']) && is_array($_GET['masp'])) {
+                                // Lấy tất cả các mã sản phẩm từ URL
+                                $masp_array = $_GET['masp'];
+                            
+                                // Chuyển mảng mã sản phẩm thành chuỗi để sử dụng trong câu truy vấn SQL
+                                $masp_list = implode("','", array_map('intval', $masp_array)); // Chuyển thành dạng: '1','2','3' và escape giá trị để tránh SQL Injection
+                            
+                                // Kết nối cơ sở dữ liệu và truy vấn
+                                $maNguoiDung = $_SESSION["user_id"];
+                                $sql = "SELECT * FROM sanpham sp, giohang gh WHERE sp.Masp = gh.Masp AND gh.Manguoidung = '$maNguoiDung' AND sp.Masp IN ('$masp_list')";
+                                $rs = mysqli_query($conn, $sql);
+                            
+                                if (!$rs) {
+                                    die("Lỗi truy vấn: " . mysqli_error($conn));
+                                }
+                            
+                                // Kiểm tra nếu có sản phẩm
+                                if (mysqli_num_rows($rs) > 0) {
+                                    while ($row = mysqli_fetch_array($rs)) {
+                                        echo '<br>
+                                        <div class="list-title">
+                                            <div class="product-item"  style="width: 50%;" id="' . $row["Masp"] . '">' . $row["Tensp"] . '</div>
                                             <div style="width: 25%; text-align: center">' . $row["Soluong"] . '</div>
                                             <div style="width: 25%; text-align: center">' . $row["Giaban"] . ' VNĐ</div>
-                                    </div>';
+                                        </div>';
+                                    }
+                                } else {
+                                    echo 'Không có sản phẩm nào để hiển thị.';
                                 }
+                            } else {
+                                echo 'Không có mã sản phẩm nào được chọn.';
                             }
                         }
                     }
@@ -294,9 +307,13 @@ function connect()
                             </div>';
                             }
                         } else {
+                            $masp_array = $_GET['masp'];
+                            
+                                
+                            $masp_list = implode("','", array_map('intval', $masp_array));
                             $maNguoiDung = $_SESSION["user_id"];
-
-                            $sql = "SELECT * FROM sanpham sp, giohang gh WHERE sp.Masp=gh.Masp AND Manguoidung='$maNguoiDung'";
+                              $sql = "SELECT * FROM sanpham sp, giohang gh WHERE sp.Masp = gh.Masp AND gh.Manguoidung = '$maNguoiDung' AND sp.Masp IN ('$masp_list')";
+                            // $sql = "SELECT * FROM sanpham sp, giohang gh WHERE sp.Masp=gh.Masp AND Manguoidung='$maNguoiDung'";
                             $rs = mysqli_query($conn, $sql);
                             if (!$rs) {
                                 die("Lỗi truy vấn: " . mysqli_error($conn));
@@ -364,8 +381,17 @@ function connect()
 
                 function redirectToComplete() {
                     // Điều hướng đến trang complete.php
+                    let divElements = document.querySelectorAll('.product-item');  // Lấy tất cả thẻ div có class 'product-item'
+                        let idspArray = [];  // Khởi tạo mảng rỗng để lưu các id
+
+                        divElements.forEach(function(divElement) {
+                            idspArray.push(divElement.id);  // Thêm id của thẻ div vào mảng
+                        });
+
+                    console.log(idspArray);
                     var tonggiatri = (document.getElementById('thanhtien').textContent).split(" ");
                     var maVC = document.getElementById('vanChuyen').value;
+
                     if (maVC == "Chọn phương thức vận chuyển") {
                         alert("Vui lòng chọn phương thức vận chuyển!");
                         return false;
@@ -396,7 +422,8 @@ function connect()
                                 maVC: maVC,
                                 maGG: maGG,
                                 maKH: maKH,
-                                ngay: ngay
+                                ngay: ngay,
+                                productIds: JSON.stringify(idspArray)
 
                             },
                             // dataType: 'html',
@@ -493,11 +520,11 @@ function connect()
                         });
                     } 
 
-                    // document.getElementById("form_complete_payment").style.display = "block";
+                   
                 }
             </script>
             <button id="complete-order" class="complete-button" onclick="redirectToComplete()">Hoàn tất đơn hàng</button>
-            <!-- <button id="complete-order" class="complete-button">Hoàn tất đơn hàng</button> -->
+
 
 
 

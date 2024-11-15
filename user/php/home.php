@@ -78,6 +78,13 @@ if(isset($_SESSION['user_id'])){
     </div>
   </footer>
   </div>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="EC"
+  agent-id="d82aff69-b586-4ace-8184-851359e01a1d"
+  language-code="vi"
+></df-messenger>
 </body>
 
 </html>

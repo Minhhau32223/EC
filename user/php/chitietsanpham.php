@@ -250,7 +250,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["mua"])) {
                         </div>
                         <div class="thongtinsanpham">
                             <h1>' . $row["Tensp"] . '</h1>
-                            <p> Giá bán: ' . $row["Giaban"] . ' VND</p>
+                            <p> Giá bán: ' .  number_format($row["Giaban"],0,"",",") .' VND</p>
                             <div class="soLuong">
                                 <P>Số lượng:</P>
                                 <input type="hidden" name="masp" value="' . $maSP . '"> <!-- Trường ẩn chứa mã sản phẩm -->

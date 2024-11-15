@@ -65,21 +65,19 @@ function showgiohang()
         $i += 1;
         echo '<label for="tongGia"><li class="table-items-Q">';
         echo '<div style=" width: 40%; display: flex; justify-content: space-evenly; align-items: center;">';
-        echo '
-                <input id="tongGia" type="checkbox" style="width: 5%;" value="20">
-                <span class="checkmark"></span>
-                ';
+        echo ' <input id="checked" class="product-checkbox" type="checkbox" style="width: 5%;" value="' . $row['Masp'] . '">
+        <span class="checkmark"></span>';
         echo '<img src="../../img/' . $row['Img'] . '" alt="' . $row['Tensp'] . '" style="width: 10%; float: left;display-inline: block;"> 
         <div style="width: 60%; font-size: 20px;">' . $row['Tensp'] . '</div>
         </div>';
-        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;">' . $row['Giaban'] . ' VND</div>';
+        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;">' . number_format($row['Giaban'],0,"",",") . ' VND</div>';
         echo '<div class="btn_tang_giam_soluong" style="width: 20%; font-size: 25px;">';
         echo '<button class="quantity-btn decrease" style="width: 5%; margin-left:2px;" data-masp="' . $row['Masp'] . '" data-action="decrease">-</button>';
         echo '<div class="soluongsp" style="width: 10%; margin-left:2px;" data-masp="' . $row['Masp'] . '" contenteditable="true">' . $row['Soluong'] . '</div>';
         echo '<button class="quantity-btn increase" style="width: 5%; margin-left:2px;" data-masp="' . $row['Masp'] . '" data-action="increase">+</button>';
         echo '</div>';
-        $tongtiensanpham = $row['Giaban'] * $row['Soluong'];
-        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;" value="' . $tongtiensanpham . '>' . $tongtiensanpham . ' VND</div>';
+            $tongtiensanpham = $row['Giaban'] * $row['Soluong'];
+        echo '<div class="tongtiensanpham"  style="width: 15%;font-size: 20px; text-color:black; margin: 40px 5px;" value="' . $tongtiensanpham . '">' . $tongtiensanpham . ' VND</div>';
         echo '<form method="post" action="xulyxoaspgiohang.php">';
         echo '<input type="hidden" name="masp" value="' . $row['Masp'] . '">';
         echo '<button type="submit" name="delete_btn" class="delete-btn" data-id="' . $row['Masp'] . '">X</button>';
@@ -279,13 +277,16 @@ $conn->close();
                     </div>
                     
                 </div>
-                <div class="ThanhTien"><div>Thành tiền:</div><div id="tongTien" style="font-weight: bold; color: red;"></div></div>
+
+                <div class="ThanhTien"><div>Thành tiền:
+                </div>
+                <div id="tongTien" style="font-weight: bold; color: red;"> 0</div>
+                </div>
                 <div>
                     <button id="backButton" class="type-back">&lt;<a href="home.php">Trở lại mua sắm</a></button>
-                    <button id="cart-checkout-btn" class="custom-button" ><a href="home.php?chon=thanhtoan&loai=thanhtoan">Thanh toán</a></button>                  
+                    <button id="cart-checkout-btn" class="custom-button" ><a >Thanh toán</a></button>                  
                 </div>
-            </div>
-            <button onclick="TinhTongTien()">Bấm đi</button>
+         
 
             <!-- <script src="javascript.js"></script> -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -321,57 +322,63 @@ $conn->close();
                 });
             </script>
             <script>
-                $(document).ready(function() {
-                    $('.delete-btn').click(function() {
-                        var id = $(this).data('id');
+                document.getElementById('cart-checkout-btn').addEventListener('click', function(e) {
+    e.preventDefault(); // Ngăn chặn hành động mặc định của nút
 
-                        $.ajax({
-                            type: 'POST',
-                            url: 'xulyxoaspgiohang.php',
-                            data: {
-                                id: id
-                            },
-                            success: function(response) {
-                                if (response === 'success') {
-                                    alert("Đã xóa sản phẩm khỏi giỏ hàng");
-                                    location.reload();
-                                } else {
-                                    alert("Xóa không thành công!");
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                console.error(error);
-                            }
-                        });
+    // Lấy tất cả các checkbox đã được chọn
+    let selectedProducts = [];
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    checkboxes.forEach(function(checkbox) {
+        selectedProducts.push(checkbox.value); // Thêm giá trị mã sản phẩm vào mảng
+    });
 
-                    });
-                });
-            </script>
-            <script>
-                function TinhTongTien(){
-                    // var tongthanhtien = 0;    
-                    // var check_price = []               
-                    
-                    // for(var i=0; i<4; i++){
-                    //     var tong = ("tongGia" + i).toString();
-                    //     check_price[i] = document.getElementById(tong);  
-                    //     console.log("okok");
-                    //     if(check_price[i].checked == true){
-                    //         console.log("i= " + i);
-                    //         tongthanhtien += parseInt(check_price[i].value);
-                    //         console.log("Thành tiền: " + tongthanhtien);                      
-                    //     }
-                    // }
-                    // alert("length= " + check_price.length);
-                    
-                    // document.getElementById("tongTien").innerHTML = tongthanhtien;
-
-                    if(document.getElementById('tongGia').checked == true){
-                        alert("checked");
-                    }else{
-                        alert("no check");
-                    }
-                }
-            </script>
+    if (selectedProducts.length > 0) {
+        // Nếu có sản phẩm được chọn, tạo chuỗi query với các mã sản phẩm
+        let queryString = selectedProducts.map(masp => 'masp[]=' + masp).join('&');
+        window.location.href = 'home.php?chon=thanhtoan&loai=thanhtoan&' + queryString;
+    } else {
+        alert('Vui lòng chọn sản phẩm trước khi thanh toán.');
+    }
+});
+</script>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const checkboxes = document.querySelectorAll('.product-checkbox');
+    const totalElement = document.getElementById('tongTien');
+    const priceDivs = document.querySelectorAll('.tongtiensanpham');
+    console.log(checkboxes)
+    
+    console.log(totalElement)
+    // Hàm cập nhật tổng tiền
+    function updateTotal() {
+        console.log('Checkbox đã được nhấn');
+        let total = 0;
+        checkboxes.forEach((checkbox, index) => {
+            if (checkbox.checked) {
+                // Lấy giá trị từ thẻ div kế tiếp
+                const priceDiv = priceDivs[index];  // Lấy thẻ div tương ứng với checkbox (dùng index để khớp)
+                if (priceDiv) {
+                    let priceText = priceDiv.textContent.replace('VND', '').trim(); // Loại bỏ "VND"
+                    total += parseFloat(priceText);  // Cộng giá trị vào tổng tiền
+                }
+         
+
+            }
+        });
+        totalElement.textContent = total.toLocaleString()+"VND"; // Hiển thị dưới dạng số có dấu phân cách
+    }
+
+    // Gắn sự kiện thay đổi cho các checkbox
+    checkboxes.forEach((checkbox) => {
+    if (!checkbox) return; // Bỏ qua phần tử null
+    checkbox.addEventListener('change', updateTotal);
+});
+
+
+    // Gọi hàm cập nhật lần đầu để đảm bảo tổng tiền đúng
+    updateTotal();
+});
+</script>
+
 </html>

@@ -54,6 +54,13 @@ if (isset($_POST['maSP']) && isset($_POST['soLuong'])) {
     $maVC = $_POST['maVC'];
     $maKH = $_POST['maKH'];
     $ngay = $_POST['ngay'];
+    $productIds = json_decode($_POST['productIds'], true);
+    if (empty($productIds))
+    {
+        echo 'Không có sản phẩm nào được chọn.';
+    }
+   
+
     $trangthai = 0;
     $stmt = mysqli_prepare($conn, "INSERT INTO donhang(Trangthai, Ngay, Tonggiatri, Magiamgia, Mavc, maKhachhang) VALUE (?,?,?,?,?,?)");
     mysqli_stmt_bind_param($stmt, 'isssss', $trangthai, $ngay, $tongGiaTri, $maGG, $maVC, $maKH);
@@ -63,7 +70,8 @@ if (isset($_POST['maSP']) && isset($_POST['soLuong'])) {
     } else {
         // Nếu không có lỗi, in ra thông báo cho biết INSERT đã thành công
         $maDH = mysqli_insert_id($conn);
-        $sqlGioHang = "SELECT * FROM giohang WHERE Manguoidung='$maKH'";
+        $productIdsStr = implode(",", array_map('intval', $productIds));
+        $sqlGioHang = "SELECT * FROM giohang WHERE Manguoidung='$maKH'  AND Masp IN ($productIdsStr)";
         $rsGioHang = mysqli_query($conn, $sqlGioHang);
         while ($row = mysqli_fetch_array($rsGioHang)) {
             $maSP = $row['Masp'];
@@ -79,13 +87,13 @@ if (isset($_POST['maSP']) && isset($_POST['soLuong'])) {
             $stmtCNSL = mysqli_prepare($conn, $sqlCapNhatSoLuong);
             mysqli_stmt_bind_param($stmtCNSL, 'is', $soLuong, $maSP);
             $rsCNSL = mysqli_stmt_execute($stmtCNSL);
-            if ($rsCNSL === false) {
+            if ($rsCNSL === false) { 
                 die("Lỗi trong quá trình thực hiện câu lệnh: " . mysqli_error($conn));
             } else {
                 echo "Cập nhật số lượng thành công!";
             }
         }
-        $delete = "DELETE FROM giohang WHERE Manguoidung='$maKH'";
+        $delete = "DELETE FROM giohang WHERE Manguoidung='$maKH' AND Masp IN ($productIdsStr)";
         $rsDelete = mysqli_query($conn, $delete);
         if ($rsDelete) {
             echo 'Xóa thành công giỏ hàng của ng dùng hiện tại';
