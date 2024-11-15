@@ -7,39 +7,31 @@
     <title>Đăng nhập</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        #DN{
-          
-        }
         .login-container {
-            width: 500px;
-            /* Chiều rộng */
-            /* height: 400px; Chiều cao */
-            margin: auto;
-            /* Canh giữa trên trình duyệt */
-            padding: 20px;
-            /* background-color: #f4f4f4; */
+            background-color: aqua;
+            margin-top: 175px;
+            margin-left: 37.5%;
+            width: 450px;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 4px 4px 3px 7px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-           margin-top: 20px;
         }
-
         .login-container form {
             width: 80%;
             display: flex;
             flex-direction: column;
-            /* border: 0.5px solid #000000; */
             padding: 40px;
         }
-
         .login-container h1 {
             text-align: center;
-            color: #88C273;
+            color: gold;
+            font-size: 50px;
+            text-shadow: 1px 2px #959595;
         }
-
         .login-container form p {
             font-weight: bold;
             /* Làm cho chữ trong thẻ p đậm */
@@ -57,54 +49,43 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 20px;
         }
-
+        .register{
+            margin-top: 15px;
+            margin-bottom: 15px;
+            width: 110%;
+            /* background-color: red; */
+            text-align: right;
+            font-size: 23px;
+            padding: 0px;
+        }
+        .register a{
+            color: #0D706E;
+            font-size: 23px;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0px 0.5px gray;
+        }
         .login-container form .login-button {
-            background-color: #88C273;
+            margin-top: 10px;
+            background-color: #0D706E;
             color: #fff;
             border: none;
             cursor: pointer;
             border-radius: 20px;
-            width: 40%;
+            width: 50%;
             padding: 15px 0;
-            font-size: 16px;
+            font-size: 20px;
             text-transform: uppercase;
             align-self: center;
         }
-
-        /* CSS khi nút được hover */
-        .login-container form .login-button:hover {
-            background-color:  #88DF73;
+        .login-container form .login-button:hover{
+            -ms-transform: scale(0.925); 
+            -webkit-transform: scale(0.925); 
+            transform: scale(0.925); 
+            /* font-weight: bold; */
         }
-
-        .login-container form .register {
-            text-align: right;
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        .login-container form .register-link {
-            color: #88C273;
-            text-decoration: none;
-        }
-        body {
-        /* background-image: url("../../img/vintage_y2k_hdbg.jpg"); */
-        background-size: cover; 
-        background-repeat: no-repeat;
-        background-position: 0 0; 
-        animation: moveBackground 15s linear infinite; 
-        }
-
-        @keyframes moveBackground {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 100% 0;
-            }
-        }
-    
     </style>
 </head>
 
@@ -116,12 +97,10 @@
             <input type="text" id="id" name="id" placeholder="Tên đăng nhập" required>
             <p>Mật khẩu:</p>
             <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
-            <p class="register">Nếu bạn chưa có tài khoản, <a class="register-link" href="dangky.php">đăng ký</a></p>
+            <div class="register"> Nếu bạn chưa có tài khoản, <a class="register-link" href="dangky.php">Đăng ký</a></div>
             <input type="submit" class="login-button" value="Đăng nhập">
         </form>
     </div>
-
-
     <script>
         $(document).ready(function() {
             $("#DN").submit(function(event) {
@@ -156,50 +135,6 @@
                 });
             });
         });
-
-
-        //     $(document).ready(function() {
-        //         $('#loginForm').submit(function(event) {
-        //             event.preventDefault(); // Ngăn chặn form submit mặc định
-
-        //             var tenDN = $('#tenDN').val();
-        //             var matKhau = $('#matKhau').val();
-
-        //             if (!tenDN) {
-        //                 $('#tbTenDN').html('Không được để trống tên đăng nhập!');
-        //                 $('#tenDN').focus();
-        //                 return false;
-        //             }
-        //             if (!matKhau) {
-        //                 $('#tbMatKhau').html('Không được để trống mật khẩu!');
-        //                 $('#matKhau').focus();
-        //                 return false;
-        //             }
-
-        //             // Thực hiện AJAX request
-        //             $.ajax({
-        //                 url: 'xulyDN.php',
-        //                 type: 'POST',
-        //                 data: {
-        //                     tenDN: tenDN,
-        //                     matKhau: matKhau
-        //                 },
-        //                 dataType: 'json',
-        //                 success: function(response) {
-        //                     // Kiểm tra kết quả từ server và chuyển hướng nếu cần
-        //                     if (response.status === 'success') {
-        //                         window.location.href = 'home.php'; // Chuyển hướng đến trang home.php
-        //                     } else {
-        //                         console.log('Đăng nhập không thành công.');
-        //                     }
-        //                 },
-        //                 error: function(xhr, status, error) {
-        //                     console.log(xhr.responseText);
-        //                 }
-        //             });
-        //         });
-        //     });
-        // 
     </script>
     </div>
 </body>

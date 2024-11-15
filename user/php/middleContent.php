@@ -83,7 +83,6 @@ mysqli_close($con);
     <form class="filter-tool" id="filter-tool" name="formFilter" method="POST">
         <h1>Tìm kiếm theo</h1>
         <hr />
-        
         <!-- <input type="text" class="search-bar" placeholder="Search..." name="txtSearch" /> -->
         <h4>Thương hiệu</h4>
         <?php foreach($result_query as $key => $value) { ?>
@@ -108,9 +107,7 @@ mysqli_close($con);
 
     </form>
     <div class="content-container">
-       
         <div class='page-segment'>
-           
         </div>
     </div>
 

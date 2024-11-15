@@ -9,15 +9,8 @@ function connect()
     if (!$conn) {
         die("Lỗi" . mysqli_connect_error());
     }
-}
-
-
-
-
-?>
-
+}?>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,19 +18,158 @@ function connect()
     <link rel="stylesheet" href="../css/cssdoan.css?version=2.0">
     <!-- <link rel="stylesheet" href="./csscheckout.css?version=1.0 " > -->
     <title>Thanh toán</title>
-</head>
+    <style>
+        .container{
+            margin-top: 85px;
+            margin-left: -5px;
+            /* background-color: red; */
+        }
+        a{
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .section__container{
+            margin: 0%;
+            padding: 0px;
+            /* margin-top: 80px; */
+        }
+        .row{
+            padding-top: 15px;
+        }
+/* Thông tin trái */
+    /* Thông tin giao hàng */
+        .delivery-info{
+            background-color: rgb(221, 224, 225);
+            margin-top: 7.5%;
+            margin-left: 20%;
+        }
+        .delivery-info h2{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .input-group{
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        .input-group input[type="text"]{
+            box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.15);
+        }
+    /* Thông tin giao hàng */
+        .payment-method{
+            background-color: rgb(221, 224, 225);
+            margin-top: 1%;
+            margin-left: 20%;
+        }
+        .payment-method h2{
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .payment-method div{
+            /* background-color: red; */
+            font-size: 20px;
+        }
+        #payment-cod{
+            margin-left: 30px;
+        }
 
+        .payment-method .vanChuyen select{
+            height: 100%;
+            font-size: 20px;
+        }
+/* Thông tin trái */
+/* Thông tin phải */
+        .right-section{
+            margin-left: 0%;
+            margin-top: 9%;
+            width: 35%;
+        }
+        .order-info{
+            background-color: whitesmoke;
+            margin-top: 2%;
+            width: 90%;
+            /* background-color: red; */
+            box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.15);
+        }
+        .order-info:hover{
+            -ms-transform: scale(1.1); 
+            -webkit-transform: scale(1.1); 
+            transform: scale(1.025); 
+            box-shadow: 7px 7px 7px 7px rgba(0, 0, 0, 0.3);
+        }
+        .list-title{
+            padding: 5px;
+            font-size: 18px;
+        }
+        .line-info-checkout{
+            margin-top: 5px;
+            padding: 5px;
+            font-size: 18px;
+        }
+        #thanhTiendiv{
+            /* background-color: blue; */
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 25px;
+        }
+        #thanhtien{
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+    /* Nút hoàn tất */
+        #complete-order{
+            margin-top: 60px;
+            width: 60%;
+            height: 50px;
+            font-size: 25px;
+            font-weight: bold;
+            background-color: aqua; 
+            color: gray;
+            box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.15);
+        }
+        #complete-order:hover{
+            color:antiquewhite;
+            background-color: rgb(25, 213, 213);
+        }
+        #complete-order:active{
+            color:antiquewhite;
+            background-color: rgb(25, 213, 213);
+        }   
+    /* Nút hoàn tất */
+/* Thông tin phải */
+    /* buttons */
+        #backButton{
+            margin-left: 5%;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+        #backButton a{
+            color: #696969;
+            font-weight: bold;
+        }
+        #backButton:hover {
+            background-color: #696969;
+        }
+        #backButton:hover a{
+            color: white;
+        }
+    /* buttons */
+    </style>
+</head>
 <body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <form action="" id="form_complete_payment">
         <?php require_once("./completepayment.php") ?>
     </form>
+<!-- Header -->
     <div class="container">
         <div class="left-section">
             <div class="section__container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>Giỏ hàng</h4>
+                        <h4 style="font-size: 40px;">Giỏ hàng</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -50,7 +182,8 @@ function connect()
                     </div>
                 </div>
             </div>
-
+<!-- Header -->
+<!-- TTGH -->
             <div class="delivery-info">
                 <h2>Thông tin giao hàng</h2>
                 <?php
@@ -87,6 +220,8 @@ function connect()
                     <input type="text" id="address" name="address" value="<?php echo $diaChi ?>" readonly>
                 </div>
             </div>
+<!-- TTGH -->
+<!-- Phương thức thanh toán -->
             <div class="payment-method">
                 <h2>Phương thức thanh toán</h2>
                 <div class="radio-cod">
@@ -96,12 +231,13 @@ function connect()
                     <label for="payment-cod">Thanh toán VNPay</label>
                 </div>
             </div>
+<!-- Phương thức thanh toán -->
+<!-- Phương thức vận chuyển -->
             <div class="payment-method">
                 <h2>Phương thức vận chuyển</h2>
                 <div class="vanChuyen">
-                    <select id="vanChuyen" style="width: 100%; border-radius: 15px; padding: 8px;">
+                    <select id="vanChuyen" style="width: 90%; border-radius: 15px; padding: 8px;">
                         <option selected>Chọn phương thức vận chuyển</option>
-
                         <?php
                         $sqlVanChuyen = "SELECT * FROM vanchuyen";
                         $rsVanChuyen = mysqli_query($conn, $sqlVanChuyen);
@@ -113,7 +249,6 @@ function connect()
                         ?><script>
                             $('#vanChuyen').change(function() {
                                 var valueSelected = $(this).val();
-
                                 $.ajax({
                                     url: 'XLptvanchuyen.php',
                                     type: 'POST',
@@ -132,18 +267,15 @@ function connect()
                             });
                         </script>
                     </select>
-
-
-
-
                 </div>
             </div>
+<!-- Phương thức vận chuyển -->
+<!-- Mã giảm giá -->
             <div class="payment-method">
                 <h2>Mã giảm giá</h2>
                 <div class="vanChuyen">
-                    <select id="giamGia" style="width: 100%; border-radius: 15px; padding: 8px;">
+                    <select id="giamGia" style="width: 90%; border-radius: 15px; padding: 8px;">
                         <option selected>Chọn mã giảm giá</option>
-
                         <?php
                         $sqlGiamGia = "SELECT * FROM giamgia WHERE NOW() BETWEEN Ngaybatdau AND Ngayketthuc AND Magiamgia!='MG000'";
                         $rsGiamGia = mysqli_query($conn, $sqlGiamGia);
@@ -176,17 +308,14 @@ function connect()
                             });
                         </script>
                     </select>
-
-
-
-
                 </div>
             </div>
+<!-- Mã giảm giá -->
             <button id="backButton" class="type-back"><a href="#"> &lt; Trở lại</a></button>
         </div>
+<!-- Thông tin sản phẩm -->
         <div class="vertical-divider"></div>
         <div class="right-section">
-
             <div class="order-info">
                 <div class="list-title" style="font-weight: bold;">
                     <div style="width: 50%;">Tên sản phẩm</div>
@@ -195,7 +324,6 @@ function connect()
                 </div>
                 <div class="order-details">
                     <p class="total-row"></p>
-
                     <?php
                     if (isset($_GET["loai"])) {
                         if ($_GET["loai"] == 'muangay') {
@@ -214,7 +342,7 @@ function connect()
                                 <div class="list-title">
                                         <div  class="product-item" style="width: 50%;" id="' . $maSP . '" >' . $row["Tensp"] . ' </div>
                                         <div style="width: 25%; text-align: center">' . $soLuong . '</div>
-                                        <div style="width: 25%; text-align: center">' . $row["Giaban"] . ' VNĐ</div>
+                                        <div style="width: 25%; text-align: center">' . $row["Giaban"] . ' VND</div>
                                 </div>';
                                 }
                             }
@@ -252,20 +380,15 @@ function connect()
                                 echo 'Không có mã sản phẩm nào được chọn.';
                             }
                         }
-                    }
-
-                    // mysqli_close($conn);
-
-                    ?>
-
+                    }?>
                 </div>
             </div>
-
+<!-- Thông tin sản phẩm -->
+<!-- Thông tin đơn hàng -->
             <div class="order-info">
                 <h2>Thông tin đơn hàng</h2>
                 <div class="order-details">
                     <p class="total-row"></p>
-
                     <?php
                     global $gia;
                     if (isset($_GET['loai'])) {
@@ -284,7 +407,7 @@ function connect()
                                     $sum += $soLuong;
                                     $price += $row["Giaban"] * $soLuong;
                                 }
-                                echo '<div class="line-info-checkout ">
+                                echo '<div class="line-info-checkout">
                                 <div>Tổng số lượng: </div>
                                 <div id="num">' . $sum . '</div>
                             </div>
@@ -301,7 +424,7 @@ function connect()
                                 <div id="giamgia">0 VND</div>
                             </div>
                             <p class="total-row"></p>
-                            <div class="line-info-checkout ">
+                            <div class="line-info-checkout" id="thanhTiendiv">
                                 <div>Thành tiền: </div>
                                 <div id="thanhtien"></div>
                             </div>';
@@ -342,14 +465,13 @@ function connect()
                                     <div id="giamgia">0 VND</div>
                                 </div>
                                 <p class="total-row"></p>
-                                <div class="line-info-checkout ">
+                                <div class="line-info-checkout " id="thanhTiendiv">
                                     <div>Thành tiền: </div>
                                     <div id="thanhtien"></div>
                                 </div>';
                             }
                         }
                     }
-
                     mysqli_close($conn);
                     ?>
                     <script>
@@ -369,10 +491,8 @@ function connect()
                         updateThanhTien();
                     </script>
                 </div>
-
             </div>
-
-
+<!-- Thông tin đơn hàng -->
             <script>
                 function getParameterByName(name) {
                     const urlParams = new URLSearchParams(window.location.search);
@@ -519,6 +639,7 @@ function connect()
                             }
                         });
                     } 
+<<<<<<< HEAD
 
                    
                 }
@@ -528,6 +649,13 @@ function connect()
 
 
 
+=======
+                    // document.getElementById("form_complete_payment").style.display = "block";
+                }
+            </script>
+            <button id="complete-order" class="complete-button" onclick="redirectToComplete()">Hoàn tất đơn hàng</button>
+            <!-- <button id="complete-order" class="complete-button">Hoàn tất đơn hàng</button> -->
+>>>>>>> 487b7ad8cca016551434c04310a56e2c03c4919f
         </div>
     </div>
 

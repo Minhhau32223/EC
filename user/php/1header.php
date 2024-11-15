@@ -3,7 +3,6 @@
     <b> BOLA</b>
 </div>
 <form name="search" method="get">
-
     <input type="search" id="search-bar" placeholder="Search..." name="txtSearch" />
 </form>
 <div class="menu-toggle">
@@ -26,14 +25,9 @@
         $name = $row['Tendanhmuc'];
         echo "<div class='option' id='$id' onclick='bannerHide()'><a href='home.php?idtl=$id'><li>$name</li></a> </div>";
     }
-
-
-
     mysqli_close($con)
     //  
     ?>
-
-
     <li class="option" id="cart"><a href="home.php?chon=giohang" style="text-decoration: none; font-size: 16px; color: rgba(0, 0, 0,0.7);">Giỏ hàng </a></li>
     <?php
     if (session_id()) {
