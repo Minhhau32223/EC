@@ -8,15 +8,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .register-container {
-            width: 500px;
-            /* Chiều rộng */
-            /* height: 400px; Chiều cao */
-            margin: auto;
-            /* Canh giữa trên trình duyệt */
-            padding: 20px;
-            /* background-color: #f4f4f4; */
+            background-color: aqua;
+            margin-top: 25px;
+            margin-left: 37.5%;
+            width: 450px;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 4px 4px 3px 7px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -31,7 +29,9 @@
 
         .register-container h1 {
             text-align: center;
-            color: #88C273;
+            color: gold;
+            font-size: 50px;
+            text-shadow: 1px 2px #959595;
         }
 
         .register-container form p {
@@ -41,6 +41,7 @@
             /* Chọn màu sắc khác */
             font-size: 20px;
             text-align: left;
+            margin-bottom: 10px;
         }
 
         .register-container form input[type="text"],
@@ -51,25 +52,44 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 20px;
         }
 
         .register-container form .register-button {
-            background-color: #88C273;
+            margin-top: 10px;
+            background-color: #0D706E;
             color: #fff;
             border: none;
             cursor: pointer;
             border-radius: 20px;
-            width: 40%;
+            width: 50%;
             padding: 15px 0;
-            font-size: 16px;
+            font-size: 20px;
             text-transform: uppercase;
             align-self: center;
         }
-
+        #log{
+            margin-top: 15px;
+            margin-bottom: 15px;
+            width: 115%;
+            /* background-color: red; */
+            text-align: right;
+            font-size: 23px;
+            /* padding: 5px; */
+        }
+        #log a{
+            color: #0D706E;
+            font-size: 23px;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0px 0.5px gray;
+        }
         /* CSS khi nút được hover */
         .register-container form .register-button:hover {
-            background-color: #88DF73;
+            -ms-transform: scale(0.925); 
+            -webkit-transform: scale(0.925); 
+            transform: scale(0.925); 
+            /* font-weight: bold; */
         }
 
         .register-container form .login {
@@ -99,13 +119,12 @@
             <p>Họ và tên:</p>
             <input type="text" name="name" id="name" placeholder="Họ và tên" required>
 
-
             <p>Số điện thoại:</p>
-            <input type="text" name="phone" id="phone" placeholder="số điện thoại" required>
+            <input type="text" name="phone" id="phone" placeholder="Số điện thoại" required>
             <div id="wnphone" class="wn">Số điện thoại phải đủ 10 số </div>
 
             <p>Địa chỉ:</p>
-            <input type="text" name="address" id="address" placeholder="địa chỉ" required>
+            <input type="text" name="address" id="address" placeholder="Địa chỉ" required>
             <div id="wnaddress" class="wn">Địa chỉ phải tồn tại </div>
 
             <p>Tên đăng nhập:</p>
@@ -113,7 +132,7 @@
             <div id="wnid" class="wn">Tên đăng nhập phải đủ 4 ký tự</div>
 
             <p>Email:</p>
-            <input type="text" name="email" id="email" placeholder="email" required>
+            <input type="text" name="email" id="email" placeholder="Email" required>
             <div id="wnemail" class="wn">email phải đúng định dạng </div>
 
             <p>Mật khẩu:</p>
@@ -124,7 +143,7 @@
             <input type="password" name="checkPW" id="checkPW" placeholder="Mật khẩu" required>
             <div id="wncheckpass" class="wn">xác nhận mật khẩu phải trùng với mật khẩu </div>
 
-            <p class="login">Bạn đã có tài khoản, <a class="login-link" href="dangnhap.php">đăng nhập</a></p>
+            <div id="log"> Bạn đã có tài khoản, <a class="login-link" href="dangnhap.php">Đăng nhập</a></div>
             <input type="submit" class="register-button" value="Đăng ký">
 
             <div id="message">

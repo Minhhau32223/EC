@@ -114,10 +114,12 @@ $conn->close();
         .row{
             padding-top: 15px;
         }
+/* Thẻ sản phẩm */
         .table-items-Q:hover{
-            background-color: #778899;
+            background-color: rgb(211, 211, 211);
         }
         .table-items-Q {
+            margin-top: 1px;
             width: 100%;
             height: 100px;
             border: rgb(162, 161, 161) solid 0.5px;
@@ -173,6 +175,7 @@ $conn->close();
             margin-left: 0px;
             height: 460px;
         }
+    /* Scroll */
         .scoll{
             float: right;
             margin-right: 0px;
@@ -198,14 +201,16 @@ $conn->close();
         .scroll::-webkit-scrollbar-thumb:hover {
         background: #696969; 
         }
-        /* Nút thanh toán */
+    /* Scroll */
+/* Thẻ sản phẩm */
+    /* Nút thanh toán */
         .custom-button{
             background-color: navy;
             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
             margin-top: 50px;
             margin-left: 1000px;
         }
-        /* Nút thanh toán */
+    /* Nút thanh toán */
         .ThanhTien{
             /* background-color: red; */
             height: 60px;
@@ -224,7 +229,7 @@ $conn->close();
             margin-left: 2px;
             padding: 15px 5px;
         }
-        /* buttons */
+    /* buttons */
         #backButton{
             margin-top: 100px;
             border-radius: 10px;
@@ -240,7 +245,7 @@ $conn->close();
         #backButton:hover a{
             color: white;
         }
-        /* buttons */
+    /* buttons */
     </style>
 </head>
 

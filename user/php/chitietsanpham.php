@@ -6,7 +6,7 @@
     <title>chitietsanpham</title>
     <style>
         .content-sp {
-            margin: 10%;
+            margin: 7% 10% 5% 10%;
             background-color: white;
             border-radius: 2px;
             box-shadow: inset ;
