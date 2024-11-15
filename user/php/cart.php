@@ -63,16 +63,8 @@ function showgiohang()
     while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="table-items-Q">';
         echo '<div style=" width: 40%; display: flex; justify-content: space-evenly; align-items: center;">';
-<<<<<<< HEAD
         echo ' <input id="checked" class="product-checkbox" type="checkbox" style="width: 5%;" value="' . $row['Masp'] . '">
         <span class="checkmark"></span>';
-=======
-        echo '<label for="" class="container" style="width: 10%">
-             <input type="checkbox" >
-             <span class="checkmark"></span>
-            </label>
-                ';
->>>>>>> 487b7ad8cca016551434c04310a56e2c03c4919f
         echo '<img src="../../img/' . $row['Img'] . '" alt="' . $row['Tensp'] . '" style="width: 10%; float: left;display-inline: block;"> 
         <div style="width: 60%; font-size: 20px;">' . $row['Tensp'] . '</div>
         </div>';
@@ -82,13 +74,8 @@ function showgiohang()
         echo '<div class="soluongsp" style="width: 10%; margin-left:2px;" data-masp="' . $row['Masp'] . '" contenteditable="true">' . $row['Soluong'] . '</div>';
         echo '<button class="quantity-btn increase" style="width: 5%; margin-left:2px;" data-masp="' . $row['Masp'] . '" data-action="increase">+</button>';
         echo '</div>';
-<<<<<<< HEAD
             $tongtiensanpham = $row['Giaban'] * $row['Soluong'];
         echo '<div class="tongtiensanpham"  style="width: 15%;font-size: 20px; text-color:black; margin: 40px 5px;" value="' . $tongtiensanpham . '">' . $tongtiensanpham . ' VND</div>';
-=======
-        $tongtiensanpham = $row['Giaban'] * $row['Soluong'];
-        echo '<div style="width: 15%;font-size: 20px; margin: 40px 5px;">' . $tongtiensanpham . ' VND</div>';
->>>>>>> 487b7ad8cca016551434c04310a56e2c03c4919f
         echo '<form method="post" action="xulyxoaspgiohang.php">';
         echo '<input type="hidden" name="masp" value="' . $row['Masp'] . '">';
         echo '<button type="submit" name="delete_btn" class="delete-btn" data-id="' . $row['Masp'] . '">X</button>';
