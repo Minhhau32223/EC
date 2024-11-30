@@ -28,9 +28,9 @@
 
     /* Thanh ở trên */
      .progress-bar {
-            height: 10px;
-            background-color: green;
-            border: darkgreen solid 1px;
+            height: 100%;
+            background-color: cadetblue;
+            /* border: darkgreen solid 1px; */
             transition: width 0.5s ease;
         }
 
@@ -256,6 +256,7 @@
     <div id="bodi">
         <div id="khung">
                 <div class="progress-wrapper" id="progress-wrapper">
+                <div class="progress-bar" id="progress-bar" style="width: 0;"></div>
                     <div class="progress-markers">
                         <div class="marker" style="left: 25%;"></div>
                         <div class="marker" style="left: 50%;"></div>

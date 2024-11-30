@@ -211,7 +211,7 @@ $conn->close();
         .ThanhTien{
             /* background-color: red; */
             height: 60px;
-            width: 20%;
+            width: 40%;
             font-size: 25px;   
             display: flex;
             float: right; 

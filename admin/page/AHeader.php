@@ -35,7 +35,7 @@ function checkReadPermission($view_permission_list, $feature_id)
         <div class="topmenu-wrap">
             <div id="topmenu-admin">
                 <div class="logo-bola">
-                    <b><a href="AHome.php"> Điện máy chọ nhở</a></b>
+                    <b><a href="AHome.php"> </a></b>
                 </div>
 
              
