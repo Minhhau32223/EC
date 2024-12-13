@@ -33,10 +33,31 @@ $connn->close();
             text-decoration: none;
             list-style:none;
         }
+
+        .table-items{
+            text-align: center;
+            /* background-color: red; */
+        }
         .thaotac{
             width: 30%;
+            /* background-color: aqua; */
         }
 
+        .thaotac button{
+            height: 20%;
+            width: 20%;
+            padding: 1%;
+            font-size: 20px;
+            justify-content: center;
+            padding-bottom: 5%;
+            
+        }
+
+        .thaotac button a{
+            color: black;
+            /* padding: 5%;
+            margin-bottom: 50%; */
+        }
        
     </style>
 </head>
@@ -98,14 +119,13 @@ mysqli_close($conn);
                     <div style="overflow-y: scroll;">
                     <?php foreach($rs_ncc as $key => $value) {?>
                         <div class="table-items">
-                            
                             <div style="width: 20%;"><?php echo $value["Mancc"]; ?></div>
-                            <div style="width: 30%;"><?php echo $value["Ten"]; ?></div>
-                            <div style="width: 20%;"><?php echo $value["Sdt"]; ?></div>
+                            <div style="width: 30%; margin-left: 1%"><?php echo $value["Ten"]; ?></div>
+                            <div style="width: 20%; margin-left: 1.5%"><?php echo $value["Sdt"]; ?></div>
                            
                             <div class="thaotac">
-                                <button class="<?=$isUpdate?"":"hidden"?>" type="button"><a href="AHome.php?chon=t&id=nhacungcap&loai=sua&idncc=<?php echo $value["Mancc"] ?>">Sửa</a></button>
-                                <button class="<?=$isDelete?"":"hidden"?>" onclick="return delNcc('<?php echo $value['Ten']; ?>')" type="button"><a href="xoaNcc.php?idncc=<?php echo $value["Mancc"]; ?>">Xóa</a></button>
+                                <button style="margin-left: 10%;" class="<?=$isUpdate?"":"hidden"?>" type="button"><a href="AHome.php?chon=t&id=nhacungcap&loai=sua&idncc=<?php echo $value["Mancc"] ?>">Sửa</a></button>
+                                <button style="margin-left: 5%;"class="<?=$isDelete?"":"hidden"?>" onclick="return delNcc('<?php echo $value['Ten']; ?>')" type="button"><a href="xoaNcc.php?idncc=<?php echo $value["Mancc"]; ?>">Xóa</a></button>
                             </div> 
                         </div>
                         <?php }?>

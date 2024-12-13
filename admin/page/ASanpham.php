@@ -30,14 +30,24 @@ $connn->close();
     <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/middle.css?version=1.0">
     <style>
+        .table{
+            height: 600px;
+            width: 90%;
+            /* background-color: red; */
+        }
         .table-title div{
             text-decoration: none;
         }
         .hidden {
             display: none !important;
         }
+        #listSP{
+            height: 100%;
+        }
         #SpContainer{
             margin-top: -16%;
+            /* background-color: red; */
+            height: 25%;
         }
         .item{
             height: 20%;
@@ -49,8 +59,8 @@ $connn->close();
         }   
         .item img {
             height: 90%;
-            width: 6%;
-            margin-left: 1%;
+            width: 4%;
+            margin-left: 2.5%;
             padding-left: 0.5%;
             margin-top: 0.25%;
         }
@@ -113,6 +123,12 @@ $connn->close();
             background-color: gray;
             color: white;
         }
+        .timkiembar{
+            height: 20%;
+        }
+        .btn-ThemNV {
+            height: 20%;
+        }
     </style>
 </head>
 
@@ -140,7 +156,7 @@ mysqli_close($conn);
         <button type="submit" name="timkiemsp" >Tìm kiếm</button>
     </form>
     <div><br></div>
-    <div style="display: flex; justify-content: center;">
+    <div id="wrapper">
             <div class="table">
                 <div class="table-title">
                     <div style="width: 30%; font-weight: bold;">Sản phẩm</div>
@@ -150,7 +166,7 @@ mysqli_close($conn);
                 </div>
                 <div><br></div>
                 <div><br></div>
-                <div style="overflow-y: scroll;">
+                <div id="listSP" style="overflow-y: scroll;">
                 <?php
                 include("../page/connectDB.php");
                 $sql_sanpham = mysqli_query($conn, "SELECT * FROM sanpham ORDER BY Masp ASC");

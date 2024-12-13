@@ -36,19 +36,18 @@
             <div class="grid-items">
                 <div class="text-top-left">Tổng doanh thu</div>
                 <div class="number-center-left"><?php
-                                                $con = mysqli_connect('localhost', 'root', '', 'bolashop');
-                                                $sql = "SELECT SUM(Tonggiatri) AS tonggiatri FROM donhang WHERE Trangthai='3'";
-                                                $result_sql = mysqli_query($con, $sql);
-                                                $row_doanhthu = mysqli_fetch_assoc($result_sql);
-                                                if ($row_doanhthu == "") {
-                                                    echo "0";
-                                                } else {
-                                                    echo $row_doanhthu["tonggiatri"];
-                                                }
-                                                mysqli_close($con);
+                    $con = mysqli_connect('localhost', 'root', '', 'bolashop');
+                    $sql = "SELECT SUM(Tonggiatri) AS tonggiatri FROM donhang WHERE Trangthai='3'";
+                    $result_sql = mysqli_query($con, $sql);
+                    $row_doanhthu = mysqli_fetch_assoc($result_sql);
+                    if ($row_doanhthu == "") {
+                        echo "0";
+                    } else {
+                        echo $row_doanhthu["tonggiatri"];
+                    }
+                    mysqli_close($con);
 
-
-                                                ?></div>
+                    ?></div>
                 <div class="text-center-right">VNĐ</div>
             </div>
             <div class="grid-items">
@@ -99,17 +98,6 @@
 
                     // Hiển thị kết quả
                     while ($row = mysqli_fetch_array($result)) {
-                        // $sql_total = mysqli_query($con, "SELECT SUM(s.Giaban * c.Soluong) AS TongTien FROM chitietdonhang c JOIN sanpham s ON c.Masp = s.Masp WHERE c.Madonhang = " . $row["Madonhang"]);
-
-                        // // Lấy tổng giá trị của đơn hàng từ kết quả của truy vấn
-                        // $row_total = mysqli_fetch_assoc($sql_total);
-                        // $total_price = $row_total["TongTien"];
-                        // $ma = $row["Madonhang"];
-
-                        // // Cập nhật giá trị tổng tiền vào cột Tonggiatri trong bảng donhang
-                        // $update_query = "UPDATE donhang SET Tonggiatri = $total_price WHERE Madonhang = " . $row["Madonhang"];
-                        // mysqli_query($con, $update_query);
-
                         // Hiển thị thông tin của đơn hàng
                         echo '<div class="table-items">';
                         echo '<div class="customer">';
@@ -136,95 +124,16 @@
                         if ($row["Trangthai"] == 4) {
                             echo '<div class="status-orders">Đã hủy hàng</div>';
                         }
-                        
-                        
                         echo '</div>';
                         echo '</div>';
-
                     }
                     // Đóng kết nối đến cơ sở dữ liệu
                     mysqli_close($con);
                     ?>
-
-
-                    <!-- <div class="table-items">
-                        <div class="customer">
-                            <div class="avt"></div>
-                            <div>KH001</div>
-                        </div>
-                        <div style="width: 20%;">29/03/2004</div>
-                        <div style="width: 20%;">12011252_donhang</div>
-                        <div style="width: 20%;">120210</div>
-                        <div class="btn">
-                            <select>
-                                <option id="status" value="1">Hoàn thành</option>
-                                <option id="status" value="1">Đang giao hàng</option>
-                                <option id="status" value="1">Đã chuyển hàng</option>
-                            </select>
-                            <button type="button">Sửa</button>
-                        </div>
-                    </div>
-                    <div class="table-items">
-                        <div class="customer">
-                            <div class="avt"></div>
-                            <div>KH001</div>
-                        </div>
-                        <div style="width: 20%;">29/03/2004</div>
-                        <div style="width: 20%;">12011252_donhang</div>
-                        <div style="width: 20%;">120210</div>
-                        <div class="btn">
-                            <select>
-                                <option id="status" value="1">Hoàn thành</option>
-                                <option id="status" value="1">Đang giao hàng</option>
-                                <option id="status" value="1">Đã chuyển hàng</option>
-                            </select>
-                            <button type="button">Sửa</button>
-                        </div>
-                    </div>
-                    <div class="table-items">
-                        <div class="customer">
-                            <div class="avt"></div>
-                            <div>KH001</div>
-                        </div>
-                        <div style="width: 20%;">29/03/2004</div>
-                        <div style="width: 20%;">12011252_donhang</div>
-                        <div style="width: 20%;">120210</div>
-                        <div class="btn">
-                            <select>
-                                <option id="status" value="1">Hoàn thành</option>
-                                <option id="status" value="1">Đang giao hàng</option>
-                                <option id="status" value="1">Đã chuyển hàng</option>
-                            </select>
-                            <button type="button">Sửa</button>
-                        </div>
-                    </div>
-                    <div class="table-items">
-                        <div class="customer">
-                            <div class="avt"></div>
-                            <div>KH001</div>
-                        </div>
-                        <div style="width: 20%;">29/03/2004</div>
-                        <div style="width: 20%;">12011252_donhang</div>
-                        <div style="width: 20%;">120210</div>
-                        <div class="btn">
-                            <select>
-                                <option id="status" value="1">Hoàn thành</option>
-                                <option id="status" value="1">Đang giao hàng</option>
-                                <option id="status" value="1">Đã chuyển hàng</option>
-                            </select>
-                            <button type="button">Sửa</button>
-                        </div>
-                    </div> -->
-
                 </div>
-
             </div>
         </div>
-        <!-- <div class="return"><a href="#">
-                << Quay lại</a>
-        </div> -->
     </div>
-
 
 </body>
 

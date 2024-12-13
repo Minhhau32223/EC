@@ -34,37 +34,38 @@ $connn->close();
             direction: none;
         }
 
+        .table-items{
+            text-align: center;
+        }
         .status-phieunhap {
             width: 19%;
             display: flex;
-            /* flex-direction: row;
-            justify-content: space-evenly;
-            align-items: center; */
-            /* background-color: red; */
             height: 100%;
         }
 
-        .status-phieunhap button{
-            margin-left: 25%;
-        }
+        /* .status-phieunhap button{
+            margin-left: 15%;
+        } */
         .btn-X-PN{
-            margin-top: 9%;
+            /* margin-top: 9%; */
             padding: 1%;
             width: 12%;
-            height: 40%;
+            height: 50%;
             background-color: red;
-            border-radius: 10%;
+            border-radius: 15%;
             color: white;
             font-weight: bold;
+            margin-left: 7%;
         }
         .btn-X-PN:hover{
             background-color: rgb(198, 37, 37);
         }
         .btn-xemct{
+            margin-left: 41%;
             width: 30%;
-            height: 40%;
+            height: 50%;
             padding: 1%;
-            margin-top: 9%;
+            /* margin-top: 9%; */
             font-size: 18px;
         }
 
@@ -80,15 +81,6 @@ $connn->close();
 
         /*sửa viền*/
         .wrapper-ctpn {
-            /*border: solid 0.5px rgb(152, 152, 152);*/
-            width: 90%;
-            margin-top: 10px;
-            margin-left: 5%;
-            /* box-shadow: 0 7px 7px 0 rgb(87, 87, 87); */
-            border-radius: 20px;
-            padding-bottom: 40px;
-        }
-        .wrapper-pn {
             /*border: solid 0.5px rgb(152, 152, 152);*/
             width: 90%;
             margin-top: 10px;
@@ -117,16 +109,6 @@ $connn->close();
             margin: 5px;
             width: 80%;
         }
-
-        /* .btn-Xem {
-            margin: 5px;
-            width: 80%;
-            padding: 5px;
-            background-color: #D61EAD;
-            color: white;
-            border-radius: 20px;
-            text-align: center;
-        } */
 
         .btn-ThemPN {
             padding: 10%;
@@ -187,8 +169,6 @@ $connn->close();
             margin: 10%;
             z-index: 1000;
             background-color: white;
-
-
         }
 
         .soluong {
@@ -218,20 +198,6 @@ $connn->close();
             margin-left: 100px;
 
         }
-        .table-items-details {
-        margin: 10px 0 10px 0;
-        width: 100%;
-        height: 100px;
-        border: rgb(162, 161, 161) solid 0.5px;
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        text-align: center;
-        word-break: break-all;
-        border-radius: 10px;
-
-}
     </style>
 </head>
 
@@ -301,7 +267,6 @@ mysqli_close($conn);
                         <div class="top-items">Phiếu nhập</div>
                         <input type="text" class="top-items"  id="mapn" name="txtmapn" readonly>
                        
-
                     </div>
                     <!--sửa-->
                     <div class="top-left">
@@ -326,20 +291,6 @@ mysqli_close($conn);
                         <div><br></div>
                         <div><br></div>
                         <div style="overflow-y: scroll;" id="new-item">
-                            <!-- <div class="table-items">
-                                <div style="width: 20%;">SP001</div>
-                                <div class="staff">
-                                    <div class="avt-sp"></div>
-                                    <div>Len milk cotton</div>
-                                </div>
-                                <div style="width: 30%;">15000 VNĐ
-                                </div>
-                                <div class="soluong">
-                                    <input type="text" value="1" style="text-align: center;width: 60%;">
-                                    <button type="button">X</button>
-
-                                </div>
-                            </div> -->
                             
                         </div>
                     </div>
