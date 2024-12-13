@@ -28,7 +28,34 @@ $connn->close();
     <!-- <link rel="stylesheet" href="style.css?version=1.0"> -->
 
     <style>
-
+        a{
+            text-decoration: none;
+            color: white;
+            
+        }
+        .btn-X{
+            height: 60%;
+            width: 12.5%;
+            font-size: 18px;
+            margin-left: 10%;
+            background-color: red;
+            border-radius: 5px;
+            color: aliceblue;
+            margin-top: -20px;
+        }
+        .btn-X:hover{
+            background-color: brown;
+            color: white;
+        }
+        #suaKM{
+            margin-left: 15%;
+            font-size: 25px;
+            padding: 1.5%;
+            border-radius: 5px;
+        }
+        #suaKM:hover{
+            color: whitesmoke;
+        }
     </style>
 </head>
 
@@ -53,7 +80,10 @@ mysqli_close($conn);
         <div class="title">Khuyến mãi</div>
         <div class="btn-ThemNV <?= $isCreate ? "" : "hidden" ?>" onclick="redirectToForm()"> + Thêm khuyến mãi</div>
         <div style="clear: both;"></div>
-        <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+        <div class="timkiembar" action="" method="post">
+            <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+            <button type="submit" name="timkiem" >Tìm kiếm</button>
+        </div>
         <div><br></div>
         <div style="display: flex; justify-content: center;">
             <div class="table">
@@ -99,9 +129,9 @@ mysqli_close($conn);
                             echo '<div style="width: 30%;">' . $row["tenGiamgia"] . '</div>';
                             echo '<div style="width: 20%;">' . $row["Mucgiam"] . '</div>';
                             echo '<div style="width: 20%;">';
-                            echo '<button type="button" class="' . $textupd . '"   style="background-color: white; border: solid 0.5px #D61EAD; color: black;" onclick="window.location.href=\'AHome.php?chon=t&id=khuyenmai&loai=sua&Magiamgia=' . $row["Magiamgia"] . '\'">Sửa</button>';
+                            echo '<button id="suaKM" type="button" class="' . $textupd . '"   style="background-color: white; border: solid 0.5pxrgb(65, 65, 65); color: black;" onclick="window.location.href=\'AHome.php?chon=t&id=khuyenmai&loai=sua&Magiamgia=' . $row["Magiamgia"] . '\'">Sửa</button>';
                             echo '<input type="hidden" name="Magiamgia" value="' . $row["Magiamgia"] . '">';
-                            echo '<button type="button" class="delete-btn ' . $textdel . '" onclick="deleteItem(\'' . $row["Magiamgia"] . '\')">Xóa</button>';
+                            echo '<button type="button" class="btn-X' . $textdel . '" onclick="deleteItem(\'' . $row["Magiamgia"] . '\')">X</button>';
                             echo '</div>';
                             echo '</div>';
                         }
@@ -110,6 +140,7 @@ mysqli_close($conn);
                     }
                     $conn->close();
                     ?>
+                </div>
                 </div>
             </div>
         </div>

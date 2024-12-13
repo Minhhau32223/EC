@@ -89,7 +89,6 @@ $result = $db->query($sql);
             height: 75%;
             font-size: 18px;
             margin-left: 5%;
-            
         }
         .delete-btn{
             background-color: red;

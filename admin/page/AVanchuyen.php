@@ -27,6 +27,36 @@ $connn->close();
     <link rel="stylesheet" href="style.css?version=1.0">
 
     <style>
+        a{
+            text-decoration: none;
+            color: white;
+            
+        }
+        .table-title div{
+            margin-right: 1%;
+        }
+        .table-items div{
+            /* background-color: aqua; */
+            margin-left: 0.5%;
+        }
+        .thaotac button{
+            height: 60%;
+            width: 25%;
+            background-color: aqua;
+            border-radius: 5px;
+            border-width: 0.5px
+        }
+        .thaotac button:hover{
+            background-color: rgb(39, 176, 176);
+        }
+        .thaotac button:hover a{
+            color: whitesmoke;
+        }
+        .thaotac button a{
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+        }
 
     </style>
 </head>
@@ -50,7 +80,7 @@ mysqli_close($conn);
 ?>
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
         <div class="title">Đơn vị vận chuyển</div>
-        <div class="btn-ThemNV <?=$isCreate?"":"hidden"?>"> <a href="AHome.php?chon=t&id=vanchuyen&loai=them">+ Thêm đơn vị vận chuyển </a></div>
+        <div class="btn-ThemNV <?=$isCreate?"":"hidden"?>"> <a href="AHome.php?chon=t&id=vanchuyen&loai=them">+ Thêm đơn vị vc </a></div>
         <div style="clear: both;"></div>
         <div class="timkiembar" action="" method="post">
             <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
@@ -71,12 +101,11 @@ mysqli_close($conn);
                 <div style="overflow-y: scroll;">
                 <?php foreach($rs_vc as $key => $value) {?>
                         <div class="table-items">
-                            
-                            <div style="width: 20%;"><?php echo $value["Mavc"]; ?></div>
+                            <div style="width: 30%;"><?php echo $value["Mavc"]; ?></div>
                             <div style="width: 30%;"><?php echo $value["Ten"]; ?></div>
                             <div style="width: 20%;"><?php echo $value["Gia"]; ?></div>
                            
-                            <div class="thaotac">
+                            <div class="thaotac" style="width: 20%;">
                                 <button class="<?=$isUpdate?"":"hidden"?>" type="button"><a href="AHome.php?chon=t&id=vanchuyen&loai=sua&idvc=<?php echo $value["Mavc"] ?>">Sửa</a></button>
                                 <button class="<?=$isDelete?"":"hidden"?>" onclick="return delNcc('<?php echo $value['Ten']; ?>')" type="button"><a href="xoaVanchuyen.php?idvc=<?php echo $value["Mavc"]; ?>">Xóa</a></button>
                             </div> 

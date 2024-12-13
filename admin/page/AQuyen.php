@@ -28,7 +28,34 @@ $conn->close();
     <link rel="stylesheet" href="style.css?version=1.0">
 
     <style>
-
+        a{
+            text-decoration: none;
+            color: white;
+            
+        }
+        .btn-X{
+            height: 60%;
+            width: 12.5%;
+            font-size: 18px;
+            margin-left: 10%;
+            background-color: red;
+            border-radius: 5px;
+            color: aliceblue;
+            margin-top: -20px;
+        }
+        .btn-X:hover{
+            background-color: brown;
+            color: white;
+        }
+        #suaquyen{
+            margin-left: 15%;
+            font-size: 25px;
+            padding: 1.5%;
+            border-radius: 5px;
+        }
+        #suaquyen:hover{
+            color: whitesmoke;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -89,9 +116,9 @@ mysqli_close($conn);
                         <div style="width: 20%;"><?php echo $value["Tenquyen"]; ?></div>
                         <div style="width: 40%;">abc</div>
                         <div style="width: 20%;">
-                            <a class="<?= $isUpdate?"":"hidden" ?>"
-                                style="background-color: white; border: solid 0.5px #D61EAD; color: black; text-decoration: none;" href="AHome.php?chon=t&id=quyen&loai=sua&idquyen=<?php echo $value['Maquyen'] ;?>">Sửa</a>
-                            <button id="<?php echo $value["Maquyen"]; ?>" class="<?= $isDelete?"":"hidden" ?>"type="button" onclick="xoaquyen(this)" >Xóa</button>
+                            <a id="suaquyen" class="<?= $isUpdate?"":"hidden" ?>"
+                                style="background-color: white; border: solid 0.5px rgb(48, 48, 48); color: black; text-decoration: none;" href="AHome.php?chon=t&id=quyen&loai=sua&idquyen=<?php echo $value['Maquyen'] ;?>">Sửa</a>
+                            <button class="btn-X" id="<?php echo $value["Maquyen"]; ?>" class="<?= $isDelete?"":"hidden" ?>"type="button" onclick="xoaquyen(this)" >X</button>
                         </div>
                     </div>
                     <?php }?>

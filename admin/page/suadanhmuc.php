@@ -1,4 +1,4 @@
-thuonghieu<?php
+danhmuc<?php
 $server = 'localhost';
 $user = 'root';
 $pass = '';
@@ -62,20 +62,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="utf-8" />
     <link href="../css/formthemKM.css?version=1.0" rel="stylesheet" />
-    <title>Sửa thương hiệu</title>
+    <title>Sửa danh mục</title>
 </head>
 
 <body>
-<h2><a href="AHome.php">Trang chủ >> </a><a href="AHome.php?chon=t&id=danhmuc">Thương hiệu >> </a>Sửa thương hiệu</h2>
+<h2><a href="AHome.php">Trang chủ >> </a><a href="AHome.php?chon=t&id=danhmuc">Danh mục >> </a>Sửa danh mục</h2>
     
 <div class="form-km">
         <form class="formkhuyenmai" id="formkhuyenmai" method="post" action="">
-            <h3>Sửa thương hiệu</h3>
-            <label for="txtMakh">Mã thương hiệu</label>
+            <h3>Sửa danh mục</h3>
+            <label for="txtMakh">Mã danh mục</label>
             <input type="text" name="txtMakh" value="<?php echo $madanhmuc; ?>" readonly />
 
-            <label for="txtTenkh">Tên thương hiệu</label>
-            <input type="text" name="txtTenkh" value="<?php echo $tendanhmuc; ?>" placeholder="Nhập vào tên thương hiệu..." />
+            <label for="txtTenkh">Tên danh mục</label>
+            <input type="text" name="txtTenkh" value="<?php echo $tendanhmuc; ?>" placeholder="Nhập vào tên danh mục..." />
 
             <div class="group-btn">
                 <button type="button" id="delBtn" class="delBtn" onclick="window.location.href='AHome.php?chon=t&id=danhmuc';">Hủy</button>

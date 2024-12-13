@@ -104,8 +104,8 @@
                         echo '<div class="imgHolder"><img src="../../img/' . $row['img'] . '" class="avt"></div>';
                         echo '<div class="tenuser">' . $row["Ten"] . '</div>';
                         echo '</div>';
-                        echo '<div style="width: 21%;">' . $row["Ngay"] . '</div>';
-                        echo '<div style="width: 10%;">' . $row["Madonhang"] . '</div>';
+                        echo '<div style="width: 21%; text-align: left;">' . $row["Ngay"] . '</div>';
+                        echo '<div style="width: 10%; text-align: left;">' . $row["Madonhang"] . '</div>';
                         echo '<div id="tongGia"style="width: 15%;">' . $row["Tonggiatri"] . '</div>';
                         echo '<div class="DonHangbtn">';
                         echo '<button type="button" class="order-detail"><a href="chitiethoadon.php?iddh=' . $row["Madonhang"] . '">Chi tiết</a></button>';

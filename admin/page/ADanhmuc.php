@@ -28,7 +28,22 @@ $connn->close();
     <!-- <link rel="stylesheet" href="style.css?version=1.0"> -->
 
     <style>
-
+        .staff{
+            height: 100%;
+            width: 100%;
+            /* background-color: aqua; */
+            padding-top: 0%;
+            margin-top: -2.5%;
+        }
+        .staff button{
+            height: 75%;
+            width: 20%;
+            font-size: 18px;
+            margin-left: 4%;
+            font-weight: bold;
+            border-radius: 5px;
+            border-width: 0.5px;
+        }
     </style>
 </head>
 
@@ -37,9 +52,12 @@ $connn->close();
         <div class="title">Danh sách danh mục</div>
         <div class="btn-ThemNV <?=$isCreate?"":"hidden"?>" onclick="window.location.href='AHome.php?chon=t&id=danhmuc&loai=them'"> + Thêm danh mục</div>
         <div style="clear: both;"></div>
-        <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+        <div class="timkiembar" action="" method="post">
+            <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+            <button type="submit" name="timkiem" >Tìm kiếm</button>
+        </div>
         <div><br></div>
-        <div style="display: flex; justify-content: center;">
+        <div id="wrapper">
             <div class="table">
                 <div class="table-title">
                     <div style="width: 35%; font-weight: bold;">Mã danh mục</div>
@@ -87,8 +105,8 @@ $connn->close();
                             echo '<div style="width: 35%;">' . $row['Tendanhmuc'] . '</div>';
                             echo '<div style="width: 30%;">';
                             echo '<div class="staff" data-id="' . $row['Madanhmuc'] . '">';
-                            echo '<button type="button" class="edit-btn  '.$textupd.'" style="background-color: ##D61EAD; border: solid 0.5px #D61EAD; color: black;">Sửa</button>';
-                            echo '<button type="button" class="DLT  '.$textdel.'" style="background-color: white; border: solid 0.5px #D61EAD; color: black;">Xóa</button>';
+                            echo '<button type="button" class="edit-btn  '.$textupd.'" >Sửa</button>';
+                            echo '<button type="button" class="delete-btn'.$textdel.'" >Xóa</button>';
                             echo '</div>'; // staff
                             echo '</div>'; // table-items
                             echo '</div>'; // container
@@ -100,7 +118,6 @@ $connn->close();
                     $db->close();
                     ?>
                 </div>
-
                 <div class="horizontal-line"></div>
                 <div class="page">
                 </div>

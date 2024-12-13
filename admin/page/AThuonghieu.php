@@ -28,7 +28,22 @@ $connn->close();
     <!-- <link rel="stylesheet" href="style.css?version=1.0"> -->
 
     <style>
-
+        .staff{
+            height: 100%;
+            width: 100%;
+            /* background-color: aqua; */
+            padding-top: 0%;
+            margin-top: -2.5%;
+        }
+        .staff button{
+            height: 75%;
+            width: 20%;
+            font-size: 18px;
+            margin-left: 4%;
+            font-weight: bold;
+            border-radius: 5px;
+            border-width: 0.5px;
+        }
     </style>
 </head>
 
@@ -55,7 +70,7 @@ mysqli_close($conn);
             <button type="submit" name="timkiem" >Tìm kiếm</button>
         </div>
         <div><br></div>
-        <div style="display: flex; justify-content: center;">
+        <div id="wrapper">
             <div class="table">
                 <div class="table-title">
                     <div style="width: 35%; font-weight: bold;">Mã thương hiệu</div>
@@ -104,7 +119,7 @@ mysqli_close($conn);
                             echo '<div style="width: 30%;">';
                             echo '<div class="staff" data-id="' . $row['Mathuonghieu'] . '">';
                             echo '<button type="button" class="edit-btn  '.$textupd.'" style="background-color: ##D61EAD; border: solid 0.5px #D61EAD; color: black;">Sửa</button>';
-                            echo '<button type="button" class="DLT  '.$textdel.'" style="background-color: white; border: solid 0.5px #D61EAD; color: black;">Xóa</button>';
+                            echo '<button type="button" class="delete-btn'.$textdel.'" style="background-color: white; border: solid 0.5px #D61EAD; color: black;">Xóa</button>';
                             echo '</div>'; // staff
                             echo '</div>'; // table-items
                             echo '</div>'; // container
