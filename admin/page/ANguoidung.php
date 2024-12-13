@@ -45,15 +45,70 @@ $result = $db->query($sql);
     <link rel="stylesheet" href="../css/chitiethoadon.css?version=1.0">
     <link rel="stylesheet" href="../css/dsnv.css?version=1.0">
     <style>
+        #avt-name{
+            display: flex;
+            margin-top: -1.5%;           
+            padding: 2%;
+            /* background-color: blanchedalmond; */
+        }
+        #name{
+            padding-top: 5%;
+            /* background-color: aqua; */
+            width: 75%;
+            text-align: left;
+            margin-left: 5%;
+        }
         .avt {
-            width: 80px;
+            /* background-color: bisque; */
+            width: 20%;
             height: 80px;
             border-radius: 50%;
-            overflow: hidden;
-            background-size: cover;
-            background-repeat: no-repeat;
+            /* overflow: hidden;
+            background-size: cover; */
+            /* background-repeat: no-repeat; */
             background-position: center;
             float: left;
+        }
+        .table-items div{
+            /* background-color: aqua; */
+            margin-left: 0.5%;
+            text-align: center;
+        }
+        #userButtons{
+            /* background-color: aquamarine; */      
+        }
+        #userButtons select{
+            font-size: 18px;
+            width: 30%;
+            height: 75%;
+            float: left;
+            margin-left: 17.5%;
+            /* padding: 2.5%; */
+        }
+        #userButtons button{
+            height: 75%;
+            font-size: 18px;
+            margin-left: 5%;
+            
+        }
+        .delete-btn{
+            background-color: red;
+            color: white;
+            width: 10%;
+            border-radius: 10px;
+            border-width: 0.5px;
+        }
+        .delete-btn:hover{
+            background-color: rgb(193, 35, 35);
+        }
+        .edit-btn {
+            width: 20%;
+            border-radius: 10px;
+            border-width: 0.5px;
+        }
+        .edit-btn:hover{
+            background-color: grey;
+            color: whitesmoke;
         }
     </style>
 </head>
@@ -88,7 +143,7 @@ mysqli_close($conn);
                     <div style="width: 30%; font-weight: bold;">Họ tên</div>
                     <div style="width: 20%; font-weight: bold;">Mã người dùng</div>
                     <div style="width: 20%; font-weight: bold;">Nhóm quyền</div>
-                    <div style="width: 30%; font-weight: bold;">Trạng thái</div>
+                    <div style="width: 25%; font-weight: bold; text-align: left; margin-left: 5%">Trạng thái</div>
                 </div>
                 <div><br></div>
                 <div><br></div>
@@ -107,15 +162,15 @@ mysqli_close($conn);
                         }
                         while ($row = $result->fetch_assoc()) {
                             echo '<div class="table-items">';
-                            echo '<div class="staff">';
+                            echo '<div class="staff" id="avt-name">';
                             echo '<div class="avt" style="background-image: url(\'../../img/' . $row['img'] . '\');"></div>';
-                            echo '<div>' . $row['Ten'] . '</div>';
+                            echo '<div id="name">' . $row['Ten'] . '</div>';
                             echo '</div>';
                             echo '<div style="width: 20%;">' . $row['Manguoidung'] . '</div>';
                             echo '<div style="width: 20%;">';
                             echo '<div class="button">' . $row['Loainguoidung'] . '</div>';
                             echo '</div>';
-                            echo '<div class="staff" data-id="' . $row['Manguoidung'] . '">';
+                            echo '<div id="userButtons" class="staff" data-id="' . $row['Manguoidung'] . '">';
                             echo '<select>';
                             if ($row['Loainguoidung'] != 'Q0') {
                                 echo '<option value="1">Đã duyệt</option>';
@@ -123,8 +178,8 @@ mysqli_close($conn);
                                 echo '<option value="0">Chưa duyệt</option>';
                             }
                             echo '</select>';
-                            echo '<button type="button" class="edit-btn '.$textupd.'">Sửa</button>';
-                            echo '<button type="button" class="delete-btn '.$textdel.'">X</button>';
+                            echo '<button type="button" class="edit-btn'.$textupd.'">Sửa</button>';
+                            echo '<button type="button" class="delete-btn'.$textdel.'">X</button>';
                             echo '</div>';
                             echo '</div>';
                         }
