@@ -41,21 +41,35 @@ $connn->close();
         }
         .thaotac button{
             height: 60%;
-            width: 25%;
-            background-color: aqua;
             border-radius: 5px;
             border-width: 0.5px
-        }
-        .thaotac button:hover{
-            background-color: rgb(39, 176, 176);
-        }
-        .thaotac button:hover a{
-            color: whitesmoke;
         }
         .thaotac button a{
             color: black;
             font-weight: bold;
             font-size: 18px;
+        }
+
+        .edit-btn{
+            width: 25%;
+        }
+        .edit-btn:hover{
+            background-color: gray;
+        }
+        .edit-btn:hover a{
+            color: whitesmoke;
+        }
+        .delete-btn{
+            background-color: red;
+            color: whitesmoke;
+            width: 12%;
+            margin-left: 5%;
+        }
+        .delete-btn:hover{
+            background-color: brown;
+        }
+        .delete-btn:hover a{
+            color: white;
         }
 
     </style>
@@ -106,8 +120,8 @@ mysqli_close($conn);
                             <div style="width: 20%;"><?php echo $value["Gia"]; ?></div>
                            
                             <div class="thaotac" style="width: 20%;">
-                                <button class="<?=$isUpdate?"":"hidden"?>" type="button"><a href="AHome.php?chon=t&id=vanchuyen&loai=sua&idvc=<?php echo $value["Mavc"] ?>">Sửa</a></button>
-                                <button class="<?=$isDelete?"":"hidden"?>" onclick="return delNcc('<?php echo $value['Ten']; ?>')" type="button"><a href="xoaVanchuyen.php?idvc=<?php echo $value["Mavc"]; ?>">Xóa</a></button>
+                                <button class="edit-btn" class="<?=$isUpdate?"":"hidden"?>" type="button"><a href="AHome.php?chon=t&id=vanchuyen&loai=sua&idvc=<?php echo $value["Mavc"] ?>">Sửa</a></button>
+                                <button class="delete-btn" class="<?=$isDelete?"":"hidden"?>" onclick="return delNcc('<?php echo $value['Ten']; ?>')" type="button"><a href="xoaVanchuyen.php?idvc=<?php echo $value["Mavc"]; ?>">X</a></button>
                             </div> 
                         </div>
                         <?php }?>

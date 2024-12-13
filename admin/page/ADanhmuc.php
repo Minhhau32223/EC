@@ -37,12 +37,27 @@ $connn->close();
         }
         .staff button{
             height: 75%;
-            width: 20%;
             font-size: 18px;
             margin-left: 4%;
             font-weight: bold;
             border-radius: 5px;
             border-width: 0.5px;
+        }
+        .edit-btn{
+            width: 20%;
+        }
+        .edit-btn:hover{
+            background-color: gray;
+            color: whitesmoke;
+        }
+        .delete-btn{
+            background-color: red;
+            color: whitesmoke;
+            width: 10%;
+        }
+        .delete-btn:hover{
+            background-color: brown;
+            color: white;
         }
     </style>
 </head>
@@ -106,7 +121,7 @@ $connn->close();
                             echo '<div style="width: 30%;">';
                             echo '<div class="staff" data-id="' . $row['Madanhmuc'] . '">';
                             echo '<button type="button" class="edit-btn  '.$textupd.'" >Sửa</button>';
-                            echo '<button type="button" class="delete-btn'.$textdel.'" >Xóa</button>';
+                            echo '<button type="button" class="delete-btn'.$textdel.'" >X</button>';
                             echo '</div>'; // staff
                             echo '</div>'; // table-items
                             echo '</div>'; // container

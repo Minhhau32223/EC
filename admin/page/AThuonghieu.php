@@ -37,12 +37,31 @@ $connn->close();
         }
         .staff button{
             height: 75%;
-            width: 20%;
             font-size: 18px;
             margin-left: 4%;
             font-weight: bold;
             border-radius: 5px;
             border-width: 0.5px;
+        }
+        .staff button:hover{
+            background-color: gray;
+            color: whitesmoke;
+        }
+        .edit-btn{
+            width: 20%;
+        }
+        .edit-btn:hover{
+            background-color: gray;
+            color: whitesmoke;
+        }
+        .delete-btn{
+            background-color: red;
+            color: whitesmoke;
+            width: 10%;
+        }
+        .delete-btn:hover{
+            background-color: brown;
+            color: white;
         }
     </style>
 </head>
@@ -118,8 +137,8 @@ mysqli_close($conn);
                             echo '<div style="width: 35%;">' . $row['tenThuonghieu'] . '</div>';
                             echo '<div style="width: 30%;">';
                             echo '<div class="staff" data-id="' . $row['Mathuonghieu'] . '">';
-                            echo '<button type="button" class="edit-btn  '.$textupd.'" style="background-color: ##D61EAD; border: solid 0.5px #D61EAD; color: black;">Sửa</button>';
-                            echo '<button type="button" class="delete-btn'.$textdel.'" style="background-color: white; border: solid 0.5px #D61EAD; color: black;">Xóa</button>';
+                            echo '<button type="button" class="edit-btn  '.$textupd.'" >Sửa</button>';
+                            echo '<button type="button" class="delete-btn'.$textdel.'" >X</button>';
                             echo '</div>'; // staff
                             echo '</div>'; // table-items
                             echo '</div>'; // container
