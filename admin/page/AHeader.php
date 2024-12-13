@@ -54,6 +54,7 @@ function checkReadPermission($view_permission_list, $feature_id)
                                 <li class="<?=checkReadPermission($view_permission_list, "CN010")?>"><a href="AHome.php?chon=t&id=khuyenmai">Khuyến mãi</a></li>
                                 <li class="<?=checkReadPermission($view_permission_list, "CN011")?>"><a href="AHome.php?chon=t&id=vanchuyen">Vận chuyển</a></li>
                                 <li class="<?=checkReadPermission($view_permission_list, "CN012")?>"><a href="AHome.php?chon=t&id=thuonghieu">Thương hiệu</a></li>
+                                <li class="<?=checkReadPermission($view_permission_list, "CN013")?>"><a href="AHome.php?chon=t&id=danhmuc">Danh mục</a></li>
                             </ul>
                         </div>
                     </div>

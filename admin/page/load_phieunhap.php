@@ -36,12 +36,12 @@ include 'connectDB.php';
         echo '<div class="table-items" id="'.$row['Mapn'].'"> ';
       echo  '<div style="width: 20%;">'.$row['Mapn'] .'</div>';
     echo '<div style="width: 20%;">'.$row['Manhanvien'].'</div>';
-    echo '<div style="width: 20%;">'.$row['Manhacungcap'].'</div>';
+    echo '<div style="width: 21%;">'.$row['Manhacungcap'].'</div>';
     echo    '<div style="width: 20%;">'.$row['Ngaynhap'].'</div>';
     echo    '<div class="status-phieunhap">';
     echo      ' <!-- <div>Bình thường</div> -->';
-    echo      ' <button type="button" class="btn-X-PN  '.$textdel.'">X</button>';
     echo      ' <button type="button" class="btn-xemct" onmousedown="showChiTiet(this)" id="'.$row['Mapn'].'">Xem</button>';
+    echo      ' <button type="button" class="btn-X-PN'.$textdel.'">X</button>';
     echo   ' </div>';
     echo   ' </div>';
       }

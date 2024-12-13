@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; height: 100%;">
         <div id="title">Thống kê</div>
         <div id="grid-container">
             <div class="grid-items">
@@ -113,13 +113,14 @@
                         // Hiển thị thông tin của đơn hàng
                         echo '<div class="table-items">';
                         echo '<div class="customer">';
-                        echo '<div ><img src="../../img/' . $row['img'] . '"class="avt"></div>';
-                        echo '<div>' . $row["Ten"] . '</div>';
+                        echo '<div class="imgHolder"><img src="../../img/' . $row['img'] . '" class="avt"></div>';
+                        echo '<div class="tenuser">' . $row["Ten"] . '</div>';
                         echo '</div>';
-                        echo '<div style="width: 20%;">' . $row["Ngay"] . '</div>';
-                        echo '<div style="width: 20%;">' . $row["Madonhang"] . '</div>';
-                        echo '<div style="width: 20%;">' . $row["Tonggiatri"] . '</div>';
-                        echo '<div class="btn">';
+                        echo '<div style="width: 21%;">' . $row["Ngay"] . '</div>';
+                        echo '<div style="width: 10%;">' . $row["Madonhang"] . '</div>';
+                        echo '<div id="tongGia"style="width: 15%;">' . $row["Tonggiatri"] . '</div>';
+                        echo '<div class="DonHangbtn">';
+                        echo '<button type="button" class="order-detail"><a href="chitiethoadon.php?iddh=' . $row["Madonhang"] . '">Chi tiết</a></button>';
                         if ($row["Trangthai"] == 0) {
                             echo '<div class="status-orders">Chưa xác nhận</div>';
                         }
@@ -135,9 +136,11 @@
                         if ($row["Trangthai"] == 4) {
                             echo '<div class="status-orders">Đã hủy hàng</div>';
                         }
+                        
+                        
                         echo '</div>';
-                        echo '<button type="button" class="order-detail"><a href="chitiethoadon.php?iddh=' . $row["Madonhang"] . '">Chi tiết</a></button>';
                         echo '</div>';
+
                     }
                     // Đóng kết nối đến cơ sở dữ liệu
                     mysqli_close($con);

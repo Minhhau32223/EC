@@ -80,6 +80,16 @@ if (isset($_GET['chon']) && isset($_GET['id'])) {
         } else {
             include_once('./AThuonghieu.php');
         }
+    }else if ($_GET['id'] == 'danhmuc') {
+        if (isset($_GET['loai'])) {
+            if ($_GET['loai'] == 'them') {
+                include_once('./formdanhmuc.php');
+            } else if ($_GET['loai'] == 'sua') {
+                include_once('./suadanhmuc.php');
+            }
+        } else {
+            include_once('./ADanhmuc.php');
+        }
     }
 } else {
     include_once('./AThongke.php');

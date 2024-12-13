@@ -45,14 +45,11 @@ $conn = mysqli_connect('localhost', 'root', '', 'bolashop');
 $sql = "SELECT * FROM nhacungcap";
 $rs_ncc = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($rs_ncc);
-
-
 if(isset($_POST["timkiem"])){
     $searchKey = trim($_POST["txtTimKiem"]);
     $sql_search = "SELECT * FROM nhacungcap WHERE Mancc LIKE '%$searchKey%' OR Ten LIKE '%$searchKey%'";
     $rs_ncc = mysqli_query($conn, $sql_search);
 }
-
 
 mysqli_close($conn);
 ?>
@@ -81,9 +78,9 @@ mysqli_close($conn);
     <div id="NCC">
         <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
             <div class="title">Nhà cung cấp</div>
-            <div class="btn-ThemNV <?= $isCreate?"":"hidden"?>" ><a href="AHome.php?chon=t&id=nhacungcap&loai=them"> + Thêm nhà cung cấp</a></div>
+            <div class="btn-ThemNV <?= $isCreate?"":"hidden"?>" onclick="window.location.href='AHome.php?chon=t&id=nhacungcap&loai=them'"> + Thêm nhà cc</href=></div>
             <div style="clear: both;"></div>
-            <form action="" method="post">
+            <form class="timkiembar" action="" method="post">
                 <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
                 <button type="submit" name="timkiem" >Tìm kiếm</button>
             </form>

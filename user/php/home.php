@@ -10,6 +10,7 @@ if(isset($_SESSION['user_id'])){
   <title>Điện máy chợ nhỏ</title>
   <link href="../css/home.css?v=<?php echo time(); ?>" rel="stylesheet" />
   <link rel="stylesheet" href="../../themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="../js/home.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Add icon library -->

@@ -5,8 +5,6 @@
   <meta charset="utf-8" />
   <title>Trang chủ</title>
   <link href="../css/home.css?v=<?php echo time(); ?>" rel="stylesheet" />
-
-
   <script src="../js/home.js"></script>
   <!-- <script src="../js/chuyentab.js"></script> -->
 

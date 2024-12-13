@@ -49,7 +49,8 @@ mysqli_close($con);
                     </div>
                     <div class="home-item-content">
                         <h4>SẢN PHẨM CHẤT LƯỢNG</h4>
-                        <p>Cam kết siêu bền</p>
+                        <p>- Công nghệ hiện đại</p>  
+                        <p>- Đạt chuẩn quốc tế</p>  
                     </div>
                 </div>
     
@@ -59,7 +60,8 @@ mysqli_close($con);
                     </div>
                     <div class="home-item-content">
                         <h4>HỖ TRỢ 24/24</h4>
-                        <p>Tất cả các ngày trong tuần</p>
+                        <p>- Phản hồi nhanh chóng</p>
+                        <p>- Tận tâm, nhiệt tình</p>                  
                     </div>
                 </div>
     
@@ -68,8 +70,9 @@ mysqli_close($con);
                         <i class="ti-money"></i>        
                     </div>
                     <div class="home-item-content">
-                        <h4>CAM KẾT HOÀN LẠI TIỀN</h4>
-                        <p>Nếu có gì sai sót</p>
+                        <h4>CAM KẾT HOÀN TIỀN</h4>
+                        <p>- Chính sách minh bạch</p>
+                        <p>- Hoàn toàn miễn phí</p>
                     </div>
                 </div>
             </div>
@@ -83,7 +86,7 @@ mysqli_close($con);
     <form class="filter-tool" id="filter-tool" name="formFilter" method="POST">
         <h1>Tìm kiếm theo</h1>
         <hr />
-        <!-- <input type="text" class="search-bar" placeholder="Search..." name="txtSearch" /> -->
+        <input type="text" class="search-bar" placeholder="Search..." name="txtSearch" />
         <h4>Thương hiệu</h4>
         <?php foreach($result_query as $key => $value) { ?>
         <input type="checkbox" class="category-checkbox"  id="brand" name="brand[]"  value="<?php echo $value["Mathuonghieu"]; ?>" />

@@ -52,10 +52,10 @@ mysqli_close($conn);
         <div class="title">Đơn vị vận chuyển</div>
         <div class="btn-ThemNV <?=$isCreate?"":"hidden"?>"> <a href="AHome.php?chon=t&id=vanchuyen&loai=them">+ Thêm đơn vị vận chuyển </a></div>
         <div style="clear: both;"></div>
-        <form action="" method="post">
-                <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
-                <button type="submit" name="timkiem" >Tìm kiếm</button>
-            </form>
+        <div class="timkiembar" action="" method="post">
+            <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+            <button type="submit" name="timkiem" >Tìm kiếm</button>
+        </div>
         <div><br></div>
         <div style="display: flex; justify-content: center;">
             <div class="table">

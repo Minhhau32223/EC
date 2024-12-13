@@ -14,20 +14,6 @@
             text-decoration: none;
         }
     </style>
-    <!-- <script>
-        function changeStatus(){
-            var selectedStatus = document.getElementById('status').value;
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "chitietdonhang.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert(xhr.responseText);
-            }
-        };
-        xhr.send("selectedStatus=" + selectedStatus);
-        }
-    </script> -->
 
 </head>
 
@@ -41,7 +27,6 @@
             mysqli_query($con,"UPDATE donhang SET Trangthai=$status WHERE Madonhang=$maDH");
             echo "<script>window.location.href='AHome.php?chon=t&id=donhang';</script>";
         }
-
 
         mysqli_close($con);
         ?>
@@ -63,8 +48,6 @@
                                 </div>
                                 <button type="submit" class="submit-btn">Lưu thay đổi</button>
                             </form>
-                        
-
                     </div>
                     <div><br></div>
                     <div class="table">
@@ -146,36 +129,7 @@
                         # code...
                     
                     ?>
-                    <!-- <div class="cus-info">
-                        <div class="avata"></div>
-                        <div class="cus-info-name">
-                            <div>Võ Lê Hoàng Tân</div>
-                            <div style="font-weight: 400;">Thành phố Hồ Chí Minh</div>
-                        </div>
-                
-                         <div class="btn-chitiet">Chi tiết</div>
-                    </div>
-                    <div class="address">
-                        <div class="address-title">Địa chỉ giao hàng</div>
-                        <div class="address-content">273 An Dương Vương, Phường 3, Quận 5, Thành phố Hồ Chí Minh</div>
-                        <div class="address-sdt">0336-528-761</div>
-                    </div> -->
-                    <!-- <div class="order-info">
-                        <div class="order-title">Thông tin đơn hàng</div>
-                        <div class="order-content">
-                            <div class="align-left">Tạm tính: </div>
-                            <div class="align-right">800,000 VNĐ</div>
-                        </div>
-                        <div class="order-content">
-                            <div class="align-left">Phí vận chuyển: </div>
-                            <div class="align-right">20,000 VNĐ</div>
-                        </div>
-                        <div class="horizontal-line"></div>
-                        <div class="order-content">
-                            <div class="align-left">Tổng cộng: </div>
-                            <div class="order-price">820,000 VNĐ</div>
-                        </div>
-                    </div> -->
+
                     <?php
                     $con=mysqli_connect("localhost","root",null,"bolashop");
                     if (isset($_GET['iddh'])) {
@@ -211,7 +165,7 @@
 
         </div>
     </div>
-    <?php include('./footer.php'); ?>
+    <!-- <?php include('./footer.php'); ?> -->
 </body>
 
 </html>

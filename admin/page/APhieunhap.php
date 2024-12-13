@@ -35,11 +35,37 @@ $connn->close();
         }
 
         .status-phieunhap {
-            width: 20%;
+            width: 19%;
             display: flex;
-            flex-direction: row;
+            /* flex-direction: row;
             justify-content: space-evenly;
-            align-items: center;
+            align-items: center; */
+            /* background-color: red; */
+            height: 100%;
+        }
+
+        .status-phieunhap button{
+            margin-left: 25%;
+        }
+        .btn-X-PN{
+            margin-top: 9%;
+            padding: 1%;
+            width: 12%;
+            height: 40%;
+            background-color: red;
+            border-radius: 10%;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-X-PN:hover{
+            background-color: rgb(198, 37, 37);
+        }
+        .btn-xemct{
+            width: 30%;
+            height: 40%;
+            padding: 1%;
+            margin-top: 9%;
+            font-size: 18px;
         }
 
         #phieunhap {
@@ -51,16 +77,6 @@ $connn->close();
             flex-direction: row;
             font-weight: bold;
         }
-
-        /* .btn-ThemPN {
-            /* float: right; 
-            width: 100%;
-            padding: 5px;
-            background-color: #D61EAD;
-            color: white;
-            border-radius: 20px;
-            text-align: center;
-        } */
 
         /*sửa viền*/
         .wrapper-ctpn {
@@ -102,7 +118,7 @@ $connn->close();
             width: 80%;
         }
 
-        .btn-Xem {
+        /* .btn-Xem {
             margin: 5px;
             width: 80%;
             padding: 5px;
@@ -110,16 +126,20 @@ $connn->close();
             color: white;
             border-radius: 20px;
             text-align: center;
-        }
+        } */
 
         .btn-ThemPN {
+            padding: 10%;
+            font-size: 30px;
             margin: 5px;
-            width: 80%;
+            width: 20%;
+            height: 2.5%;
             padding: 5px;
             background-color: #D61EAD;
             color: white;
             border-radius: 20px;
             text-align: center;
+            float: right;
         }
 
         /*sửa btn */
@@ -215,16 +235,23 @@ $connn->close();
     </style>
 </head>
 
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'bolashop');
+$sql = "SELECT * FROM nhacungcap";
+$rs_ncc = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($rs_ncc);
+
+if(isset($_POST["timkiem"])){
+    $searchKey = trim($_POST["txtTimKiem"]);
+    $sql_search = "SELECT * FROM nhacungcap WHERE Mancc LIKE '%$searchKey%' OR Ten LIKE '%$searchKey%'";
+    $rs_ncc = mysqli_query($conn, $sql_search);
+}
+mysqli_close($conn);
+?>
 <body>
 
     <form id="addPN">
         <div id="themPN">
-            <!-- <div class="title-ctpn">
-                <div>Phiếu nhập >> </div>
-                <div> Thêm phiếu nhập mới</div>
-            </div> -->
-
-            <!-- </div> -->
             <div class="wrapper-pn">
                 <div class="top">
                     <div class="top-left">
@@ -268,7 +295,7 @@ $connn->close();
                              <option value="<?php echo $row['Mancc']?>" id="<?php echo $row['Mancc']?>" ><?php echo $row['Mancc']?></option>
                             <?php }?>
                         </select>
-                        <button class="btn-ThemPN">+ Thêm sản phẩm mới</button>     
+                        <button class="btn-ThemPN">+ Thêm sản phẩm</button>     
                     </div>
                     <div class="top-left">
                         <div class="top-items">Phiếu nhập</div>
@@ -280,7 +307,7 @@ $connn->close();
                     <div class="top-left">
                         <div class="top-items">Đơn giá</div>
                         <input type="text" class="top-items"  id="dongia" name="txtdongia" readonly>
-                        <!-- <button class="btn-Xem">Xem thông tin</button> -->
+                        
                     </div>
                     <div class="top-left">
                         <div class="top-items">Số lượng</div>
@@ -372,7 +399,7 @@ $connn->close();
                     <div><br></div>
                     <div><br></div>
                     <div style="overflow-y: scroll;" class="table_item_details">
-                        <!-- <div class="table-items-details">
+                        <div class="table-items-details">
                             <div class="staff">
                                 <div class="avt-sp"></div>
                                 <div>Len milk cotton</div>
@@ -383,16 +410,12 @@ $connn->close();
                             <div style="width: 20%;">
                                 <input type="text" value="1" readonly style="text-align: center;width: 90%;">
                             </div>
-                        </div> -->
-                       
-                        
-                       
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
 
     <div id="phieunhap">
@@ -400,7 +423,10 @@ $connn->close();
             <div class="title">Phiếu nhập</div>
             <div class="btn-ThemNV <?=$isCreate?"":"hidden"?>" type="button" onclick="showThemPhieuNhap()"> + Thêm phiếu nhập</div>
             <div style="clear: both;"></div>
-            <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+            <div class="timkiembar" action="" method="post">
+                <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+                <button type="submit" name="timkiem" >Tìm kiếm</button>
+            </div>
             <div><br></div>
             <div style="display: flex; justify-content: center;">
                 <div class="table">
@@ -413,15 +439,10 @@ $connn->close();
                     </div>
                     <div><br></div>
                     <div><br></div>
-                    <div style="overflow-y: scroll;" class="table_item">
-                        
-                       
+                    <div style="overflow-y: scroll;" class="table_item"> 
                     </div>
-                   
-
                 </div>
             </div>
-
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -431,7 +452,6 @@ $connn->close();
             var b = document.getElementById('addPN');
             a.style.display = "block";
             b.style.display = "block";
-
         }
 
         function closeThemPhieuNhap() {

@@ -32,6 +32,22 @@ $connn->close();
     </style>
 </head>
 
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'bolashop');
+$sql = "SELECT * FROM nhacungcap";
+$rs_ncc = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($rs_ncc);
+
+
+if(isset($_POST["timkiem"])){
+    $searchKey = trim($_POST["txtTimKiem"]);
+    $sql_search = "SELECT * FROM nhacungcap WHERE Mancc LIKE '%$searchKey%' OR Ten LIKE '%$searchKey%'";
+    $rs_ncc = mysqli_query($conn, $sql_search);
+}
+
+
+mysqli_close($conn);
+?>
 <body>
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
         <div class="title">Khuyến mãi</div>

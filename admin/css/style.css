@@ -33,19 +33,9 @@
 
 .hidden{
   display: none !important;
+  background-color: #942a7d;
 }
 
-.btn_sua_sp {
-  background: #D61EAD;
-    color: #ffffff;
-    border: 0.2px solid rgba(0, 0, 0, 0.6);
-    position: absolute;
-    bottom: 40px;
-    border-radius: 4px;
-}
-.btn_sua_sp:hover {
-  background-color: #0056b3;  /* Màu nền khi hover */
-}
 .item-actions {
   display: flex;
   align-items: center;
@@ -148,97 +138,22 @@
   
 }
 
-#image_sp img{
-    background-repeat: no-repeat;
-    height: 150px;
-    width: 150px;
-    border: 0;
-    margin-left: 10px;
-    padding: 10px 10px;
-
-}
 .addsp input:focus{
     border: 3px solid #D61EAD;
     outline: none;
 }
 /* Form ql sản phẩm */
-.ql_sp, .ql_kh{
-  top: 10%;
-    display: block;
-    justify-content: center;
-   align-items: center;
-   position: relative;
-   width: 100%;
-   min-height: 150px;
-}
-.ql_sp h1,.ql_kh h1{
-    position: absolute;
-    top:20px;
-    left:20%;
-    z-index: 10;
-}
-.content_form-qlsp, .content_form-qlkh{
-    top:35%;
-    border: 0.1px solid rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    width: 100%;
-    max-height: 800px;
-    box-shadow: 3px 4px rgba(0, 0, 0, 0.29);
-    /* position: absolute; */
-    left:10%
 
-
-}
-.header-content-qlsp{
-    max-width: 100%;
-    height: 40px;
-    background: rgba(255, 143, 197, 0.25);
-    border-radius: 10px 10px 0 0;
-    border-bottom: 0.1px solid rgba(0, 0, 0, 0.2);
-
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    row-gap: 30px;
-    
-}
-.header-content-qlsp label{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 40px;
-    margin-right: 25px;
-    padding: 0px;;
-    
-}
-
-.content-item .item{
+/* .content-item .item{
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
     display:flex;
-  
    position: relative;
-   
     
-    
-}
-.content-item .item label{
-   margin-top: 40px;
-   padding: 10px;
-   text-align: start;
-   
-}
-.content-item .item .item-tensp , .content-item .item .item-dongia ,.content-item .item .item-soluong,
-.content-item .item .item-tenkh,.content-item .item .item-ngaytao,.content-item .item .item-trangthai{
-    width: 16%;
-    
+} */
 
-}
-.content-item{
-    height: 600px;
-    width: 100%;
-   overflow-y: scroll;
-}
 .content-item::-webkit-scrollbar{
     width: 10px;
 }
@@ -263,12 +178,6 @@
  
     text-align: center;
 }
-.header-form-qlsp, .header-form-qlkh{
-    position: absolute;
-    width: 65%;
-    left:20%;
-    height: 120px;
-}
 .header-form-qlsp label, .header-form-qlkh label{
     font-size: 25px;
     position: absolute;
@@ -278,76 +187,7 @@
     
 
 }
-.header-form-qlsp a{
-    position: absolute;
-    width: 250px;
-    height: 40px;
-    max-height: 70px;
-    background: #D61EAD;
-    color: #ffffff;
-    border: 1px solid #000;
-    border-radius: 8px ;
-    right: 20px;
-    top: 20px;
-    text-decoration: none;
-    text-align: center;
-    justify-content: center;
-    padding-top: 5px !important;
-    font-size: 25px;
 
-}
-.header-form-qlsp .ip_timkiemsp,.header-form-qlkh .ip_timkiemkh{
-    position: absolute;
-    width: 500px;
-    height: 30px;
-    bottom: 20px;
-    left:120px;
-    margin-right: 12px;
-    padding: 10px;
-}
-.content-item .item img{
-    width: 80px;
-    height: 80px;
-    margin: 10px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-.btn-themsp, .btn-themkh{
-    position: absolute;
-
-    width: 200px;
-    height: 40px;
-    max-height: 70px;
-    background: #D61EAD;
-    color: #ffffff;
-    border: 0px;
-    border-radius: 8px ;
-    right: 20px;
-    top: 20px;
-}
-.header-form-qlsp .ip_timkiem:focus{
-    outline: none;
-    border: 1px solid #D61EAD;
-}
-
-.content-item .item .btn_sua ,.content-item .item .ip_xoa_sp{
-    background: #D61EAD;
-    color: #ffffff;
-    border: 0.2px solid rgba(0, 0, 0, 0.6);
-    position: absolute;
-    bottom: 40px;
-}
-.content-item .item .btn_sua {
-border-radius: 4px;
-right:200px ;
-height: 25px;
-width: 50px;
-}
-.content-item .item .ip_xoa_sp{
-width: 30px;
-height: 25px;
-right:150px
-}
 .page{
     height: 40px;
     justify-content: end;

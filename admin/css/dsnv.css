@@ -1,17 +1,22 @@
 .btn-ThemNV {
     float: right;
-    width: 15%;
-    padding: 5px;
+    width: 10%;
+    height: 5%;
+    padding: 0.6%;
     background-color: #D61EAD;
     color: white;
     border-radius: 20px;
     text-align: center;
     text-decoration: none;
+    font-size: 18px;
+    margin-right: 10%;
+    /* margin-top: 2.5%; */
 }
 .search{
     width: 92%;
-    margin: 15px 50px;
+    /* margin: 15px 50px; */
     height: 30px;
+    border-radius: 15px 0px 0px 15px;
 }
 .staff{
     width: 30%;

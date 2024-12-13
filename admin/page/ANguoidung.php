@@ -53,16 +53,34 @@ $result = $db->query($sql);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            float: left;
         }
     </style>
 </head>
 
+
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'bolashop');
+$sql = "SELECT * FROM nguoidung";
+$rs_ncc = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($rs_ncc);
+
+if(isset($_POST["timkiem"])){
+    $searchKey = trim($_POST["txtTimKiem"]);
+    $sql_search = "SELECT * FROM nguoidung WHERE Manguoidung LIKE '%$searchKey%' OR Ten LIKE '%$searchKey%'";
+    $rs_ncc = mysqli_query($conn, $sql_search);
+}
+mysqli_close($conn);
+?>
 <body>
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
         <div class="title">Người dùng</div>
-        <div class="btn-ThemNV <?=$isCreate?"":"hidden"?>" onclick="window.location.href='AHome.php?chon=t&id=nguoidung&loai=them'"> + Thêm người dùng mới</div>
+        <div class="btn-ThemNV <?=$isCreate?"":"hidden"?>" onclick="window.location.href='AHome.php?chon=t&id=nguoidung&loai=them'"> + Thêm người dùng</div>
         <div style="clear: both;"></div>
-        <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+        <div class="timkiembar" action="" method="post">
+            <input class="search" type="text" name="txtTimKiem" placeholder="Tìm kiếm...">
+            <button type="submit" name="timkiem" >Tìm kiếm</button>
+        </div>
         <div><br></div>
         <div style="display: flex; justify-content: center;">
             <div class="table">
